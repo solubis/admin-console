@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "target": "ES5",
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "noResolve": true
+    },
+    "filesGlob": [
+        "./src/**/*.ts"
+    ],
+    "files": []
+}
