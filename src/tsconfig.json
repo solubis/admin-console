@@ -10,7 +10,12 @@
         "noResolve": true
     },
     "filesGlob": [
-        "./src/**/*.ts"
+        "./app.ts",
+        "./modules/**/*.ts"
     ],
-    "files": []
+    "files": [
+        "./app.ts",
+        "./modules/menu/class/MenuController.ts",
+        "./modules/menu/index.ts"
+    ]
 }

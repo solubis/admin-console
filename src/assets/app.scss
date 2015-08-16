@@ -1,3 +1,11 @@
-@import "../../lib/github/angular/bower-material@master/angular-material";
+@import '../../lib/github/angular/bower-material@master/angular-material';
+body
+{
+    font-size: 12px;
 
-body { font-size: 34px;}
+    background-color: grey;
+}
+md-content
+{
+    opacity: 100% !important;
+}

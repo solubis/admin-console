@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var ng = require('gulp-ng-annotate');
 var sourcemaps = require('gulp-sourcemaps');
 var ts = require('gulp-typescript');
-var path = require("path");
+var path = require('path');
 var uglify = require('gulp-uglify');
 var Builder = require('systemjs-builder');
 
@@ -20,10 +20,15 @@ gulp.task('html', function() {
         .pipe(connect.reload());
 });
 
+gulp.task('js', function() {
+    gulp.src('./src/**/*.js')
+        .pipe(connect.reload());
+});
+
 gulp.task('watch', function() {
     gulp.watch('./src/**/*.html', ['html']);
     gulp.watch('./src/**/*.scss', ['sass']);
-    gulp.watch('./src/**/*.ts', ['ts']);
+    gulp.watch('./src/**/*.ts', ['js']);
 });
 
 gulp.task('default', ['connect', 'watch']);
@@ -31,12 +36,13 @@ gulp.task('default', ['connect', 'watch']);
 gulp.task('ts', function() {
     var tsResult = gulp.src('./src/**/**.ts')
         .pipe(ts({
-            "module": "commonjs",
-            "sourceMap": false,
-            "noImplicitAny": false,
-            "removeComments": false,
-            "preserveConstEnums": true,
-            "target": "ES5"
+            'module': 'commonjs',
+            'inlineSourceMap': true,
+            'inlineSources': true,
+            'noImplicitAny': false,
+            'removeComments': false,
+            'preserveConstEnums': true,
+            'target': 'ES5'
         }));
 
     return tsResult.js

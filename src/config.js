@@ -16,7 +16,7 @@ System.config({
 System.config({
     "map": {
         "angular": "github:angular/bower-angular@1.4.4",
-        "angular-animate": "github:angular/bower-angular-animate@1.4.4",
+        "angular-animate": "github:angular/bower-angular-animate@1.4.4/index",
         "angular-aria": "github:angular/bower-angular-aria@1.4.4",
         "angular-material": "github:angular/bower-material@master",
         "angular-router": "github:angular/router@0.5.3/index",
