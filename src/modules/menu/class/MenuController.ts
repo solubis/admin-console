@@ -3,43 +3,43 @@
 /*@ngInject*/
 class MenuController {
 
-    static $routeConfig = [{ path: '/test', components: { left: 'left', right: 'right' } }];
-
-    private data;
-    private show;
     private status;
 
-    constructor($mdDialog: ngm.IDialogService, $mdToast) {
+    constructor(
+        private $mdDialog: ngm.IDialogService,
+        private $mdToast: ngm.IToastService,
+        private $mdSidenav: ngm.ISidenavService) {
+    }
 
-        this.data = 'Srala';
+    show(event) {
+        let confirm = this.$mdDialog.confirm()
+            .title('Would you like to delete your debt?')
+            .content('All of the banks have agreed to forgive you your debts.')
+            .ariaLabel('Lucky day')
+            .ok('Please do it!')
+            .cancel('Sounds like a scam')
+            .targetEvent(event);
 
-        this.show = (event) => {
-            let confirm = $mdDialog.confirm()
-                .title('Would you like to delete your debt?')
-                .content('All of the banks have agreed to forgive you your debts.')
-                .ariaLabel('Lucky day')
-                .ok('Please do it!')
-                .cancel('Sounds like a scam')
-                .targetEvent(event);
+        this.$mdDialog
+            .show(confirm)
+            .then(() => {
+                this.status = 'OK';
+            })
+            .catch(() => {
+                this.status = 'Cancel';
+            })
+            .finally(() => {
+                this.$mdToast.show(
+                    this.$mdToast
+                        .simple()
+                        .content(this.status)
+                        .hideDelay(3000)
+                );
+            })
+    }
 
-            $mdDialog
-                .show(confirm)
-                .then(() => {
-                    this.status = 'OK';
-                })
-                .catch(() => {
-                    this.status = 'Cancel';
-                })
-                .finally(() => {
-                    $mdToast.show(
-                        $mdToast
-                            .simple()
-                            .content(this.status)
-                            .hideDelay(3000)
-                    );
-                })
-
-        };
+    toggleLeftSidebar() {
+        this.$mdSidenav("sidebar").toggle();
     }
 }
 

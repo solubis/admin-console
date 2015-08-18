@@ -1,25 +1,39 @@
-require('assets/app.css!');
-require('angular');
-
 angular.element(document).ready(() => {
     let name = 'etl-console';
 
-    let config = ($componentLoaderProvider) => {
-        $componentLoaderProvider.setTemplateMapping((name) => `./modules/${name}/index.html`);
+    let config = ($urlRouterProvider, $stateProvider) => {
+        $stateProvider
+            .state('main', {
+                url: '/',
+                views: {
+                    'topbar': {
+                        templateUrl: 'modules/menu/html/topbar.html',
+                        controller: 'MenuController as menu'
+                    },
+                    'sidebar': {
+                        templateUrl: 'modules/menu/html/sidebar.html',
+                        controller: 'MenuController as menu'
+                    },
+                    'content': {
+                        templateUrl: 'modules/menu/html/content.html'
+                    }
+                }
+            });
+
+        $urlRouterProvider.otherwise(($injector) => {
+            $injector.get('$state').go('main');
+        });
     };
 
-    let run = ($router) => {
-        $router.config([
-            { path: '/', redirectTo: '/menu' },
-            { path: '/menu', component: 'menu' }
-        ]);
+    let run = () => {
     };
 
     let dependencies = [
-        require('angular-material'),
-        require('angular-animate'),
-        require('angular-router'),
-        require('modules:menu')
+        'ngMaterial',
+        'ngAnimate',
+        'ui.router',
+
+        require('modules.menu')
     ];
 
     angular
