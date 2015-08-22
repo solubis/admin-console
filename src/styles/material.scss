@@ -1,0 +1,104 @@
+// main: app.scss
+@import '../../lib/angular-material/src/angular-material';
+
+html, body {
+  height: 100%;
+  color: rgba(0,0,0,0.87);
+  background: $body-bg;
+  position: relative;
+}
+
+button:focus {outline:0;}
+
+/**
+*     Content
+**/
+
+md-content {
+    background-color: $body-bg;
+}
+
+/**
+*     Button
+**/
+
+.md-button.md-fab {
+    z-index: 1;
+}
+
+.md-button {
+    min-height: 32px;
+}
+
+/**
+*    Sidebar
+*/
+md-backdrop.md-sidenav-backdrop {
+    transition: background-color 50ms $swift-ease-in-timing-function;
+    z-index   : 2;
+}
+
+
+md-sidenav {
+
+    &.md-closed-add,
+    &.md-closed-remove {
+        display   : flex;
+        transition: 300ms all;
+    }
+
+
+    &.md-sidenav-left {
+        z-index   : 2;
+        box-shadow: 0 0 1px 1px rgba(0, 0, 0, .14), 0 0 2px 2px rgba(0, 0, 0, .098), 0 0 5px 1px rgba(0, 0, 0, .084);
+        md-toolbar {
+            background-color: $brand-primary;
+        }
+    }
+}
+
+
+
+
+/**
+*    Toolbar
+*/
+md-toolbar[ui-view='topbar'] {
+    z-index   : 3;
+    color     : white !important;
+    background: $brand-primary!important;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .14), 0 0 2px 2px rgba(0, 0, 0, .098), 0 0 5px 1px rgba(0, 0, 0, .084);
+}
+
+
+/**
+*    Menu
+*/
+.md-open-menu-container {
+    transform       : scale(0);
+    transform-origin: right top;
+
+    &.md-active {
+        transform: scale(1);
+        > md-menu-content > * {
+            transition: none;
+        }
+    }
+
+
+    &.md-leave {
+        transform: scale(0);
+    }
+}
+
+
+/**
+*     List
+**/
+md-list-item,
+md-list-item .md-list-item-inner {
+    & > md-icon:first-child {
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+}

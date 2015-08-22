@@ -1,4 +1,8 @@
 <md-card>
+    <md-button aria-label="Use Android" class="md-fab md-primary">
+        <md-icon md-font-icon="material-icons">delete</md-icon>
+    </md-button>
+
     <md-card-content>
         <h2 class="md-title">Paracosm</h2>
         <p>
@@ -23,6 +27,33 @@
 <br/>
 
 <md-card>
+    <md-menu >
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-font-icon="material-icons" md-menu-origin>alarm</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+            <md-menu-item>
+                <md-button ng-click="menu.redial($event)">
+                    <md-icon md-menu-align-target md-font-icon="material-icons">dialpad</md-icon>
+                    Redial
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                    <md-icon md-font-icon="material-icons">voicemail</md-icon>
+                    Check voicemail
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-button ng-click="menu.toggleNotifications()">
+                    <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
+                    {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
+                    notifications
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
     <md-card-content>
         <h2 class="md-title">Paracosm</h2>
         <p>

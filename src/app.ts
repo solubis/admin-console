@@ -1,3 +1,5 @@
+require('daneden/animate.css');
+
 angular.element(document).ready(() => {
     let name = 'etl-console';
 
@@ -15,7 +17,8 @@ angular.element(document).ready(() => {
                         controller: 'MenuController as menu'
                     },
                     'content': {
-                        templateUrl: 'modules/menu/html/content.html'
+                        templateUrl: 'modules/menu/html/content.html',
+                        controller: 'MenuController as menu'
                     }
                 }
             });

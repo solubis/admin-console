@@ -1,0 +1,26 @@
+/* Typography + Scaffolding + Links */
+$body-bg: #edecec;
+$text-color: #5e5e5e;
+$font-family-sans-serif: roboto;
+$font-size-base: 13px;
+$link-hover-decoration: none;
+$headings-color: #000;
+
+/* Border Radius */
+$border-radius-base: 2px;
+$border-radius-large: 4px;
+$border-radius-small: 2px;
+
+/* Colors */
+$brand-primary: #4285f4;
+$brand-success: #4caf50;
+$brand-info: #00bcd4;
+$brand-warning: #ff9800;
+$brand-danger: #f44336;
+$gray-base: #000;
+$gray-darker: lighten($gray-base, 13.5%); // #222
+$gray-dark: #212121;
+$gray: #666;
+$gray-light: #ccc;
+$gray-lighter: lighten($gray-base, 92%);
+$gray-lightest: lighten($gray-base, 98%);

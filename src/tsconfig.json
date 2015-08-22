@@ -16,6 +16,7 @@
     "files": [
         "./app.ts",
         "./modules/menu/class/MenuController.ts",
+        "./modules/menu/class/MenuDirective.ts",
         "./modules/menu/index.ts"
     ]
 }

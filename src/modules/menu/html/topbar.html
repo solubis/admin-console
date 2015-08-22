@@ -1,5 +1,5 @@
 <div class="md-toolbar-tools">
-    <md-button aria-label="Menu" class="md-icon-button" ng-click="menu.toggleLeftSidebar()">
+    <md-button aria-label="Menu" class="md-icon-button" ng-click="menu.toggleLeftSidebar()" ng-disabled="menu.toggleDisabled">
         <md-icon md-font-icon="material-icons">menu</md-icon>
     </md-button>
 
@@ -7,10 +7,63 @@
         <span>Toolbar with Icon Buttons</span>
     </h2>
     <span flex=""></span>
-    <md-button aria-label="Favorite" class="md-icon-button">
-        <md-icon md-font-icon="material-icons">person</md-icon>
-    </md-button>
-    <md-button aria-label="More" class="md-icon-button">
-        <md-icon md-font-icon="material-icons">more_vert</md-icon>
-    </md-button>
+
+    <md-menu md-offset="0 30" md-position-mode="target-right target">
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-font-icon="material-icons" md-menu-origin>notifications</md-icon>
+            <div class="badge animated">
+                {{menu.notifications.count}}
+            </div>
+        </md-button>
+        <md-menu-content class="notifications" layout="column" width="4">
+            <md-subheader class="header">
+                <md-button ng-href="" class="md-link-button">Select all</md-button>
+            </md-subheader>
+            <md-list>
+                <md-list-item class="md-3-line" class="{{item.type}}" ng-repeat="item in menu.notifications.items">
+
+                    <md-icon md-font-icon="material-icons">{{item.icon}}</md-icon>
+
+                    <div class="md-list-item-text">
+                        <h3 class="title">{{item.title}}</h3>
+                        <p class="message">{{item.text}}</p>
+                        <small>{{item.date}}</small>
+                    </div>
+
+                    <md-button class="action-button md-icon-button">
+                        <md-icon md-font-icon="material-icons">clear</md-icon>
+                    </md-button>
+
+                </md-list-item>
+            </md-list>
+        </section>
+    </md-menu>
+
+    <md-menu md-offset="0 30" md-position-mode="target-right target">
+        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-icon md-font-icon="material-icons" md-menu-origin>more_vert</md-icon>
+        </md-button>
+        <md-menu-content width="4">
+            <md-menu-item>
+                <md-button ng-click="menu.redial($event)">
+                    <md-icon md-font-icon="material-icons" md-menu-align-target>dialpad</md-icon>
+                    Redial
+                </md-button>
+            </md-menu-item>
+            <md-menu-item>
+                <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                    <md-icon md-font-icon="material-icons">voicemail</md-icon>
+                    Check voicemail
+                </md-button>
+            </md-menu-item>
+            <md-menu-divider></md-menu-divider>
+            <md-menu-item>
+                <md-button ng-click="menu.toggleNotifications()">
+                    <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
+                    {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
+                    notifications
+                </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
 </div>
