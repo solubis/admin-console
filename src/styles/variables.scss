@@ -1,3 +1,4 @@
+// main: app.scss
 /* Typography + Scaffolding + Links */
 $body-bg: #edecec;
 $text-color: #5e5e5e;
@@ -17,10 +18,11 @@ $brand-success: #4caf50;
 $brand-info: #00bcd4;
 $brand-warning: #ff9800;
 $brand-danger: #f44336;
+
 $gray-base: #000;
 $gray-darker: lighten($gray-base, 13.5%); // #222
 $gray-dark: #212121;
 $gray: #666;
-$gray-light: #ccc;
-$gray-lighter: lighten($gray-base, 92%);
+$gray-light: lighten($gray-base, 80%);
+$gray-lighter: lighten($gray-base, 90%);
 $gray-lightest: lighten($gray-base, 98%);

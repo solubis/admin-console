@@ -1,8 +1,9 @@
 // out: app.css
 
 @import 'variables';
-@import 'icons';
-@import 'roboto';
+@import "vendor-prefixes";
+@import 'mixins';
+@import 'fonts';
 @import 'material';
 
 @import '../modules/menu/menu';
@@ -17,3 +18,5 @@ body {
 a {
     text-decoration: none;
 }
+
+@include scrollbars(0.3em, lightgrey, $body-bg);

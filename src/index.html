@@ -23,10 +23,10 @@
     <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="sidebar" ui-view="sidebar">
     </md-sidenav>
 
-    <div layout="column" tabindex="-1" role="main" flex="">
+    <main layout="column" tabindex="-1" role="main" flex="" >
         <md-toolbar ui-view="topbar"></md-toolbar>
-        <md-content class="md-padding" md-scroll-y flex layout-padding ui-view="content"></md-content>
-    </div>
+        <md-content md-scroll-y flex layout-fill ui-view="content"></md-content>
+    </main>
 
     <script src="../lib/system.js" type="text/javascript"></script>
     <script src="./config.js" type="text/javascript"></script>

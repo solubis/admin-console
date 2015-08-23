@@ -14,6 +14,7 @@
       "angular": "github:angular/bower-angular@^1.4.4",
       "angular-animate": "github:angular/bower-angular-animate@^1.4.4",
       "angular-aria": "github:angular/bower-angular-aria@^1.4.4",
+      "angular-datatable": "github:solubis/angular-datatable@^0.8.8",
       "angular-material": "github:angular/bower-material@^0.10.1",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
       "clean-css": "npm:clean-css@3",

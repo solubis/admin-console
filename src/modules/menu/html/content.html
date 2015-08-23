@@ -1,7 +1,93 @@
-<md-card>
-    <md-button aria-label="Use Android" class="md-fab md-primary">
-        <md-icon md-font-icon="material-icons">delete</md-icon>
+<md-toolbar layout="row" class="md-whiteframe-z1">
+    <md-button class="md-button md-raised">
+        Test1
     </md-button>
+
+    <md-button class="md-button md-raised">
+        Test2
+    </md-button>
+</md-toolbar>
+
+<div class="block-header" layout="row">
+    <h2 flex>Flot Charts
+        <small>Flot is a pure JavaScript plotting library for jQuery, with a focus on simple usage, attractive looks and interactive features.</small>
+    </h2>
+
+    <div class="md-actions" layout-align="end start" layout="row">
+        <md-button class="md-icon-button">
+            <md-icon md-font-icon="material-icons">delete</md-icon>
+        </md-button>
+        <md-menu md-offset="0 30" md-position-mode="target-right target">
+            <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                <md-icon md-font-icon="material-icons" md-menu-origin>more_vert</md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button ng-click="menu.redial($event)">
+                        <md-icon md-font-icon="material-icons" md-menu-align-target>dialpad</md-icon>
+                        Redial
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                        <md-icon md-font-icon="material-icons">voicemail</md-icon>
+                        Check voicemail
+                    </md-button>
+                </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button ng-click="menu.toggleNotifications()">
+                        <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
+                        {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
+                        notifications
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+
+</div>
+
+<md-card>
+    <div class="card-header" layout="row">
+        <h2 flex>Line Chart with curved edges
+            <small>Curved edges made possible using curvedLines Flot plugin.</small>
+        </h2>
+
+        <div class="md-actions" layout-align="end start" layout="row">
+            <md-button class="md-icon-button">
+                <md-icon md-font-icon="material-icons">delete</md-icon>
+            </md-button>
+            <md-menu md-offset="0 30" md-position-mode="target-right target">
+                <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <md-icon md-font-icon="material-icons" md-menu-origin>more_vert</md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ng-click="menu.redial($event)">
+                            <md-icon md-font-icon="material-icons" md-menu-align-target>dialpad</md-icon>
+                            Redial
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                            <md-icon md-font-icon="material-icons">voicemail</md-icon>
+                            Check voicemail
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-divider></md-menu-divider>
+                    <md-menu-item>
+                        <md-button ng-click="menu.toggleNotifications()">
+                            <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
+                            {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
+                            notifications
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+
+    </div>
 
     <md-card-content>
         <h2 class="md-title">Paracosm</h2>
@@ -15,49 +101,56 @@
     </div>
 </md-card>
 
-<md-card>
+<md-card ng-repeat="item in [1,2,3,4,5,6,7,8,9]">
     <md-card-content>
-        <h2 class="md-title">Paracosm</h2>
+        <h2 class="md-title">Paracosm {{item}}</h2>
         <p>
             The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
         </p>
     </md-card-content>
 </md-card>
 
-<br/>
-
 <md-card>
-    <md-menu >
-        <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
-            <md-icon md-font-icon="material-icons" md-menu-origin>alarm</md-icon>
-        </md-button>
-        <md-menu-content width="4">
-            <md-menu-item>
-                <md-button ng-click="menu.redial($event)">
-                    <md-icon md-menu-align-target md-font-icon="material-icons">dialpad</md-icon>
-                    Redial
-                </md-button>
-            </md-menu-item>
-            <md-menu-item>
-                <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
-                    <md-icon md-font-icon="material-icons">voicemail</md-icon>
-                    Check voicemail
-                </md-button>
-            </md-menu-item>
-            <md-menu-divider></md-menu-divider>
-            <md-menu-item>
-                <md-button ng-click="menu.toggleNotifications()">
-                    <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
-                    {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
-                    notifications
-                </md-button>
-            </md-menu-item>
-        </md-menu-content>
-    </md-menu>
-    <md-card-content>
-        <h2 class="md-title">Paracosm</h2>
-        <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-        </p>
-    </md-card-content>
+    <md-data-table-toolbar ng-show="!menu.selected.length">
+      <h2 class="md-title">Nutrition</h2>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar class="alternate" ng-show="menu.selected.length">
+      <div>{{menu.selected.length}} {{menu.selected.length > 1 ? 'items' : 'item'}} selected</div>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+      <table md-data-table md-row-select="menu.selected" md-progress="deferred">
+        <thead md-order="menu.query.order" md-trigger="menu.onOrderChange">
+          <tr>
+            <th ng-repeat="column in menu.columns" ng-attr-order-by="{{column.orderBy}}" ng-attr-numeric="{{column.numeric}}" ng-attr-unit="{{column.unit}}" name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-trim="{{column.trim}}"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr md-auto-select md-disable-select="dessert.calories.value > 300" ng-repeat="dessert in menu.desserts.data | orderBy: menu.query.order | limitTo: menu.query.limit : (menu.query.page -1) * menu.query.limit">
+            <td>{{dessert.name}}</td>
+            <td>
+              <md-select ng-model="dessert.type" placeholder="Other">
+                <md-option ng-value="type" ng-repeat="type in getTypes()">{{type}}</md-option>
+              </md-select>
+            </td>
+            <td>{{dessert.calories.value}}</td>
+            <td>{{dessert.fat.value | number: 2}}</td>
+            <td>{{dessert.carbs.value}}</td>
+            <td>{{dessert.protein.value | number: 2}}</td>
+            <td>{{dessert.sodium.value}}</td>
+            <td show-unit>{{dessert.calcium.value}}</td>
+            <td show-unit hide-sm>{{dessert.iron.value}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </md-data-table-container>
+
+    <md-data-table-pagination md-limit="menu.query.limit" md-page="menu.query.page" md-total="{{menu.desserts.count}}" md-trigger="menu.onPageChange"></md-data-table-pagination>
+
+    <md-data-table-toolbar >
+      <md-button ng-click="">Trigger Outside Event</md-button>
+    </md-data-table-toolbar>
+
+
 </md-card>

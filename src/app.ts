@@ -3,15 +3,17 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-ui-router';
 import 'angular-material';
+import 'angular-datatable';
 
 import 'daneden/animate.css';
+import 'angular-datatable/dist/md-data-table.css!css';
 
 import 'modules.menu'
 
 angular.element(document).ready(() => {
     let name = 'etl-console';
 
-    let config = ($urlRouterProvider, $stateProvider) => {
+    let config = ($urlRouterProvider, $stateProvider, $mdThemingProvider) => {
         $stateProvider
             .state('main', {
                 url: '/',
@@ -34,12 +36,16 @@ angular.element(document).ready(() => {
         $urlRouterProvider.otherwise(($injector) => {
             $injector.get('$state').go('main');
         });
+
+        $mdThemingProvider.theme('default')
+          .primaryPalette('blue')
+          .accentPalette('blue');
     };
 
     let run = () => {
     };
 
-    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'modules.menu'];
+    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table', 'modules.menu'];
 
     angular
         .module(name, dependencies)

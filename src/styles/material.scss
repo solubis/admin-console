@@ -1,34 +1,68 @@
 // main: app.scss
 @import '../../lib/angular-material/src/angular-material';
 
-html, body {
-  height: 100%;
-  color: rgba(0,0,0,0.87);
-  background: $body-bg;
-  position: relative;
+button:focus {
+    outline: 0;
 }
 
-button:focus {outline:0;}
 
 /**
 *     Content
 **/
-
 md-content {
     background-color: $body-bg;
 }
 
+
 /**
 *     Button
 **/
-
 .md-button.md-fab {
     z-index: 1;
 }
 
+
 .md-button {
     min-height: 32px;
+
+    &.md-icon-button:not([disabled]) {
+        @include hover-pop(rgba(255,255,255,0.1), 90%, 250ms, 0);
+    }
+
+    md-icon {
+        transition-duration: 350ms;
+        backface-visibility: hidden;
+
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
 }
+
+
+.md-actions {
+    padding-right: 10px;
+
+    .md-button.md-icon-button {
+        width      : 32px;
+        height     : 32px;
+        line-height: 32px;
+        margin     : 0;
+
+        &:not([disabled]) {
+            @include hover-pop(rgba(0,0,0,0.084), 50%, 250ms, 0);
+        }
+
+        md-icon {
+            color    : $gray-light;
+            font-size: 20px;
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+}
+
 
 /**
 *    Sidebar
@@ -56,8 +90,6 @@ md-sidenav {
         }
     }
 }
-
-
 
 
 /**
@@ -91,6 +123,10 @@ md-toolbar[ui-view='topbar'] {
     }
 }
 
+.md-menu {
+    padding: 0;
+}
+
 
 /**
 *     List
@@ -99,6 +135,54 @@ md-list-item,
 md-list-item .md-list-item-inner {
     & > md-icon:first-child {
         margin-right: 16px;
-        margin-left: 16px;
+        margin-left : 16px;
     }
+}
+
+/**
+*    Card
+**/
+.card-header {
+    position: relative;
+    padding: 16px;
+
+    & > h2 {
+        margin: 0;
+        line-height: 100%;
+        font-size: 17px;
+        font-weight: 400;
+
+        & > small {
+            display: block;
+            margin-top: 5px;
+            color: #AEAEAE;
+            line-height: 160%;
+        }
+    }
+
+    .md-actions{
+        padding-right: 0;
+    }
+}
+
+.block-header {
+    padding: 20px 16px 0 25px;
+
+    & > h2 {
+        font-size: 15px;
+        color: #777;
+        margin: 0;
+        font-weight: 400;
+        text-transform: uppercase;
+
+        & > small {
+            display: block;
+            text-transform: none;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            color: #9E9E9E;
+            line-height: 140%;
+        }
+    }
+
 }
