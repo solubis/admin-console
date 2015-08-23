@@ -3,5 +3,4 @@
 /// <reference path="jasmine/jasmine.d.ts" />
 /// <reference path="jquery/jquery.d.ts" />
 
-declare var require:any;
 declare var module:any;

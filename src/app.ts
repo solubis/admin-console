@@ -1,4 +1,12 @@
-require('daneden/animate.css');
+import 'angular';
+import 'angular-animate';
+import 'angular-aria';
+import 'angular-ui-router';
+import 'angular-material';
+
+import 'daneden/animate.css';
+
+import 'modules.menu'
 
 angular.element(document).ready(() => {
     let name = 'etl-console';
@@ -31,13 +39,7 @@ angular.element(document).ready(() => {
     let run = () => {
     };
 
-    let dependencies = [
-        'ngMaterial',
-        'ngAnimate',
-        'ui.router',
-
-        require('modules.menu')
-    ];
+    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'modules.menu'];
 
     angular
         .module(name, dependencies)
