@@ -39,7 +39,8 @@ angular.element(document).ready(() => {
 
         $mdThemingProvider.theme('default')
           .primaryPalette('blue')
-          .accentPalette('blue');
+          .accentPalette('blue-grey')
+          .warnPalette('amber');
     };
 
     let run = () => {

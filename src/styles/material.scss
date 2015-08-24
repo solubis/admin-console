@@ -100,7 +100,6 @@ md-sidenav {
 md-toolbar[ui-view='topbar'] {
     z-index   : 3;
     color     : white !important;
-    background: $brand-primary!important;
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, .14), 0 0 2px 2px rgba(0, 0, 0, .098), 0 0 5px 1px rgba(0, 0, 0, .084);
 }
 
@@ -147,8 +146,9 @@ md-list-item .md-list-item-inner {
 *    Card
 **/
 .card-header {
-    position: relative;
-    padding : 16px;
+    position        : relative;
+    padding         : 16px;
+    background-color: $gray-lightest;
 
     & > h2 {
         margin     : 0;
@@ -174,6 +174,20 @@ md-list-item .md-list-item-inner {
 .card-footer {
     margin-bottom: 10px;
     margin-right : 5px;
+    padding      : 8px;
+
+    height: 56px;
+    border-top: 1px $gray-lighter solid;
+    font-size: 12px;
+    font-weight: 500;
+
+    & > :not(:first-child) {
+      margin-left: 16px;
+    }
+
+    & > :not(:last-child) {
+      margin-right: 16px;
+    }
 }
 
 
