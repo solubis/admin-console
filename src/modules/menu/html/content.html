@@ -1,14 +1,14 @@
 <md-toolbar layout="row">
     <md-button class="md-button md-raised">
-        Test1
+        Action
     </md-button>
 
-    <md-button class="md-button md-raised">
-        Test2
+    <md-button class="md-button md-raised md-primary">
+        Another
     </md-button>
 </md-toolbar>
 
-<div class="block-header" layout="row">
+<md-block-header layout="row">
     <h2 flex>Flot Charts
         <small>Flot is a pure JavaScript plotting library for jQuery, with a focus on simple usage, attractive looks and interactive features.</small>
     </h2>
@@ -46,10 +46,10 @@
         </md-menu>
     </div>
 
-</div>
+</md-block-header>
 
 <md-card>
-    <div class="card-header" layout="row">
+    <md-card-header layout="row">
         <h2 flex>Line Chart with curved edges
             <small>Curved edges made possible using curvedLines Flot plugin.</small>
         </h2>
@@ -87,7 +87,7 @@
             </md-menu>
         </div>
 
-    </div>
+    </md-card-header>
 
     <md-card-content>
         <h2 class="md-title">Paracosm</h2>
@@ -95,10 +95,12 @@
             The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
         </p>
     </md-card-content>
-    <div class="card-footer md-actions" layout-align="end center" layout="row">
+
+    <md-card-footer class="md-actions" layout-align="end center" layout="row">
         <md-button ng-click="menu.show($event)">Action 1</md-button>
         <md-button>Action 2</md-button>
-    </div>
+    </md-card-footer>
+
 </md-card>
 
 <md-card ng-repeat="item in []">
@@ -112,15 +114,15 @@
 </md-card>
 
 <md-card>
-    <md-data-table-toolbar class="card-header" ng-show="!menu.selected.length">
-        <h2 class="md-title">Nutrition</h2>
-    </md-data-table-toolbar>
+    <md-card-header ng-show="!menu.selected.length">
+        <h2>Nutrition</h2>
+    </md-card-header>
 
-    <md-data-table-toolbar class="alternate card-header" ng-show="menu.selected.length">
-        <div>{{menu.selected.length}}
+    <md-card-header ng-show="menu.selected.length">
+        <h2>{{menu.selected.length}}
             {{menu.selected.length > 1 ? 'items' : 'item'}}
-            selected</div>
-    </md-data-table-toolbar>
+            selected</h2>
+    </md-card-header>
 
     <md-data-table-container>
         <table md-data-table md-progress="deferred" md-row-select="menu.selected">
@@ -151,10 +153,10 @@
 
     <md-data-table-pagination md-limit="menu.query.limit" md-page="menu.query.page" md-total="{{menu.desserts.count}}" md-trigger="menu.onPageChange"></md-data-table-pagination>
 
-    <div class="card-footer md-actions" layout-align="end center" layout="row">
+    <md-card-footer class="md-actions" layout-align="end center" layout="row">
         <md-button ng-click="">Trigger Outside Event</md-button>
         <md-button ng-click="menu.show($event)">Action 1</md-button>
         <md-button>Action 2</md-button>
-    </div>
+    </md-card-footer>
 
 </md-card>

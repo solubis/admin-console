@@ -145,7 +145,7 @@ md-list-item .md-list-item-inner {
 /**
 *    Card
 **/
-.card-header {
+md-card-header {
     position        : relative;
     padding         : 16px;
     background-color: $gray-lightest;
@@ -171,7 +171,7 @@ md-list-item .md-list-item-inner {
 }
 
 
-.card-footer {
+md-card-footer {
     margin-bottom: 10px;
     margin-right : 5px;
     padding      : 8px;
@@ -191,7 +191,7 @@ md-list-item .md-list-item-inner {
 }
 
 
-.block-header {
+md-block-header {
     padding: 20px 16px 0 25px;
 
     & > h2 {
