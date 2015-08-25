@@ -6,7 +6,6 @@ import 'angular-material';
 import 'angular-datatable';
 
 import 'daneden/animate.css';
-import 'angular-datatable/dist/md-data-table.css!css';
 
 import 'modules.menu'
 

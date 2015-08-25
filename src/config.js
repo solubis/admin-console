@@ -18,7 +18,7 @@ System.config({
     "angular": "github:angular/bower-angular@1.4.4",
     "angular-animate": "github:angular/bower-angular-animate@1.4.4",
     "angular-aria": "github:angular/bower-angular-aria@1.4.4",
-    "angular-datatable": "github:solubis/angular-datatable@0.8.8",
+    "angular-datatable": "../lib/angular-datatable/dist/angular-datatable",
     "angular-material": "../lib/angular-material/dist/angular-material",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "babel": "npm:babel-core@5.8.22",
@@ -188,4 +188,3 @@ System.config({
     }
   }
 });
-
