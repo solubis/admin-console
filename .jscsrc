@@ -4,5 +4,6 @@
     "requireCurlyBraces": false,
     "validateIndentation": 4,
     "disallowSpacesInAnonymousFunctionExpression": false,
-    "disallowSpacesInFunctionExpression": false
+    "disallowSpacesInFunctionExpression": false,
+    "maximumLineLength": 120
 }

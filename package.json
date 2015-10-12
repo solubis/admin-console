@@ -1,35 +1,39 @@
 {
-  "name": "etl-console",
-  "version": "0.0.0",
-  "description": "ETL Console",
-  "repository": "https://github.com/solubis/etl-console",
-  "license": "Unlicense",
-  "dependencies": {
-    "angular": "1.4.x",
-    "angular-animate": "1.4.x",
-    "angular-aria": "1.4.x",
-    "angular-datatable": "git+https://github.com/solubis/angular-datatable.git",
-    "angular-material": "git+https://github.com/solubis/angular-material.git",
-    "angular-messages": "1.4.x",
-    "angular-ui-router": "^0.2.15",
-    "animate.css": "git+https://github.com/daneden/animate.css.git"
-  },
-  "devDependencies": {
-    "gulp": "*",
-    "gulp-sass": "*",
-    "gulp-typescript": "*",
-    "babel-core": "^5.8.25",
-    "browser-sync": "^2.9.8",
-    "del": "^2.0.2",
-    "tsd": "*",
-    "require-dir": "^0.3.0",
-    "run-sequence": "^1.1.4",
-    "systemjs": "*",
-    "systemjs-builder": "*",
-    "plugin-sass": "git+https://github.com/screendriver/plugin-sass.git"
-  },
-  "scripts": {
-    "prestart": "npm update",
-    "postinstall": "tsd install"
-  }
+    "name": "angular-console",
+    "version": "0.0.1",
+    "description": "Admin Console",
+    "repository": "https://github.com/solubis/angular-console",
+    "license": "Unlicense",
+    "dependencies": {
+        "angular": "1.4.x",
+        "angular-animate": "1.4.x",
+        "angular-aria": "1.4.x",
+        "angular-messages": "1.4.x",
+        "angular-datatable": "git+https://github.com/solubis/angular-datatable.git",
+        "angular-material": "git+https://github.com/solubis/angular-material.git",
+        "angular-components": "git+https://github.com/solubis/angular-components.git",
+        "angular-decorators": "git+https://github.com/solubis/angular-decorators.git",
+        "angular-ui-router": "^0.2.15",
+        "animate.css": "git+https://github.com/daneden/animate.css.git"
+    },
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-sass": "*",
+        "gulp-typescript": "*",
+        "babel-core": "^5.8.25",
+        "browser-sync": "*",
+        "del": "^2.0.2",
+        "tsd": "*",
+        "require-dir": "^0.3.0",
+        "run-sequence": "^1.1.4",
+        "systemjs": "*",
+        "systemjs-builder": "*",
+        "eslint": "*"
+    },
+    "scripts": {
+        "test": "eslint ./dist/**/*.js",
+        "prestart": "npm update",
+        "start": "gulp server",
+        "postinstall": "tsd install"
+    }
 }

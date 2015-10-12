@@ -3,7 +3,7 @@
 import gulp from 'gulp';
 import util from 'gulp-util';
 import browserSync from 'browser-sync';
-import typescript from 'gulp-typescript';
+import typescript from 'gulp-typescript'; 
 import sass from 'gulp-sass';
 
 import Builder from 'systemjs-builder';

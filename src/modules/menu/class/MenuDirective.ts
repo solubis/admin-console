@@ -1,4 +1,5 @@
 class MenuDirectiveController {
+
     currentPage: any;
     currentSection: any;
     openedSection: any;
@@ -71,8 +72,8 @@ function menuToggleDirective($timeout): ng.IDirective {
         },
         templateUrl: 'src/modules/menu/html/menu-toggle.html',
         link: (scope: any, element, attrs, controller) => {
-            var $ul = element.find('ul');
-            var originalHeight;
+            let $ul = element.find('ul');
+            let originalHeight;
 
             scope.isOpen = () => controller.isOpen(scope.section);
             scope.toggle = () => controller.toggleOpen(scope.section);
@@ -80,15 +81,15 @@ function menuToggleDirective($timeout): ng.IDirective {
             scope.$watch(
                 () => controller.isOpen(scope.section),
                 (open) => {
-                    var $ul = element.find('ul');
-                    var targetHeight = open ? getTargetHeight() : 0;
+                    let $ul = element.find('ul');
+                    let targetHeight = open ? getTargetHeight() : 0;
 
                     $timeout(() => {
                         $ul.css({ height: targetHeight + 'px' });
                     }, 0, false);
 
                     function getTargetHeight() {
-                        var targetHeight;
+                        let targetHeight;
 
                         $ul.addClass('no-transition');
                         $ul.css('height', '');
