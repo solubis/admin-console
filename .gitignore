@@ -1,16 +1,14 @@
 .sass-cache
 .tscache
 .settings
-/lib
 .temp
 build
 target
-/src/modules/**/*.js
-/src/app.js
 *.map
 *.tgz
 *.css
 dist
+typings
 
 
 # Ignore docs files

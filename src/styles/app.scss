@@ -1,13 +1,10 @@
-// out: app.css
-
 @import 'variables';
-@import "vendor-prefixes";
 @import 'mixins';
 @import 'fonts';
 @import 'material';
 
-@import '../../lib/angular-datatable/src/styles/angular-datatable';
-@import '../modules/menu/menu';
+@import '../../node_modules/angular-material/src/angular-material';
+@import '../modules/menu/menu'; 
 
 body {
     display   : flex;

@@ -1,5 +1,3 @@
-/// <reference path="../../../typings/tsd.d.ts"/>
-
 class MenuDirectiveController {
     currentPage: any;
     currentSection: any;
@@ -43,7 +41,7 @@ function menuDirective(): ng.IDirective {
         scope: {
             sections: '=menu'
         },
-        templateUrl: `modules/menu/html/menu.html`,
+        templateUrl: `src/modules/menu/html/menu.html`,
         controller: MenuDirectiveController
     };
 }
@@ -55,7 +53,7 @@ function menuLinkDirective(): ng.IDirective {
             page: '=',
             section: '=?'
         },
-        templateUrl: 'modules/menu/html/menu-link.html',
+        templateUrl: 'src/modules/menu/html/menu-link.html',
         link: (scope: any, element, attrs, controller) => {
             scope.isSelected = () => {
                 return controller.isSelected(scope.page);
@@ -71,7 +69,7 @@ function menuToggleDirective($timeout): ng.IDirective {
         scope: {
             section: '='
         },
-        templateUrl: 'modules/menu/html/menu-toggle.html',
+        templateUrl: 'src/modules/menu/html/menu-toggle.html',
         link: (scope: any, element, attrs, controller) => {
             var $ul = element.find('ul');
             var originalHeight;

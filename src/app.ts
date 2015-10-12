@@ -5,11 +5,11 @@ import 'angular-ui-router';
 import 'angular-material';
 import 'angular-datatable';
 
-import 'daneden/animate.css';
-
-import 'modules.menu'
+import 'modules.menu';
+import 'modules.list';
 
 angular.element(document).ready(() => {
+
     let name = 'etl-console';
 
     let config = ($urlRouterProvider, $stateProvider, $mdThemingProvider) => {
@@ -18,16 +18,16 @@ angular.element(document).ready(() => {
                 url: '/',
                 views: {
                     'topbar': {
-                        templateUrl: 'modules/menu/html/topbar.html',
+                        templateUrl: 'src/modules/menu/html/topbar.html',
                         controller: 'MenuController as menu'
                     },
                     'sidebar': {
-                        templateUrl: 'modules/menu/html/sidebar.html',
+                        templateUrl: 'src/modules/menu/html/sidebar.html',
                         controller: 'MenuController as menu'
                     },
                     'content': {
-                        templateUrl: 'modules/menu/html/content.html',
-                        controller: 'MenuController as menu'
+                        templateUrl: 'src/modules/list/html/list.html',
+                        controller: 'ListController as menu'
                     }
                 }
             });
@@ -37,15 +37,16 @@ angular.element(document).ready(() => {
         });
 
         $mdThemingProvider.theme('default')
-          .primaryPalette('blue')
-          .accentPalette('blue-grey')
-          .warnPalette('amber');
+              .primaryPalette('blue')
+              .accentPalette('blue-grey')
+              .warnPalette('amber');
     };
 
     let run = () => {
+        console.log('Application started');
     };
 
-    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table', 'modules.menu'];
+    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table', 'modules.menu', 'modules.list'];
 
     angular
         .module(name, dependencies)

@@ -1,5 +1,4 @@
 // main: app.scss
-@import '../../lib/angular-material/src/angular-material';
 
 button:focus {
     outline: 0;
@@ -20,7 +19,6 @@ md-content {
 .md-button.md-fab {
     z-index: 1;
 }
-
 
 .md-button {
     min-height: 32px;
@@ -70,7 +68,7 @@ md-content {
 *    Sidebar
 */
 md-backdrop.md-sidenav-backdrop {
-    transition: background-color 50ms $swift-ease-in-timing-function;
+    //transition: background-color 50ms $swift-ease-in-timing-function;
     z-index   : 2;
 }
 
