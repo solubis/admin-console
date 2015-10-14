@@ -19,6 +19,10 @@
         "no-undef": 0,
         "no-console": 0
     },
+    "ecmaFeatures": {
+        "modules": true,
+        "arrowFunctions": true
+    },
     "env": {
         "es6": true,
         "node": true,

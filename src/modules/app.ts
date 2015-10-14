@@ -10,7 +10,7 @@ import 'modules.list';
 
 angular.element(document).ready(() => {
 
-    let name = 'etl-console';
+    let name = 'admin-console';
 
     let config = ($urlRouterProvider, $stateProvider, $mdThemingProvider) => {
         $stateProvider
@@ -18,15 +18,15 @@ angular.element(document).ready(() => {
                 url: '/',
                 views: {
                     'topbar': {
-                        templateUrl: 'src/modules/menu/html/topbar.html',
+                        templateUrl: 'modules/menu/html/topbar.html',
                         controller: 'MenuController as menu'
                     },
                     'sidebar': {
-                        templateUrl: 'src/modules/menu/html/sidebar.html',
+                        templateUrl: 'modules/menu/html/sidebar.html',
                         controller: 'MenuController as menu'
                     },
                     'content': {
-                        templateUrl: 'src/modules/list/html/list.html',
+                        templateUrl: 'modules/list/html/list.html',
                         controller: 'ListController as menu'
                     }
                 }
@@ -37,16 +37,22 @@ angular.element(document).ready(() => {
         });
 
         $mdThemingProvider.theme('default')
-              .primaryPalette('blue')
-              .accentPalette('blue-grey')
-              .warnPalette('amber');
+            .primaryPalette('blue')
+            .accentPalette('blue-grey')
+            .warnPalette('amber');
     };
 
     let run = () => {
         console.log('Application started');
     };
 
-    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table', 'modules.menu', 'modules.list'];
+    try {
+        angular.module('templates');
+    } catch (e) {
+        angular.module('templates', []);
+    }
+
+    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table', 'modules.menu', 'modules.list', 'templates'];
 
     angular
         .module(name, dependencies)

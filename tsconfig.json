@@ -21,7 +21,7 @@
         "node_modules"
     ],
     "files": [
-        "src/app.ts",
+        "src/modules/app.ts",
         "src/modules/list/class/ListController.ts",
         "src/modules/list/index.ts",
         "src/modules/menu/class/MenuController.ts",

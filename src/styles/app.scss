@@ -1,10 +1,14 @@
+
 @import 'variables';
 @import 'mixins';
 @import 'fonts';
-@import 'material';
 
 @import '../../node_modules/angular-material/src/angular-material';
-@import '../modules/menu/menu'; 
+@import '../../node_modules/angular-datatable/app/md-data-table/styles/md-data-table';
+
+@import 'material';
+
+@import '../modules/menu/menu';
 
 body {
     display   : flex;
@@ -16,5 +20,3 @@ body {
 a {
     text-decoration: none;
 }
-
-@include scrollbars(0.3em, lightgrey, $body-bg);

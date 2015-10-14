@@ -20,7 +20,7 @@
                 <md-button ng-href="" class="md-link-button">Select all</md-button>
             </md-subheader>
             <md-list>
-                <md-list-item class="md-3-line" class="{{item.type}}" ng-repeat="item in menu.notifications.items">
+                <md-list-item class="{{item.type}} md-3-line" ng-repeat="item in menu.notifications.items">
 
                     <md-icon md-font-icon="material-icons">{{item.icon}}</md-icon>
 
@@ -36,7 +36,7 @@
 
                 </md-list-item>
             </md-list>
-        </section>
+        </md-menu-content>
     </md-menu>
 
     <md-menu md-offset="0 30" md-position-mode="target-right target">

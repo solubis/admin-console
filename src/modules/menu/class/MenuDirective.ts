@@ -42,7 +42,7 @@ function menuDirective(): ng.IDirective {
         scope: {
             sections: '=menu'
         },
-        templateUrl: `src/modules/menu/html/menu.html`,
+        templateUrl: `modules/menu/html/menu.html`,
         controller: MenuDirectiveController
     };
 }
@@ -54,7 +54,7 @@ function menuLinkDirective(): ng.IDirective {
             page: '=',
             section: '=?'
         },
-        templateUrl: 'src/modules/menu/html/menu-link.html',
+        templateUrl: 'modules/menu/html/menu-link.html',
         link: (scope: any, element, attrs, controller) => {
             scope.isSelected = () => {
                 return controller.isSelected(scope.page);
@@ -70,7 +70,7 @@ function menuToggleDirective($timeout): ng.IDirective {
         scope: {
             section: '='
         },
-        templateUrl: 'src/modules/menu/html/menu-toggle.html',
+        templateUrl: 'modules/menu/html/menu-toggle.html',
         link: (scope: any, element, attrs, controller) => {
             let $ul = element.find('ul');
             let originalHeight;
