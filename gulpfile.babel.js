@@ -27,9 +27,9 @@ const config = {
      * stuff in `src/`). These file paths are used in the configuration of
      * build tasks.
      */
-    app: {
+    src: {
         basePath: `${root}/src/`,
-        sources: `${root}/src/**/*.{css,ts,html,jpg,png}`,
+        files: `${root}/src/**/*.{css,ts,html,jpg,png}`,
         typescripts: `${root}/src/**/!(*.spec).ts`,
         images: `${root}/src/images/**/*`,
         fonts: `${root}/src/fonts/**/*`,
@@ -57,7 +57,7 @@ gulp.task('server', () => {
     let server = browserSync.create(SERVER_NAME);
     let browser = 'google chrome';
     let files = [
-        config.app.sources,
+        config.src.files,
         config.typescript,
         config.systemjs
     ];
@@ -79,63 +79,55 @@ gulp.task('server', () => {
 /**
  * The 'SASS' task.
  */
-gulp.task('sass', function () {
-    return gulp.src(config.app.styles)
+gulp.task('sass',  () => {
+    return gulp.src(config.src.styles)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe(gulp.dest(config.dist.styles));
 });
 
 /**
- * The 'clean' task delete 'build' and '.tmp' directories.
- *
- * @param {Function} done - callback when complete
+ * The 'clean' task delete 'dist' directory.
  */
-gulp.task('clean', (cb) => {
+gulp.task('clean', (done) => {
     const files = [].concat(config.dist.basePath);
-    return del(files, cb);
+    return del(files, done);
 });
 
 /**
  * The 'copy' task just copies files from A to B. We use it here
  * to copy our files that haven't been copied by other tasks
- * e.g. (favicon, etc.) into the `build/dist` directory.
- *
- * @return {Stream}
+ * e.g. (favicon, etc.) into the `dist` directory.
  */
 gulp.task('copy', () => {
     return gulp.src(
-            [config.app.basePath + '*.{ico,png,txt}',
-                config.app.basePath + '404.html'
+            [config.src.basePath + '*.{ico,png,txt}',
+                config.src.basePath + '404.html'
             ])
         .pipe(gulp.dest(config.dist.basePath));
 });
 
 /**
  * The 'images' task optimize and copies images to `build/dist` directory.
- *
- * @return {Stream}
  */
 gulp.task('images', () => {
-    return gulp.src(config.app.images)
+    return gulp.src(config.src.images)
         .pipe(gulp.dest(config.dist.images));
 });
 
 /**
  * The 'fonts' task copies fonts to `build/dist` directory.
- *
- * @return {Stream}
  */
 gulp.task('fonts', () => {
-    return gulp.src(config.app.fonts)
+    return gulp.src(config.src.fonts)
         .pipe(gulp.dest(config.dist.fonts));
 });
 
 /**
- * The 'HTML' templates to JS task.
+ * The HTML convert templates to JS task.
  */
 
-gulp.task('html', function () {
-    return gulp.src(config.app.html)
+gulp.task('html', () => {
+    return gulp.src(config.src.html)
         .pipe($.minifyHtml({
             empty: true,
             spare: true,
@@ -152,7 +144,7 @@ gulp.task('html', function () {
  * The 'compile' task compile all js, css and html files.
  */
 gulp.task('compile', ['bundle', 'html', 'sass'], () => {
-    return gulp.src(`${config.app.basePath}index.html`)
+    return gulp.src(`${config.src.basePath}index.html`)
         .pipe($.inject(gulp.src(`${config.dist.scripts}*.js`, {read: false})))
         .pipe($.usemin())
         .pipe(gulp.dest(config.dist.basePath));
@@ -164,7 +156,7 @@ gulp.task('compile', ['bundle', 'html', 'sass'], () => {
  * HTML code.
  */
 gulp.task('htmlhint', () => {
-    return gulp.src(config.app.html)
+    return gulp.src(config.src.html)
         .pipe($.htmlhint({
             'doctype-first': false,
             'spec-char-escape': false
@@ -174,7 +166,7 @@ gulp.task('htmlhint', () => {
 });
 
 /**
- * The 'Typescript' tasks.
+ * The 'Typescript' task.
  */
 gulp.task('typescript', () => {
     let project = $.typescript.createProject(
@@ -209,13 +201,11 @@ gulp.task('bundle', ['typescript'], () => {
 /**
  * The 'build' task gets app ready for deployment by processing files
  * and put them into directory ready for production.
- *
- * @param {Function} done - callback when complete
  */
-gulp.task('build', (cb) => {
+gulp.task('build', (done) => {
     runSequence(
         ['clean'], ['compile', 'copy', 'images', 'fonts'],
-        cb
+        done
     );
 });
 
