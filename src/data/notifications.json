@@ -1,0 +1,67 @@
+{
+    "count": 9,
+    "items": [{
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 1
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 2
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 3
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 4
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 5
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 6
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 7
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 8
+    }, {
+        "date": "12.05.2015 13:43",
+        "title": "Title for notifications quite long so should be ellipsed",
+        "text": "Text for notifications quite long so should be ellipsed",
+        "icon": "alarm",
+        "type": "warning",
+        "id": 9
+    }]
+}
