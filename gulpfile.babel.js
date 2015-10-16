@@ -3,52 +3,13 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import del from 'del';
 import Builder from 'systemjs-builder';
+import config from './gulpfile.config.js';
 
 var $ = require('gulp-load-plugins')({
     lazy: true
 });
 
 const SERVER_NAME = 'SERVER';
-
-const root = __dirname;
-const config = {
-    root: root,
-    /**
-     * The config files
-     */
-    gulp: `${root}/gulpfile.babel.js`,
-    systemjs: `${root}/system.config.js`,
-    typescript: `${root}/tsconfig.json`,
-
-    templatesModuleName: 'templates',
-
-    /**
-     * This is a collection of file patterns that refer to our app code (the
-     * stuff in `src/`). These file paths are used in the configuration of
-     * build tasks.
-     */
-    src: {
-        basePath: `${root}/src/`,
-        files: `${root}/src/**/*.{css,ts,html,jpg,png}`,
-        typescripts: `${root}/src/**/!(*.spec).ts`,
-        images: `${root}/src/images/**/*`,
-        fonts: `${root}/src/fonts/**/*`,
-        styles: [`${root}/src/styles/app.scss`],
-        html: [`${root}/src/**/*.html`]
-    },
-
-    /**
-     * The 'dist' folder is where our app resides once it's
-     * completely built.
-     */
-    dist: {
-        basePath: `${root}/dist/`,
-        scripts: `${root}/dist/scripts/`,
-        styles: `${root}/dist/styles/`,
-        images: `${root}/dist/images/`,
-        fonts: `${root}/dist/fonts/`
-    }
-};
 
 /**
  * The 'server' task start BrowserSync and open the browser.
@@ -79,7 +40,7 @@ gulp.task('server', () => {
 /**
  * The 'SASS' task.
  */
-gulp.task('sass',  () => {
+gulp.task('sass', () => {
     return gulp.src(config.src.styles)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe(gulp.dest(config.dist.styles));
@@ -145,7 +106,9 @@ gulp.task('html', () => {
  */
 gulp.task('compile', ['bundle', 'html', 'sass'], () => {
     return gulp.src(`${config.src.basePath}index.html`)
-        .pipe($.inject(gulp.src(`${config.dist.scripts}*.js`, {read: false})))
+        .pipe($.inject(gulp.src(`${config.dist.scripts}*.js`, {
+            read: false
+        })))
         .pipe($.usemin())
         .pipe(gulp.dest(config.dist.basePath));
 });
@@ -174,6 +137,11 @@ gulp.task('typescript', () => {
     );
 
     return project.src()
+        .pipe($.plumber())
+        .pipe($.tslint())
+        .pipe($.tslint.report('prose', {
+            emitError: false
+        }))
         .pipe($.typescript(project))
         .js.pipe($.ngAnnotate())
         .pipe(gulp.dest(config.dist.scripts));

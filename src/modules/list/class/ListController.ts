@@ -176,11 +176,9 @@ class ListController {
         return deferred.promise;
     };
 
+    /* tslint:disable */
+
     private onOrderChange = (order) => {
-
-        console.log('Scope Order: ' + this.query.order);
-        console.log('Order: ' + order);
-
         let deferred = this.$q.defer();
 
         this.$timeout(function() {
@@ -201,10 +199,13 @@ class ListController {
     private currentPage: any;
     private currentSection: any;
     private openedSection: any;
-    private status;
     private toggleDisabled;
     private sections;
+
+    /* tslint:enable */
+
     private desserts;
+    private status;
     private query;
     private columns;
     private selected;

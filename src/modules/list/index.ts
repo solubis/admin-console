@@ -1,7 +1,7 @@
 import ListController from './class/ListController';
 
 let name = 'modules.list';
-let dependencies = []; 
+let dependencies = [];
 
 angular
     .module(name, dependencies)

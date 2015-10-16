@@ -3,10 +3,16 @@ import {sections} from './Menu';
 /*@ngInject*/
 class MenuController {
 
+    /* tslint:disable */
+
     private openedSection: any;
+    private sections = sections;
+
+    /* tslint:enable */
+
     private toggleDisabled;
     private notifications;
-    private sections = sections;
+
 
     constructor(
         private $mdSidenav: angular.material.ISidenavService,

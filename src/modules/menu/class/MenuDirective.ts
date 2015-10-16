@@ -72,9 +72,6 @@ function menuToggleDirective($timeout): ng.IDirective {
         },
         templateUrl: 'modules/menu/html/menu-toggle.html',
         link: (scope: any, element, attrs, controller) => {
-            let $ul = element.find('ul');
-            let originalHeight;
-
             scope.isOpen = () => controller.isOpen(scope.section);
             scope.toggle = () => controller.toggleOpen(scope.section);
 
@@ -102,7 +99,7 @@ function menuToggleDirective($timeout): ng.IDirective {
                 }
             );
         }
-    }
+    };
 }
 
 export { menuDirective, menuLinkDirective, menuToggleDirective };
