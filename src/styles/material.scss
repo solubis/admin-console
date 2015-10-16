@@ -1,10 +1,5 @@
 // main: app.scss
 
-// button:focus {
-//     outline: 0;
-// }
-
-
 /**
 *     Content
 **/
@@ -12,80 +7,6 @@ md-content {
     background-color: $body-bg;
 }
 
-
-/**
-*     Button
-**/
-.md-button.md-fab {
-    z-index: 1;
-}
-
-.md-button {
-    min-height: 32px;
-
-    &.md-icon-button:not([disabled]) {
-        @include hover-pop(rgba(255,255,255,0.1), 90%, 250ms, 0);
-    }
-
-
-    md-icon {
-        transition-duration: 350ms;
-        backface-visibility: hidden;
-
-        &:hover {
-            transform: rotate(360deg);
-        }
-    }
-}
-
-
-.md-actions {
-    padding-right: 10px;
-
-    .md-button.md-icon-button {
-        width      : 32px;
-        height     : 32px;
-        line-height: 32px;
-        margin     : 0;
-
-        &:not([disabled]) {
-            @include hover-pop(rgba(0,0,0,0.084), 50%, 250ms, 0);
-        }
-
-
-        md-icon {
-            color    : $gray-light;
-            font-size: 20px;
-            &:hover {
-                color: $gray;
-            }
-        }
-    }
-}
-
-
-/**
-*    Sidebar
-*/
-md-backdrop.md-sidenav-backdrop {
-    //transition: background-color 50ms $swift-ease-in-timing-function;
-    z-index   : 2;
-}
-
-
-md-sidenav {
-
-    &.md-closed-add,
-    &.md-closed-remove {
-        display   : flex;
-        transition: 300ms all;
-    }
-
-    &.md-sidenav-left {
-        z-index   : 2;
-        box-shadow: 0 0 1px 1px rgba(0, 0, 0, .14), 0 0 2px 2px rgba(0, 0, 0, .098), 0 0 5px 1px rgba(0, 0, 0, .084);
-    }
-}
 
 
 /**

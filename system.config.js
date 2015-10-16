@@ -6,7 +6,7 @@
             'angular-animate': 'node_modules/angular-animate/index.js',
             'angular-aria': 'node_modules/angular-aria/index.js',
             'angular-ui-router': 'node_modules/angular-ui-router/release/angular-ui-router.js',
-            'angular-material': 'node_modules/angular-material/dist/angular-material.js',
+            'angular-material': 'node_modules/angular-material/index.js',
             'angular-datatable': 'node_modules/angular-datatable/index.js',
             'typescript': 'node_modules/typescript/lib/typescript.js',
             'lodash': 'node_modules/lodash/index.js'

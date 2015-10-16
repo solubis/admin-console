@@ -1,0 +1,12 @@
+/**
+*     Toolbar
+*/
+md-content {
+    md-toolbar {
+        z-index         : 1;
+        min-height      : 50px;
+        padding         : 8px 16px;
+        background-color: $gray-lightest;
+        @include md-shadow-bottom();
+    }
+}

@@ -1,0 +1,52 @@
+// main: app.scss
+
+/**
+*     Button
+**/
+.md-button.md-fab {
+    z-index: 1;
+}
+
+.md-button {
+    min-height: 32px;
+
+    &.md-icon-button:not([disabled]) {
+        @include hover-pop(rgba(255,255,255,0.1), 90%, 250ms, 0);
+    }
+
+
+    md-icon {
+        width: 1em;
+        transition-duration: 350ms;
+        backface-visibility: hidden;
+
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+
+.md-actions {
+    padding-right: 10px;
+
+    .md-button.md-icon-button {
+        width      : 32px;
+        height     : 32px;
+        line-height: 32px;
+        margin     : 0;
+
+        &:not([disabled]) {
+            @include hover-pop(rgba(0,0,0,0.084), 50%, 250ms, 0);
+        }
+
+
+        md-icon {
+            color    : $gray-light;
+            font-size: 20px;
+            &:hover {
+                color: $gray;
+            }
+        }
+    }
+}
