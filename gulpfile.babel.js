@@ -68,7 +68,7 @@ gulp.task('copy', () => {
 });
 
 /**
- * The 'images' task optimize and copies images to `build/dist` directory.
+ * The 'images' task optimize and copies images to `dist` directory.
  */
 gulp.task('images', () => {
     return gulp.src(config.src.images)
@@ -76,7 +76,15 @@ gulp.task('images', () => {
 });
 
 /**
- * The 'fonts' task copies fonts to `build/dist` directory.
+ * The 'data' task optimize and copies images to `dist` directory.
+ */
+gulp.task('data', () => {
+    return gulp.src(config.src.data)
+        .pipe(gulp.dest(config.dist.data));
+});
+
+/**
+ * The 'fonts' task copies fonts to `dist` directory.
  */
 gulp.task('fonts', () => {
     return gulp.src(config.src.fonts)
@@ -172,7 +180,7 @@ gulp.task('bundle', ['typescript'], () => {
  */
 gulp.task('build', (done) => {
     runSequence(
-        ['clean'], ['compile', 'copy', 'images', 'fonts'],
+        ['clean'], ['compile', 'copy', 'images', 'fonts', 'data'],
         done
     );
 });

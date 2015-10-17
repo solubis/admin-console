@@ -8,6 +8,7 @@
             'angular-ui-router': 'node_modules/angular-ui-router/release/angular-ui-router.js',
             'angular-material': 'node_modules/angular-material/index.js',
             'angular-datatable': 'node_modules/angular-datatable/index.js',
+            'angular-components': 'node_modules/angular-components',
             'typescript': 'node_modules/typescript/lib/typescript.js',
             'lodash': 'node_modules/lodash/index.js'
         },

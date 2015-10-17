@@ -21,6 +21,7 @@ const config = {
         typescripts: `${root}/src/**/!(*.spec).ts`,
         images: `${root}/src/images/**/*`,
         fonts: `${root}/src/fonts/**/*`,
+        data: `${root}/src/data/**/*`,
         styles: [`${root}/src/styles/app.scss`],
         html: [`${root}/src/**/*.html`]
     },
@@ -34,6 +35,7 @@ const config = {
         scripts: `${root}/dist/scripts/`,
         styles: `${root}/dist/styles/`,
         images: `${root}/dist/images/`,
+        data: `${root}/dist/data/`,
         fonts: `${root}/dist/fonts/`
     }
 };
