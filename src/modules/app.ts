@@ -8,16 +8,6 @@ import 'angular-datatable';
 import 'modules.menu';
 import 'modules.list';
 
-import './test/TestComponent';
-
-import {Run} from 'angular-components/dist/decorators';
-
-class App {
-    @Run() run() {
-        console.log('RUN MODULE');
-    }
-}
-
 angular.element(document).ready(() => {
 
     let name = 'admin-console';
@@ -63,7 +53,7 @@ angular.element(document).ready(() => {
     }
 
     let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table',
-        'modules.menu', 'modules.list', 'templates', 'components'];
+        'modules.menu', 'modules.list', 'templates'];
 
     angular
         .module(name, dependencies)
