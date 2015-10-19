@@ -7,16 +7,7 @@ import 'angular-datatable';
 
 import 'modules.menu';
 import 'modules.list';
-
 import './test/TestComponent';
-
-import {Run} from 'angular-components/dist/decorators';
-
-class App {
-    @Run() run() {
-        console.log('RUN MODULE');
-    }
-}
 
 angular.element(document).ready(() => {
 

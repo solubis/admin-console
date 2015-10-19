@@ -1,11 +1,5 @@
 class MenuDirectiveController {
 
-    currentPage: any;
-    currentSection: any;
-    openedSection: any;
-
-    constructor() { }
-
     toggleSelectSection(section) {
         this.openedSection = (this.openedSection === section ? null : section);
     }
@@ -36,7 +30,7 @@ class MenuDirectiveController {
     }
 }
 
-function menuDirective(): ng.IDirective {
+function menuDirective() {
 
     return {
         scope: {
@@ -47,7 +41,7 @@ function menuDirective(): ng.IDirective {
     };
 }
 
-function menuLinkDirective(): ng.IDirective {
+function menuLinkDirective() {
     return {
         require: '^menu',
         scope: {
@@ -55,7 +49,7 @@ function menuLinkDirective(): ng.IDirective {
             section: '=?'
         },
         templateUrl: 'modules/menu/html/menu-link.html',
-        link: (scope: any, element, attrs, controller) => {
+        link: (scope, element, attrs, controller) => {
             scope.isSelected = () => {
                 return controller.isSelected(scope.page);
             };
@@ -64,14 +58,14 @@ function menuLinkDirective(): ng.IDirective {
 }
 
 /*@ngInject*/
-function menuToggleDirective($timeout): ng.IDirective {
+function menuToggleDirective($timeout) {
     return {
         require: '^menu',
         scope: {
             section: '='
         },
         templateUrl: 'modules/menu/html/menu-toggle.html',
-        link: (scope: any, element, attrs, controller) => {
+        link: (scope, element, attrs, controller) => {
             scope.isOpen = () => controller.isOpen(scope.section);
             scope.toggle = () => controller.toggleOpen(scope.section);
 

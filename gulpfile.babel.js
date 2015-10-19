@@ -61,9 +61,9 @@ gulp.task('clean', (done) => {
  */
 gulp.task('copy', () => {
     return gulp.src(
-            [config.src.basePath + '*.{ico,png,txt}',
-                config.src.basePath + '404.html'
-            ])
+        [config.src.basePath + '*.{ico,png,txt}',
+            config.src.basePath + '404.html'
+        ])
         .pipe(gulp.dest(config.dist.basePath));
 });
 
@@ -153,6 +153,12 @@ gulp.task('typescript', () => {
         .pipe($.typescript(project))
         .js.pipe($.ngAnnotate())
         .pipe(gulp.dest(config.dist.scripts));
+});
+
+gulp.task('babel', function () {
+    return gulp.src(config.src.javascripts)
+        .pipe($.babel({stage:0}))
+        .pipe(gulp.dest('dist/scripts'));
 });
 
 /**

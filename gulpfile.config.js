@@ -19,6 +19,7 @@ const config = {
         basePath: `${root}/src/`,
         files: `${root}/src/**/*.{css,ts,html,jpg,png}`,
         typescripts: `${root}/src/**/!(*.spec).ts`,
+        javascripts: `${root}/src/**/!(*.spec).js`,
         images: `${root}/src/images/**/*`,
         fonts: `${root}/src/fonts/**/*`,
         data: `${root}/src/data/**/*`,
