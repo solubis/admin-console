@@ -24,21 +24,21 @@
             </md-button>
             <md-menu-content width="4">
                 <md-menu-item>
-                    <md-button ng-click="menu.redial($event)">
+                    <md-button ng-click="ctrl.redial($event)">
                         <md-icon md-font-icon="material-icons" md-menu-align-target>dialpad
                         </md-icon>
                         Redial
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                    <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                    <md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
                         <md-icon md-font-icon="material-icons">voicemail</md-icon>
                         Check voicemail
                     </md-button>
                 </md-menu-item>
                 <md-menu-divider></md-menu-divider>
                 <md-menu-item>
-                    <md-button ng-click="menu.toggleNotifications()">
+                    <md-button ng-click="ctrl.toggleNotifications()">
                         <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
                         {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
                         notifications
@@ -49,8 +49,6 @@
     </div>
 
 </md-block-header>
-
-<test-component></test-component>
 
 <md-card>
     <md-card-header layout="row">
@@ -68,20 +66,20 @@
                 </md-button>
                 <md-menu-content width="4">
                     <md-menu-item>
-                        <md-button ng-click="menu.redial($event)">
+                        <md-button ng-click="ctrl.redial($event)">
                             <md-icon md-font-icon="material-icons" md-menu-align-target>dialpad</md-icon>
                             Redial
                         </md-button>
                     </md-menu-item>
                     <md-menu-item>
-                        <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                        <md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
                             <md-icon md-font-icon="material-icons">voicemail</md-icon>
                             Check voicemail
                         </md-button>
                     </md-menu-item>
                     <md-menu-divider></md-menu-divider>
                     <md-menu-item>
-                        <md-button ng-click="menu.toggleNotifications()">
+                        <md-button ng-click="ctrl.toggleNotifications()">
                             <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
                             {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
                             notifications
@@ -101,7 +99,7 @@
     </md-card-content>
 
     <md-card-footer class="md-actions" layout-align="end center" layout="row">
-        <md-button ng-click="menu.show($event)">Action 1</md-button>
+        <md-button ng-click="ctrl.show($event)">Action 1</md-button>
         <md-button>Action 2</md-button>
     </md-card-footer>
 
@@ -118,25 +116,25 @@
 </md-card>
 
 <md-card>
-    <md-card-header ng-show="!menu.selected.length">
+    <md-card-header ng-show="!ctrl.selected.length">
         <h2>Nutrition</h2>
     </md-card-header>
 
-    <md-card-header ng-show="menu.selected.length">
-        <h2>{{menu.selected.length}}
-            {{menu.selected.length > 1 ? 'items' : 'item'}}
+    <md-card-header ng-show="ctrl.selected.length">
+        <h2>{{ctrl.selected.length}}
+            {{ctrl.selected.length > 1 ? 'items' : 'item'}}
             selected</h2>
     </md-card-header>
 
     <md-data-table-container>
-        <table md-data-table md-progress="deferred" md-row-select="menu.selected">
-            <thead md-order="menu.query.order" md-trigger="menu.onOrderChange">
+        <table md-data-table md-progress="deferred" md-row-select="ctrl.selected">
+            <thead md-order="ctrl.query.order" md-trigger="ctrl.onOrderChange">
                 <tr>
-                    <th name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-numeric="{{column.numeric}}" ng-attr-order-by="{{column.orderBy}}" ng-attr-trim="{{column.trim}}" ng-attr-unit="{{column.unit}}" ng-repeat="column in menu.columns"></th>
+                    <th name="{{column.name}}" ng-attr-descend-first="{{column.descendFirst}}" ng-attr-numeric="{{column.numeric}}" ng-attr-order-by="{{column.orderBy}}" ng-attr-trim="{{column.trim}}" ng-attr-unit="{{column.unit}}" ng-repeat="column in ctrl.columns"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr md-auto-select md-disable-select="dessert.calories.value > 300" ng-repeat="dessert in menu.desserts.data | orderBy: menu.query.order | limitTo: menu.query.limit : (menu.query.page -1) * menu.query.limit">
+                <tr md-auto-select md-disable-select="dessert.calories.value > 300" ng-repeat="dessert in ctrl.desserts.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page -1) * ctrl.query.limit">
                     <td>{{dessert.name}}</td>
                     <td>
                         <md-select ng-model="dessert.type" placeholder="Other">
@@ -155,11 +153,11 @@
         </table>
     </md-data-table-container>
 
-    <md-data-table-pagination md-limit="menu.query.limit" md-page="menu.query.page" md-total="{{menu.desserts.count}}" md-trigger="menu.onPageChange"></md-data-table-pagination>
+    <md-data-table-pagination md-limit="ctrl.query.limit" md-page="ctrl.query.page" md-total="{{ctrl.desserts.count}}" md-trigger="ctrl.onPageChange"></md-data-table-pagination>
 
     <md-card-footer class="md-actions" layout-align="end center" layout="row">
         <md-button ng-click="">Trigger Outside Event</md-button>
-        <md-button ng-click="menu.show($event)">Action 1</md-button>
+        <md-button ng-click="ctrl.show($event)">Action 1</md-button>
         <md-button>Action 2</md-button>
     </md-card-footer>
 

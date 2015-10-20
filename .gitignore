@@ -3,6 +3,7 @@
 .settings
 .temp
 build
+lib
 target
 *.map
 *.tgz

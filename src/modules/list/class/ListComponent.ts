@@ -1,5 +1,13 @@
-/*@ngInject*/
-class ListController {
+import {Component, View, Inject} from 'angular-components';
+
+@Component({
+    selector: 'list-component'
+})
+@View({
+    templateUrl: 'modules/list/html/list.html'
+})
+@Inject('$timeout', '$q', '$mdDialog', '$mdToast', '$mdSidenav')
+class ListComponent {
 
     constructor(
         private $timeout: ng.ITimeoutService,
@@ -178,7 +186,7 @@ class ListController {
 
     /* tslint:disable */
 
-    private onOrderChange = (order) => {
+    onOrderChange = (order) => {
         let deferred = this.$q.defer();
 
         this.$timeout(function() {
@@ -242,4 +250,4 @@ class ListController {
     }
 }
 
-export default ListController;
+export {ListComponent};

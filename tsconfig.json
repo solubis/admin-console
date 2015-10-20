@@ -22,7 +22,7 @@
     ],
     "files": [
         "src/modules/app.ts",
-        "src/modules/list/class/ListController.ts",
+        "src/modules/list/class/ListComponent.ts",
         "src/modules/list/index.ts",
         "src/modules/menu/class/Menu.ts",
         "src/modules/menu/class/MenuController.ts",

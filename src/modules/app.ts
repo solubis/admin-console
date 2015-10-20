@@ -1,18 +1,25 @@
-import 'angular';
-import 'angular-animate';
-import 'angular-aria';
-import 'angular-ui-router';
+import {Component, Inject, bootstrap} from 'angular-components';
+
 import 'angular-material';
 import 'angular-datatable';
+import 'angular-ui-router';
 
 import 'modules.menu';
 import 'modules.list';
 
-angular.element(document).ready(() => {
+@Component({
+    selector: 'body',
+    dependencies: [
+        'ngMaterial',
+        'ui.router',
+        'md.data.table',
+        'modules.menu'
+    ]
+})
+class Application {
 
-    let name = 'admin-console';
-
-    let config = ($urlRouterProvider, $stateProvider, $mdThemingProvider) => {
+    @Inject('$urlRouterProvider', '$stateProvider', '$mdThemingProvider')
+    config($urlRouterProvider, $stateProvider, $mdThemingProvider) {
         $stateProvider
             .state('main', {
                 url: '/',
@@ -26,8 +33,7 @@ angular.element(document).ready(() => {
                         controller: 'MenuController as menu'
                     },
                     'content': {
-                        templateUrl: 'modules/list/html/list.html',
-                        controller: 'ListController as menu'
+                        template: '<list-component></list-component>'
                     }
                 }
             });
@@ -40,25 +46,13 @@ angular.element(document).ready(() => {
             .primaryPalette('blue')
             .accentPalette('blue-grey')
             .warnPalette('amber');
-    };
-
-    let run = () => {
-        console.log('Application started');
-    };
-
-    try {
-        angular.module('templates');
-    } catch (e) {
-        angular.module('templates', []);
     }
 
-    let dependencies = ['ngMaterial', 'ngAnimate', 'ngAria', 'ui.router', 'md.data.table',
-        'modules.menu', 'modules.list', 'templates'];
+    @Inject('$log')
+    run(log) {
+        log.debug('Application started');
+    };
 
-    angular
-        .module(name, dependencies)
-        .config(config)
-        .run(run);
+}
 
-    angular.bootstrap(document, [name], {});
-});
+bootstrap(Application);
