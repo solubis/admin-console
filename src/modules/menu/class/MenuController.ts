@@ -1,6 +1,7 @@
+import {Component, View, Inject} from 'angular-components';
 import {sections} from './Menu';
 
-/*@ngInject*/
+@Inject('$mdSidenav', '$http')
 class MenuController {
 
     /* tslint:disable */
@@ -30,4 +31,22 @@ class MenuController {
     }
 }
 
-export default MenuController;
+@Component({
+    selector: 'sidebar'
+})
+@View({
+    templateUrl: 'modules/menu/html/sidebar.html'
+})
+class Sidebar extends MenuController {
+}
+
+@Component({
+    selector: 'topbar'
+})
+@View({
+    templateUrl: 'modules/menu/html/topbar.html'
+})
+class TopBar extends MenuController {
+}
+
+export {MenuController, Sidebar, TopBar};

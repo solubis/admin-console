@@ -12,8 +12,7 @@ import 'modules.list';
     dependencies: [
         'ngMaterial',
         'ui.router',
-        'md.data.table',
-        'modules.menu'
+        'md.data.table'
     ]
 })
 class Application {
@@ -25,12 +24,10 @@ class Application {
                 url: '/',
                 views: {
                     'topbar': {
-                        templateUrl: 'modules/menu/html/topbar.html',
-                        controller: 'MenuController as menu'
+                        template: '<topbar></topbar>'
                     },
                     'sidebar': {
-                        templateUrl: 'modules/menu/html/sidebar.html',
-                        controller: 'MenuController as menu'
+                        template: '<sidebar></sidebar>'
                     },
                     'content': {
                         template: '<list-component></list-component>'

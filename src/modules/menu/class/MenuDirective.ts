@@ -1,3 +1,5 @@
+import {Directive, Inject} from 'angular-components';
+
 class MenuDirectiveController {
 
     currentPage: any;
@@ -36,70 +38,82 @@ class MenuDirectiveController {
     }
 }
 
-function menuDirective(): ng.IDirective {
+class MenuDirectivesContainer {
 
-    return {
-        scope: {
-            sections: '=menu'
-        },
-        templateUrl: `modules/menu/html/menu.html`,
-        controller: MenuDirectiveController
-    };
-}
+    @Directive({
+        selector: 'menu'
+    })
+    menuDirective(): ng.IDirective {
 
-function menuLinkDirective(): ng.IDirective {
-    return {
-        require: '^menu',
-        scope: {
-            page: '=',
-            section: '=?'
-        },
-        templateUrl: 'modules/menu/html/menu-link.html',
-        link: (scope: any, element, attrs, controller) => {
-            scope.isSelected = () => {
-                return controller.isSelected(scope.page);
-            };
-        }
-    };
-}
+        return {
+            scope: {
+                sections: '=menu'
+            },
+            templateUrl: 'modules/menu/html/menu.html',
+            controller: MenuDirectiveController
+        };
+    }
 
-/*@ngInject*/
-function menuToggleDirective($timeout): ng.IDirective {
-    return {
-        require: '^menu',
-        scope: {
-            section: '='
-        },
-        templateUrl: 'modules/menu/html/menu-toggle.html',
-        link: (scope: any, element, attrs, controller) => {
-            scope.isOpen = () => controller.isOpen(scope.section);
-            scope.toggle = () => controller.toggleOpen(scope.section);
+    @Directive({
+        selector: 'menuLink'
+    })
+    menuLinkDirective(): ng.IDirective {
+        return {
+            require: '^menu',
+            scope: {
+                page: '=',
+                section: '=?'
+            },
+            templateUrl: 'modules/menu/html/menu-link.html',
+            link: (scope: any, element, attrs, controller) => {
+                scope.isSelected = () => {
+                    return controller.isSelected(scope.page);
+                };
+            }
+        };
+    }
 
-            scope.$watch(
-                () => controller.isOpen(scope.section),
-                (open) => {
-                    let $ul = element.find('ul');
-                    let targetHeight = open ? getTargetHeight() : 0;
+    @Directive({
+        selector: 'menuToggle'
+    })
+    @Inject('$timeout')
+    menuToggleDirective($timeout): ng.IDirective {
+        return {
+            require: '^menu',
+            scope: {
+                section: '='
+            },
+            templateUrl: 'modules/menu/html/menu-toggle.html',
+            link: (scope: any, element, attrs, controller) => {
+                scope.isOpen = () => controller.isOpen(scope.section);
+                scope.toggle = () => controller.toggleOpen(scope.section);
 
-                    $timeout(() => {
-                        $ul.css({ height: targetHeight + 'px' });
-                    }, 0, false);
+                scope.$watch(
+                    () => controller.isOpen(scope.section),
+                    (open) => {
+                        let $ul = element.find('ul');
+                        let targetHeight = open ? getTargetHeight() : 0;
 
-                    function getTargetHeight() {
-                        let targetHeight;
+                        $timeout(() => {
+                            $ul.css({ height: targetHeight + 'px' });
+                        }, 0, false);
 
-                        $ul.addClass('no-transition');
-                        $ul.css('height', '');
-                        targetHeight = $ul.prop('clientHeight');
-                        $ul.css('height', 0);
-                        $ul.removeClass('no-transition');
+                        function getTargetHeight() {
+                            let targetHeight;
 
-                        return targetHeight;
+                            $ul.addClass('no-transition');
+                            $ul.css('height', '');
+                            targetHeight = $ul.prop('clientHeight');
+                            $ul.css('height', 0);
+                            $ul.removeClass('no-transition');
+
+                            return targetHeight;
+                        }
                     }
-                }
-            );
-        }
-    };
+                );
+            }
+        };
+    }
 }
 
-export { menuDirective, menuLinkDirective, menuToggleDirective };
+export {MenuDirectivesContainer};

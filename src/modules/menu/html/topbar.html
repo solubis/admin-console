@@ -1,5 +1,5 @@
 <div class="md-toolbar-tools">
-    <md-button aria-label="Menu" class="md-icon-button" ng-click="menu.toggleLeftSidebar()" ng-disabled="menu.toggleDisabled">
+    <md-button aria-label="Menu" class="md-icon-button" ng-click="ctrl.toggleLeftSidebar()" ng-disabled="ctrl.toggleDisabled">
         <md-icon md-font-icon="material-icons">menu</md-icon>
     </md-button>
 
@@ -12,7 +12,7 @@
         <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
             <md-icon md-font-icon="material-icons" md-menu-origin>notifications</md-icon>
             <div class="badge animated">
-                {{menu.notifications.count}}
+                {{ctrl.notifications.count}}
             </div>
         </md-button>
         <md-menu-content class="notifications" layout="column" width="4">
@@ -20,7 +20,7 @@
                 <md-button ng-href="" class="md-link-button">Select all</md-button>
             </md-subheader>
             <md-list>
-                <md-list-item class="{{item.type}} md-3-line" ng-repeat="item in menu.notifications.items">
+                <md-list-item class="{{item.type}} md-3-line" ng-repeat="item in ctrl.notifications.items">
 
                     <md-icon md-font-icon="material-icons">{{item.icon}}</md-icon>
 
@@ -45,20 +45,20 @@
         </md-button>
         <md-menu-content width="4">
             <md-menu-item>
-                <md-button ng-click="menu.redial($event)">
+                <md-button ng-click="ctrl.redial($event)">
                     <md-icon md-font-icon="material-icons" md-menu-align-target>dialpad</md-icon>
                     Redial
                 </md-button>
             </md-menu-item>
             <md-menu-item>
-                <md-button disabled="disabled" ng-click="menu.checkVoicemail()">
+                <md-button disabled="disabled" ng-click="ctrl.checkVoicemail()">
                     <md-icon md-font-icon="material-icons">voicemail</md-icon>
                     Check voicemail
                 </md-button>
             </md-menu-item>
             <md-menu-divider></md-menu-divider>
             <md-menu-item>
-                <md-button ng-click="menu.toggleNotifications()">
+                <md-button ng-click="ctrl.toggleNotifications()">
                     <md-icon md-font-icon="material-icons">{{ctrl.notificationsEnabled ? 'location_on' : 'location_off' }}</md-icon>
                     {{ctrl.notificationsEnabled ? 'Disable' : 'Enable' }}
                     notifications
