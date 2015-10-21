@@ -1,1 +1,1 @@
-Admininistration console
+Typescript project template
