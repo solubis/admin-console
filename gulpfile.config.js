@@ -8,7 +8,9 @@ const config = {
     systemjs: `${root}/system.config.js`,
     typescript: `${root}/tsconfig.json`,
 
+    indexHTML: `src/index.html`,
     templatesModuleName: 'templates',
+    
 
     /**
      * This is a collection of file patterns that refer to our app code (the
@@ -18,7 +20,7 @@ const config = {
     src: {
         basePath: `${root}/src/`,
         files: `${root}/src/**/*.{css,ts,html,jpg,png}`,
-        typescripts: `${root}/src/**/!(*.spec).ts`,
+        typescripts: [`${root}/src/**/!(*.spec).ts`,`${root}/typings/tsd.d.ts`],
         images: `${root}/src/images/**/*`,
         fonts: `${root}/src/fonts/**/*`,
         data: `${root}/src/data/**/*`,

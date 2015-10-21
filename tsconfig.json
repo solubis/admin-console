@@ -21,6 +21,7 @@
         "node_modules"
     ],
     "files": [
+        "src/index.ts",
         "src/modules/app.ts",
         "src/modules/list/class/ListComponent.ts",
         "src/modules/list/index.ts",
