@@ -1,3 +1,5 @@
+// main: app.scss
+
 /**
 *     Toolbar
 */
@@ -9,4 +11,18 @@ md-content {
         background-color: $gray-lightest;
         @include md-shadow-bottom();
     }
+
+    > md-toolbar {
+        position: fixed;
+
+        & + * {
+            padding-top: 82px;
+        }
+    }
+}
+
+md-toolbar[ui-view='topbar'] {
+    z-index   : 3;
+    color     : white !important;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .14), 0 0 2px 2px rgba(0, 0, 0, .098), 0 0 5px 1px rgba(0, 0, 0, .084);
 }

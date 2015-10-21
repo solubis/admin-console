@@ -6,12 +6,13 @@
 @import 'variables';
 @import 'mixins';
 @import 'fonts';
-@import 'material';
 @import 'sidebar';
 @import 'button';
 @import 'toolbar';
+@import 'menu';
+@import 'list';
+@import 'card';
 
-@import '../modules/menu/menu';
 
 body {
     display   : flex;
@@ -22,4 +23,8 @@ body {
 
 a {
     text-decoration: none;
+}
+
+md-content {
+    background-color: $body-bg;
 }
