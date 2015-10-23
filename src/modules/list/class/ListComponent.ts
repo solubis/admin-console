@@ -1,9 +1,7 @@
-import {Component, View, Inject} from 'angular-components';
+import {Component, Inject} from 'angular-components';
 
 @Component({
-    selector: 'list-component'
-})
-@View({
+    selector: 'list-component',
     templateUrl: 'modules/list/html/list.html'
 })
 @Inject('$timeout', '$q', '$mdDialog', '$mdToast', '$mdSidenav')

@@ -1,4 +1,4 @@
-import {Component, View, Inject} from 'angular-components';
+import {Component, Inject} from 'angular-components';
 import {sections} from './Menu';
 
 @Inject('$mdSidenav', '$http')
@@ -32,18 +32,14 @@ class MenuController {
 }
 
 @Component({
-    selector: 'sidebar'
-})
-@View({
+    selector: 'sidebar',
     templateUrl: 'modules/menu/html/sidebar.html'
 })
 class Sidebar extends MenuController {
 }
 
 @Component({
-    selector: 'topbar'
-})
-@View({
+    selector: 'topbar',
     templateUrl: 'modules/menu/html/topbar.html'
 })
 class TopBar extends MenuController {
