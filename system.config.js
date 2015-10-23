@@ -3,12 +3,15 @@ System.config({
   transpiler: "typescript",
   paths: {
     "npm:*": "lib/npm/*",
-    "modules.*": "src/modules/*/index.ts",
-    "github:*": "lib/github/*"
+    "github:*": "lib/github/*",
+    "modules/*": "src/modules/*/index.ts"
   },
 
   packages: {
-    "src": {
+    "./": {
+      "defaultExtension": "ts"
+    },
+    "modules": {
       "defaultExtension": "ts"
     }
   },
@@ -18,7 +21,7 @@ System.config({
     "angular-animate": "github:angular/bower-angular-animate@1.4.7",
     "angular-aria": "github:angular/bower-angular-aria@1.4.7",
     "angular-components": "npm:angular-components@0.0.1",
-    "angular-datatable": "github:solubis/angular-datatable@0.8.8",
+    "angular-datatable": "github:solubis/angular-datatable@master",
     "angular-material": "github:angular/bower-material@0.11.4",
     "angular-messages": "github:angular/bower-angular-messages@1.4.7",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",

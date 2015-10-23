@@ -4,8 +4,8 @@ import 'angular-material';
 import 'angular-datatable';
 import 'angular-ui-router';
 
-import 'modules.menu';
-import 'modules.list';
+import 'modules/menu';
+import 'modules/list';
 
 @Component({
     selector: 'body',
