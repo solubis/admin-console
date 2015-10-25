@@ -22,9 +22,9 @@
     ],
     "files": [
         "src/index.ts",
-        "src/modules/app.ts",
         "src/modules/list/class/ListComponent.ts",
         "src/modules/list/index.ts",
+        "src/modules/main/index.ts",
         "src/modules/menu/class/Menu.ts",
         "src/modules/menu/class/MenuController.ts",
         "src/modules/menu/class/MenuDirective.ts",

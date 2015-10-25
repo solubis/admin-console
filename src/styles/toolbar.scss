@@ -6,23 +6,11 @@
 md-content {
     md-toolbar {
         z-index         : 1;
-        min-height      : 50px;
-        padding         : 8px 16px;
-        background-color: $gray-lightest;
+        padding         : 5px 15px;
         @include md-shadow-bottom();
-    }
-
-    > md-toolbar {
-        position: fixed;
-
-        & + * {
-            padding-top: 82px;
-        }
     }
 }
 
-md-toolbar[ui-view='topbar'] {
-    z-index   : 3;
-    color     : white !important;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .14), 0 0 2px 2px rgba(0, 0, 0, .098), 0 0 5px 1px rgba(0, 0, 0, .084);
+md-toolbar {
+    @include md-shadow-bottom();
 }

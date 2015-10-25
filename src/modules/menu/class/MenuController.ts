@@ -1,7 +1,7 @@
 import {Component, Inject} from 'angular-components';
 import {sections} from './Menu';
 
-@Inject('$mdSidenav', '$http')
+@Inject('$element', '$attrs', '$scope', '$mdSidenav', '$http')
 class MenuController {
 
     /* tslint:disable */
@@ -14,10 +14,12 @@ class MenuController {
     private toggleDisabled;
     private notifications;
 
-
     constructor(
-        private $mdSidenav: angular.material.ISidenavService,
-        private $http: angular.IHttpService) {
+        private $element: ng.IAugmentedJQuery,
+        private $attrs: ng.IAttributes,
+        private $scope: ng.IScope,
+        private $mdSidenav: ng.material.ISidenavService,
+        private $http: ng.IHttpService) {
 
         $http.get('data/notifications.json')
             .then((response) => {
@@ -35,6 +37,7 @@ class MenuController {
     selector: 'sidebar',
     templateUrl: 'modules/menu/html/sidebar.html'
 })
+@Inject('$element', '$attrs', '$scope', '$mdSidenav', '$http')
 class Sidebar extends MenuController {
 }
 

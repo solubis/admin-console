@@ -1,6 +1,6 @@
 
 
-@import '../../lib/github/angular/bower-material@0.11.4/angular-material';
+@import '../../lib/github/angular/bower-material@1.0.0-rc1-master-325d83e/angular-material';
 @import '../../lib/github/solubis/angular-datatable@master/app/md-data-table/styles/md-data-table';
 
 @import 'variables';
@@ -13,9 +13,9 @@
 @import 'list';
 @import 'card';
 
+@import '../modules/main/main';
 
 body {
-    display   : flex;
     overflow  : hidden;
     max-width : 100%;
     max-height: 100%;
