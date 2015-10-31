@@ -4,16 +4,16 @@ const config = {
     /**
      * The config files
      */
-    gulp: `${root}/gulpfile.babel.js`,
-    systemjs: `${root}/system.config.js`,
-    typescript: `${root}/tsconfig.json`,
+    systemconfig: `${root}/system.config.js`,
+    tsconfig: `${root}/tsconfig.json`,
 
     /**
-    * Other params
-    */
+     * Other params
+     */
     indexHTML: `src/index.html`,
     templatesModuleName: 'templates',
     build: ['compile', 'copy'],
+    port: 3000,
 
 
     /**

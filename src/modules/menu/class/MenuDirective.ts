@@ -6,7 +6,8 @@ class MenuDirectiveController {
     currentSection: any;
     openedSection: any;
 
-    constructor() { }
+    constructor() {
+    }
 
     toggleSelectSection(section) {
         this.openedSection = (this.openedSection === section ? null : section);
@@ -95,7 +96,7 @@ class MenuDirectivesContainer {
                         let targetHeight = open ? getTargetHeight() : 0;
 
                         $timeout(() => {
-                            $ul.css({ height: targetHeight + 'px' });
+                            $ul.css({height: targetHeight + 'px'});
                         }, 0, false);
 
                         function getTargetHeight() {

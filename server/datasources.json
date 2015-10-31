@@ -1,0 +1,7 @@
+{
+  "db": {
+    "url": "mongodb://demo:demo@ds039504.mongolab.com:39504/demo",
+    "name": "db",
+    "connector": "mongodb"
+  }
+}

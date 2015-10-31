@@ -25,6 +25,7 @@
         "src/modules/list/class/ListComponent.ts",
         "src/modules/list/index.ts",
         "src/modules/main/class/Application.ts",
+        "src/modules/main/config.ts",
         "src/modules/main/index.ts",
         "src/modules/menu/class/Menu.ts",
         "src/modules/menu/class/MenuController.ts",
