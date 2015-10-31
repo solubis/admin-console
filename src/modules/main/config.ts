@@ -1,6 +1,6 @@
 declare var window: any;
 
-let localhost = window.location.protocol + '//' + window.location.hostname;
+let host = window.location.protocol + '//' + window.location.hostname;
 let port = window.location.port || '80';
 
 let config  = {
@@ -11,8 +11,8 @@ let config  = {
     'mockupEnabled': false,
     'redirectToLoginTimeout': 0,
 
-    'restURL': localhost + ':' + port + '/api',
-    'loginURL': localhost + ':' + port + '/login/src/index.html'
+    'restURL': `${host}:8080/api`,
+    'loginURL': `${host}:${port}/login/src/index.html`
 };
 
 window.CONFIG = config;

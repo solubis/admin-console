@@ -2,7 +2,7 @@
   "name": "angular-console",
   "version": "0.0.1",
   "description": "Admin Console",
-  "repository": "https://github.com/solubis/angular-console",
+  "repository": {"url":"https://github.com/solubis/angular-console"},
   "license": "Unlicense",
   "main": "server/server.js",
   "dependencies": {

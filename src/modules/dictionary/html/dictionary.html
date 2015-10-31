@@ -1,0 +1,54 @@
+<md-content flex layout-column layout-fill md-scroll-y>
+
+    <md-toolbar class="md-menu-toolbar" layout="row">
+        <md-button class="md-button md-raised">
+            Add Category
+        </md-button>
+    </md-toolbar>
+
+    <md-card>
+        <md-card-header ng-show="!ctrl.selected.length">
+            <h2>Category Dictionary</h2>
+        </md-card-header>
+
+        <md-card-header ng-show="ctrl.selected.length">
+            <h2>{{ctrl.selected.length}}
+                {{ctrl.selected.length > 1 ? 'items' : 'item'}}
+                selected</h2>
+        </md-card-header>
+
+        <md-data-table-container>
+            <table md-data-table md-progress="deferred" md-row-select="ctrl.selected">
+                <thead md-order="ctrl.query.order" md-trigger="ctrl.onOrderChange">
+                    <tr>
+                        <th 
+                            name="{{column.name}}" 
+                            ng-repeat="column in ctrl.columns" 
+                            ng-attr-descend-first="{{column.descendFirst}}" 
+                            ng-attr-numeric="{{column.numeric}}" 
+                            ng-attr-order-by="{{column.orderBy}}"
+                            ng-attr-trim="{{column.trim}}" 
+                            ng-attr-unit="{{column.unit}}" >
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in ctrl.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page - 1) * ctrl.query.limit">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.description}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </md-data-table-container>
+
+        <md-data-table-pagination 
+            md-limit="ctrl.query.limit" 
+            md-page="ctrl.query.page" 
+            md-total="{{ctrl.desserts.count}}" 
+            md-trigger="ctrl.onPageChange">
+        </md-data-table-pagination>
+
+    </md-card>
+
+</md-content>
