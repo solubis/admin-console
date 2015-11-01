@@ -3,6 +3,7 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import del from 'del';
 import merge from 'merge2';
+import jspmSass from './bin/jspm-sass';
 import Builder from 'systemjs-builder';
 
 import config from './gulpfile.config.js';
@@ -32,7 +33,7 @@ gulp.task('server', () => {
         startPath: config.indexHTML,
         files: files,
         browser: browser
-    }; 
+    };
 
     try {
         $.nodemon({
@@ -60,6 +61,8 @@ gulp.task('server', () => {
  * The 'SASS' task.
  */
 gulp.task('sass', () => {
+    jspmSass();
+    
     return gulp.src(config.src.styles)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe(gulp.dest(config.dist.styles));

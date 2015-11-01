@@ -2,7 +2,9 @@
   "name": "angular-console",
   "version": "0.0.1",
   "description": "Admin Console",
-  "repository": {"url":"https://github.com/solubis/angular-console"},
+  "repository": {
+    "url": "https://github.com/solubis/angular-console"
+  },
   "license": "Unlicense",
   "main": "server/server.js",
   "dependencies": {
@@ -67,17 +69,23 @@
       "angular-animate": "github:angular/bower-angular-animate@^1.4.7",
       "angular-aria": "github:angular/bower-angular-aria@^1.4.7",
       "angular-datatable": "github:solubis/angular-datatable@master",
-      "angular-material": "github:angular/bower-material@^1.0.0-RC2",
+      "angular-material": "github:angular/bower-material@~1.0.0-rc2",
       "angular-messages": "github:angular/bower-angular-messages@^1.4.7",
       "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
       "animate.css": "github:daneden/animate.css@^3.4.0",
-      "scss": "github:theefer/plugin-sass@master",
-      "solubis/angular-datatable": "github:solubis/angular-datatable@master"
+      "scss": "github:theefer/plugin-sass@master"
     },
     "devDependencies": {
       "clean-css": "npm:clean-css@^3.4.6",
       "typescript": "npm:typescript@^1.6.2"
     }
+  },
+  "jspm-sass": {
+    "output": "src/styles/imports.scss",
+    "dependencies": [
+      "angular-material/angular-material.scss",
+      "angular-datatable/app/md-data-table/styles/md-data-table"
+    ]
   },
   "bundleDependencies": [
     "angular-components",

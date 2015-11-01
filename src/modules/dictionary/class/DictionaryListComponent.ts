@@ -1,5 +1,6 @@
 import {Component, Inject} from 'angular-components';
 import {DictionaryService} from './DictionaryService';
+import {Utils} from '../../../modules/ui';
 
 interface Category {
     id: string;
@@ -11,7 +12,7 @@ interface Category {
     selector: 'dictionaryList',
     templateUrl: 'modules/dictionary/html/dictionary.html'
 })
-@Inject('dictionaryService')
+@Inject('DictionaryService', 'Utils', '$log')
 class DictionaryListComponent {
 
     private data: Category[] = [];
@@ -26,26 +27,30 @@ class DictionaryListComponent {
     private columns: any[] = [
         {
             name: 'Id',
-            orderBy: 'id',
-            unit: '(identity)'
+            orderBy: 'id'
         }, {
-            descendFirst: true,
             name: 'Name',
             orderBy: 'name'
         }, {
             name: 'Description'
         }];
+    private onOrderChange = () => {
+        this.utils.toast('Yeaaah!');
+    };
     /* tslint:enable */
 
-    constructor(private service: DictionaryService) {
+    constructor(
+        private service: DictionaryService,
+        private utils: Utils,
+        private log: ng.ILogService) {
+
         service.getAll()
             .then((data) => {
                 this.data = data;
             });
-
     }
 
-    onOrderChange() {
-
+    edit(item) {
+        this.utils.toast(item.description);
     }
 }

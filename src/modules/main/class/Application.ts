@@ -7,6 +7,7 @@ import 'angular-ui-router';
 
 import 'modules/menu';
 import 'modules/dictionary';
+import 'modules/ui';
 
 import '../config';
 
@@ -15,8 +16,7 @@ import '../config';
     templateUrl: 'modules/main/html/main.html',
     dependencies: [
         'ngMaterial',
-        'md.data.table',
-        'coreModule'
+        'md.data.table'
     ]
 })
 class Application {

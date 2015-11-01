@@ -21,19 +21,11 @@
             <table md-data-table md-progress="deferred" md-row-select="ctrl.selected">
                 <thead md-order="ctrl.query.order" md-trigger="ctrl.onOrderChange">
                     <tr>
-                        <th 
-                            name="{{column.name}}" 
-                            ng-repeat="column in ctrl.columns" 
-                            ng-attr-descend-first="{{column.descendFirst}}" 
-                            ng-attr-numeric="{{column.numeric}}" 
-                            ng-attr-order-by="{{column.orderBy}}"
-                            ng-attr-trim="{{column.trim}}" 
-                            ng-attr-unit="{{column.unit}}" >
-                        </th>
+                        <th name="{{column.name}}" ng-attr-order-by="{{column.orderBy}}" ng-repeat="column in ctrl.columns"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in ctrl.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page - 1) * ctrl.query.limit">
+                    <tr ng-dblclick="ctrl.edit(item)" ng-repeat="item in ctrl.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page - 1) * ctrl.query.limit">
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.description}}</td>
@@ -42,12 +34,7 @@
             </table>
         </md-data-table-container>
 
-        <md-data-table-pagination 
-            md-limit="ctrl.query.limit" 
-            md-page="ctrl.query.page" 
-            md-total="{{ctrl.desserts.count}}" 
-            md-trigger="ctrl.onPageChange">
-        </md-data-table-pagination>
+        <md-data-table-pagination md-limit="ctrl.query.limit" md-page="ctrl.query.page" md-total="{{ctrl.desserts.count}}" md-trigger="ctrl.onPageChange"></md-data-table-pagination>
 
     </md-card>
 

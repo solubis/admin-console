@@ -1,8 +1,4 @@
-
-
-@import '../../lib/github/angular/bower-material@1.0.0-rc1-master-325d83e/angular-material';
-@import '../../lib/github/solubis/angular-datatable@master/app/md-data-table/styles/md-data-table';
-
+@import 'imports';
 @import 'variables';
 @import 'mixins';
 @import 'fonts';
@@ -13,7 +9,7 @@
 @import 'list';
 @import 'card';
 
-@import '../modules/main/main';
+@import '../modules/main/main.scss';
 
 body {
     overflow  : hidden;
@@ -27,4 +23,8 @@ a {
 
 md-content {
     background-color: $body-bg;
+}
+
+ :focus {
+    outline: 0;
 }

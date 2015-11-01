@@ -1,7 +1,7 @@
 import {Service, Inject, RestService} from 'angular-components';
 
 @Service({
-    name: 'dictionaryService'
+    name: 'DictionaryService'
 })
 @Inject('$rest')
 class DictionaryService {
