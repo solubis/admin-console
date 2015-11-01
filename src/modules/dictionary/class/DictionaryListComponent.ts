@@ -1,6 +1,6 @@
 import {Component, Inject} from 'angular-components';
 import {DictionaryService} from './DictionaryService';
-import {Utils} from '../../../modules/ui';
+import {Utils} from '../../../modules/ui/class/Utils';
 
 interface Category {
     id: string;
