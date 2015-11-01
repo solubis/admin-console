@@ -1,5 +1,4 @@
 // main: app.scss
-
 /**
 *     Button
 **/
@@ -8,15 +7,15 @@
 }
 
 .md-button {
+    padding: 0 12px !important;
     min-height: 32px;
 
     &.md-icon-button:not([disabled]) {
         @include hover-pop(rgba(255,255,255,0.1), 90%, 250ms, 0);
     }
 
-
     md-icon {
-        width: 1em;
+        width              : 1em;
         transition-duration: 350ms;
         backface-visibility: hidden;
 
@@ -26,9 +25,7 @@
     }
 }
 
-
 .md-actions {
-
     .md-button.md-icon-button {
         width      : 36px;
         height     : 36px;
@@ -39,10 +36,10 @@
             @include hover-pop(rgba(0,0,0,0.084), 50%, 250ms, 0);
         }
 
-
         md-icon {
             color    : $gray-light;
             font-size: 20px;
+
             &:hover {
                 color: $gray;
             }

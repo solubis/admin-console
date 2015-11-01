@@ -51,6 +51,6 @@ class DictionaryListComponent {
     }
 
     edit(item) {
-        this.utils.toast(item.description);
+        this.utils.toast(`Edit item: ${item.name}`);
     }
 }

@@ -14,13 +14,12 @@ System.config({
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.4.7",
-    "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-    "angular-aria": "github:angular/bower-angular-aria@1.4.7",
-    "angular-components": "npm:angular-components@0.0.1",
+    "angular": "npm:angular@1.4.7",
+    "angular-animate": "npm:angular-animate@1.4.7",
+    "angular-aria": "npm:angular-aria@1.4.7",
+    "angular-components": "github:solubis/angular-components@master",
     "angular-datatable": "github:solubis/angular-datatable@master",
-    "angular-material": "github:angular/bower-material@1.0.0-rc2-master-faa8b5b",
-    "angular-messages": "github:angular/bower-angular-messages@1.4.7",
+    "angular-material": "github:solubis/angular-material@1.0.0-rc2",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
     "animate.css": "github:daneden/animate.css@3.4.0",
     "clean-css": "npm:clean-css@3.4.6",
@@ -28,18 +27,6 @@ System.config({
     "typescript": "npm:typescript@1.6.2",
     "github:angular-ui/ui-router@0.2.15": {
       "angular": "github:angular/bower-angular@1.4.7"
-    },
-    "github:angular/bower-angular-animate@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
-    },
-    "github:angular/bower-angular-aria@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
-    },
-    "github:angular/bower-material@1.0.0-rc2-master-faa8b5b": {
-      "angular": "npm:angular@1.4.7",
-      "angular-animate": "npm:angular-animate@1.4.7",
-      "angular-aria": "npm:angular-aria@1.4.7",
-      "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -91,9 +78,15 @@ System.config({
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
-    "github:solubis/angular-datatable@master": {
+    "github:solubis/angular-components@master": {
+      "jsrsasign": "npm:jsrsasign@5.0.1",
+      "moment": "npm:moment@2.10.6"
+    },
+    "github:solubis/angular-material@1.0.0-rc2": {
       "angular": "npm:angular@1.4.7",
-      "angular-material": "npm:angular-material@0.10.1"
+      "angular-animate": "npm:angular-animate@1.4.7",
+      "angular-aria": "npm:angular-aria@1.4.7",
+      "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:theefer/plugin-sass@master": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -107,16 +100,6 @@ System.config({
     },
     "npm:angular-animate@1.4.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:angular-components@0.0.1": {
-      "jsrsasign": "npm:jsrsasign@5.0.1",
-      "moment": "npm:moment@2.10.6"
-    },
-    "npm:angular-material@0.10.1": {
-      "angular": "github:angular/bower-angular@1.4.7",
-      "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-      "angular-aria": "github:angular/bower-angular-aria@1.4.7",
-      "css": "github:systemjs/plugin-css@0.1.19"
     },
     "npm:angular@1.4.7": {
       "process": "github:jspm/nodelibs-process@0.1.2"
