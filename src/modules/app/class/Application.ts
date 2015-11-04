@@ -1,28 +1,16 @@
 import {Component, Inject, bootstrap} from 'angular-components';
 import {RestServiceProvider, ConfigServiceProvider} from 'angular-components';
 
-import 'angular-material';
-import 'angular-datatable';
-import 'angular-ui-router';
-
-import 'modules/menu';
-import 'modules/dictionary';
-import 'modules/ui';
-
-import '../config';
-
 @Component({
-    selector: 'main',
-    templateUrl: 'modules/main/html/main.html',
-    dependencies: [
-        'ngMaterial',
-        'md.data.table'
-    ]
+    selector: 'app',
+    templateUrl: 'modules/app/html/app.html',
+    dependencies: ['ngResource', 'ngMaterial',  'md.data.table', 'serverAPI']
 })
 class Application {
 
     @Inject('$mdThemingProvider', '$configProvider', '$restProvider')
-    config($mdThemingProvider: ng.material.IThemingProvider,
+    config(
+        $mdThemingProvider: ng.material.IThemingProvider,
         $configProvider: ConfigServiceProvider,
         $restProvider: RestServiceProvider) {
 

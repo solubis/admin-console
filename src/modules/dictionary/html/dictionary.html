@@ -6,36 +6,6 @@
         </md-button>
     </md-toolbar>
 
-    <md-card>
-        <md-card-header ng-show="!ctrl.selected.length">
-            <h2>Category Dictionary</h2>
-        </md-card-header>
-
-        <md-card-header ng-show="ctrl.selected.length">
-            <h2>{{ctrl.selected.length}}
-                {{ctrl.selected.length > 1 ? 'items' : 'item'}}
-                selected</h2>
-        </md-card-header>
-
-        <md-data-table-container>
-            <table md-data-table md-progress="deferred" md-row-select="ctrl.selected">
-                <thead md-order="ctrl.query.order" md-trigger="ctrl.onOrderChange">
-                    <tr>
-                        <th name="{{column.name}}" ng-attr-order-by="{{column.orderBy}}" ng-repeat="column in ctrl.columns"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-dblclick="ctrl.edit(item)" ng-repeat="item in ctrl.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page - 1) * ctrl.query.limit">
-                        <td>{{item.id}}</td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.description}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </md-data-table-container>
-
-        <md-data-table-pagination md-limit="ctrl.query.limit" md-page="ctrl.query.page" md-total="{{ctrl.desserts.count}}" md-trigger="ctrl.onPageChange"></md-data-table-pagination>
-
-    </md-card>
+    <dictionary-list></dictionary-list>
 
 </md-content>

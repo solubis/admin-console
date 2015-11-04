@@ -38,7 +38,7 @@ gulp.task('server', () => {
     try {
         $.nodemon({
             script: 'server/server.js',
-            watch: 'server',
+            watch: ['server/!(*spec).js'],
             env: {
                 'NODE_ENV': 'development'
             }
@@ -47,7 +47,7 @@ gulp.task('server', () => {
         serverConfig = require('./server/config.json');
         options.proxy = `${serverConfig.host}:${serverConfig.port}`;
         $.util.log(`REST Server found at ${serverConfig.host}:${serverConfig.port}. Using browser-sync as proxy`);
-    } catch (e) {
+    } catch (error) {
         $.util.log('No REST Server present. Using browser-sync as server');
         options.server = {
             baseDir: './'
@@ -58,11 +58,27 @@ gulp.task('server', () => {
 });
 
 /**
+ * Test Server
+ **/
+
+gulp.task('test-server', () => {
+    gulp.src('./server/*spec.js')
+        .pipe($.mocha({
+            timeout: 3000,
+            reporter: 'list'
+        }));
+});
+
+gulp.task('watch', () => {
+    gulp.watch('./server/*spec.js', ['test-server']);
+});
+
+/**
  * The 'SASS' task.
  */
 gulp.task('sass', () => {
     jspmSass();
-    
+
     return gulp.src(config.src.styles)
         .pipe($.sass().on('error', $.sass.logError))
         .pipe(gulp.dest(config.dist.styles));

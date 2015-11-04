@@ -41,5 +41,9 @@
     "public": true,
     "$promise": {},
     "$resolved": true
+  },
+  "Notification": {
+    "dataSource": "db",
+    "public": true
   }
 }

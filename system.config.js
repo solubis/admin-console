@@ -13,6 +13,12 @@ System.config({
     }
   },
 
+  meta: {
+    "*.ts": {
+      "format": "es6"
+    }
+  },
+
   map: {
     "angular": "npm:angular@1.4.7",
     "angular-animate": "npm:angular-animate@1.4.7",
@@ -20,14 +26,12 @@ System.config({
     "angular-components": "github:solubis/angular-components@master",
     "angular-datatable": "github:solubis/angular-datatable@master",
     "angular-material": "github:solubis/angular-material@1.0.0-rc2",
-    "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
+    "angular-resource": "npm:angular-resource@1.4.7",
+    "angular-ui-router": "npm:angular-ui-router@0.2.15",
     "animate.css": "github:daneden/animate.css@3.4.0",
     "clean-css": "npm:clean-css@3.4.6",
     "scss": "github:theefer/plugin-sass@master",
     "typescript": "npm:typescript@1.6.2",
-    "github:angular-ui/ui-router@0.2.15": {
-      "angular": "github:angular/bower-angular@1.4.7"
-    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -99,6 +103,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-animate@1.4.7": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular-ui-router@0.2.15": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular@1.4.7": {

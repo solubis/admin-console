@@ -1,29 +1,26 @@
 import {Component, Inject} from 'angular-components';
-import {DictionaryService} from './DictionaryService';
-import {Utils} from '../../../modules/ui/class/Utils';
-
-interface Category {
-    id: string;
-    name: string;
-    description: string;
-}
+import * as common from '../../common/index';
+import {Category} from './DictionaryComponent';
 
 @Component({
     selector: 'dictionaryList',
-    templateUrl: 'modules/dictionary/html/dictionary.html'
+    templateUrl: 'modules/dictionary/html/dictionary-list.html'
 })
-@Inject('DictionaryService', 'Utils', '$log')
+@Inject('Category', 'Utils', '$log')
 class DictionaryListComponent {
 
     private data: Category[] = [];
 
     /* tslint:disable:no-unused-variable */
+
     private selected: any[] = [];
+
     private query: any = {
         order: 'name',
         limit: 5,
         page: 1
     };
+
     private columns: any[] = [
         {
             name: 'Id',
@@ -34,20 +31,23 @@ class DictionaryListComponent {
         }, {
             name: 'Description'
         }];
-    private onOrderChange = () => {
-        this.utils.toast('Yeaaah!');
+
+    private onOrderChange = (order) => {
+        this.utils.toast('Yeaaah! ' + order);
     };
+
+    private onPageChange = (page, limit) => {
+        this.utils.toast('Page! ' + page);
+    };
+
     /* tslint:enable */
 
     constructor(
-        private service: DictionaryService,
-        private utils: Utils,
+        private Category,
+        private utils: common.Utils,
         private log: ng.ILogService) {
 
-        service.getAll()
-            .then((data) => {
-                this.data = data;
-            });
+        this.data = Category.find();
     }
 
     edit(item) {

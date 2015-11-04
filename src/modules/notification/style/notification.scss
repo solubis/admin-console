@@ -1,0 +1,109 @@
+// main: ../../../styles/app.scss
+
+/**
+* Notifications
+**/
+.badge {
+    position           : absolute;
+    background-color   : red;
+    line-height        : 1rem;
+    font-size          : 0.6rem;
+    font-weight        : 700;
+    top                : 8px;
+    right              : 6px;
+    width              : 1rem;
+    height             : 1rem;
+    border-radius      : 50%;
+    animation-name     : bounceIn;
+    animation-duration : 500ms;
+    animation-fill-mode: both;
+    box-shadow         : 0 0 0 0 rgba(0,0,0,.14),0 1px 1px 0 rgba(0,0,0,.098),0 1px 1px 0 rgba(0,0,0,.084);
+}
+
+md-menu-content.notifications {
+    overflow: hidden;
+    padding : 0;
+
+    .md-subheader {
+        margin    : 0;
+        box-shadow: 0 1px 2px 0 lightgray;
+
+        .md-subheader-inner {
+            padding: 0;
+        }
+    }
+
+
+    md-list {
+        overflow-y: auto;
+    }
+
+
+    md-list-item {
+
+        > md-icon {
+            color: $brand-primary;
+        }
+
+
+        .md-list-item-text {
+            padding-top   : 10px;
+            padding-bottom: 10px;
+
+            h3.title {
+                font-size     : 14px;
+                font-weight   : 500;
+                letter-spacing: 0.010em;
+                margin        : 0 0 6px;
+                line-height   : 1rem;
+            }
+
+
+            p.message {
+                font-size     : 13px;
+                font-weight   : 500;
+                letter-spacing: 0.010em;
+                margin        : 0;
+                line-height   : 1.2em;
+            }
+
+
+            small {
+                color    : lighten(grey, 20%);
+                font-size: 11px;
+            }
+        }
+
+
+        button.action-button {
+            margin-top: 10px;
+            margin-right: 12px;
+            height     : 32px;
+            width      : 32px;
+            line-height: 32px;
+
+            md-icon {
+                font-size          : 1.1rem;
+                transition-duration: 350ms;
+                backface-visibility: hidden;
+                color              : rgba(0,0,0,0.44);
+                display            : block;
+
+                &:hover {
+                    transform: rotate(360deg);
+                }
+            }
+        }
+
+
+        &:not([disabled]):hover {
+            background-color: rgba(158,158,158,0.2);
+        }
+    }
+}
+
+
+md-list-item > md-icon:first-child:not(.md-avatar-icon), md-list-item .md-list-item-inner > md-icon:first-child:not(.md-avatar-icon) {
+    margin-right: 12px !important;
+    margin-left: 12px !important;
+}

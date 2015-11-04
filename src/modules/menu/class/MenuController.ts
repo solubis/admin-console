@@ -12,19 +12,13 @@ class MenuController {
     /* tslint:enable */
 
     private toggleDisabled;
-    private notifications;
 
     constructor(
         private $element: ng.IAugmentedJQuery,
         private $attrs: ng.IAttributes,
         private $scope: ng.IScope,
-        private $mdSidenav: ng.material.ISidenavService,
-        private $http: ng.IHttpService) {
+        private $mdSidenav: ng.material.ISidenavService) {
 
-        $http.get('data/notifications.json')
-            .then((response) => {
-                this.notifications = response.data;
-            });
     }
 
     toggleLeftSidebar() {

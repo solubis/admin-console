@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "preserveConstEnums": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "../typings/tsd.d.ts"
+    ],
+    "files": [
+        "./models/category.ts",
+        "./models/notification.ts",
+        "./server-spec.ts",
+        "./server.ts",
+        "../typings/tsd.d.ts"
+    ]
+}
