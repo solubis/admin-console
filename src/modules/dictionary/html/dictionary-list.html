@@ -1,30 +1,60 @@
 <md-card>
-    <md-card-header ng-show="!ctrl.selected.length">
-        <h2>Category Dictionary</h2>
-    </md-card-header>
 
-    <md-card-header ng-show="ctrl.selected.length">
-        <h2>{{ctrl.selected.length}}
-            {{ctrl.selected.length > 1 ? 'items' : 'item'}}
-            selected</h2>
-    </md-card-header>
+    <md-data-table-toolbar aria-hidden="false" class="" ng-hide="ctrl.selected.length || filter.show" style="">
+        <h2 class="md-title">Nutrition</h2>
+
+        <div flex=""></div>
+        <button class="md-icon-button md-button md-default-theme" ng-click="filter.show = true" tabindex="0">
+            <i class="material-icons md-dark">filter_list</i>
+        </button>
+        <button class="md-icon-button md-button md-default-theme" ng-click="addItem($event)" tabindex="0">
+            <i class="material-icons md-dark">local_dining</i>
+
+            <div class="md-ripple-container"></div>
+        </button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar aria-hidden="true" class="ng-hide" ng-show="filter.show && !ctrl.selected.length" style="">
+        <i class="material-icons md-dark">search</i>
+
+        <form class="ng-pristine ng-valid" flex="" name="filter.form">
+            <input aria-invalid="false" class="ng-pristine ng-untouched ng-valid" ng-model-options="ctrl.filter.options"
+                   ng-model="ctrl.query.filter" placeholder="search" tabindex="0" type="text">
+        </form>
+        <button class="md-icon-button md-button md-default-theme" ng-click="ctrl.removeFilter()" tabindex="0">
+            <i class="material-icons md-dark">close</i>
+
+            <div class="md-ripple-container"></div>
+        </button>
+    </md-data-table-toolbar>
+
+    <md-data-table-toolbar aria-hidden="true" class="alternate ng-hide" layout-align="space-between"
+                           ng-show="ctrl.selected.length" style="">
+        <div>0 item selected</div>
+        <button class="md-icon-button md-button md-default-theme" ng-click="delete($event)" tabindex="0">
+            <i class="material-icons md-dark">delete</i>
+        </button>
+    </md-data-table-toolbar>
 
     <md-data-table-container>
         <table md-data-table md-progress="deferred" md-row-select="ctrl.selected">
             <thead md-order="ctrl.query.order" md-trigger="ctrl.onOrderChange">
-                <tr>
-                    <th name="{{column.name}}" ng-attr-order-by="{{column.orderBy}}" ng-repeat="column in ctrl.columns"></th>
-                </tr>
+            <tr>
+                <th name="{{column.name}}" ng-attr-order-by="{{column.orderBy}}"
+                    ng-repeat="column in ctrl.columns"></th>
+            </tr>
             </thead>
             <tbody>
-                <tr ng-dblclick="ctrl.edit(item)" ng-repeat="item in ctrl.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page - 1) * ctrl.query.limit">
-                    <td>{{item.id}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.description}}</td>
-                </tr>
+            <tr ng-dblclick="ctrl.edit(item)"
+                ng-repeat="item in ctrl.data | orderBy: ctrl.query.order | limitTo: ctrl.query.limit : (ctrl.query.page - 1) * ctrl.query.limit">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+            </tr>
             </tbody>
         </table>
     </md-data-table-container>
 
-    <md-data-table-pagination md-limit="ctrl.query.limit" md-page="ctrl.query.page" md-total="{{ctrl.desserts.count}}" md-trigger="ctrl.onPageChange"></md-data-table-pagination>
+    <md-data-table-pagination md-limit="ctrl.query.limit" md-page="ctrl.query.page" md-total="{{ctrl.desserts.count}}"
+                              md-trigger="ctrl.onPageChange"></md-data-table-pagination>
 </md-card>

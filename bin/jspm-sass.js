@@ -2,11 +2,11 @@
 
 const __BASEDIR = process.cwd();
 
-var path = require('path'),
-    colors = require('colors'),
-    fs = require('fs'),
-    system = require('systemjs'),
-    pkg = require(path.join(__BASEDIR, './package.json'));
+var path = require('path');
+var fs = require('fs');
+var pkg = require(path.join(__BASEDIR, './package.json'));
+var colors = require('colors'); // eslint-disable-line no-unused-vars
+var system = require('systemjs'); // eslint-disable-line no-unused-vars
 
 const __JSPMDIR = pkg.jspm && pkg.jspm.directories && pkg.jspm.directories.packages || 'jspm_packages';
 

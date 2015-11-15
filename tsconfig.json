@@ -14,6 +14,7 @@
     "filesGlob": [
         "src/**/*.ts",
         "typings/tsd.d.ts",
+        "!src/modules/api/**/*.ts",
         "!dist/**",
         "!node_modules/**"
     ],
@@ -26,12 +27,10 @@
         "src/index.ts",
         "src/modules/app/class/Application.ts",
         "src/modules/app/index.ts",
-        "src/modules/common/api.ts",
         "src/modules/common/class/Utils.ts",
         "src/modules/common/index.ts",
         "src/modules/dictionary/class/DictionaryComponent.ts",
         "src/modules/dictionary/class/DictionaryListComponent.ts",
-        "src/modules/dictionary/class/DictionaryService.ts",
         "src/modules/dictionary/index.ts",
         "src/modules/menu/class/Menu.ts",
         "src/modules/menu/class/MenuController.ts",

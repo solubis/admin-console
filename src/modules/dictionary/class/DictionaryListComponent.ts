@@ -1,21 +1,28 @@
 import {Component, Inject} from 'angular-components';
-import * as common from '../../common/index';
+import {Utils} from '../../common/index';
 import {Category} from './DictionaryComponent';
 
 @Component({
-    selector: 'dictionaryList',
+    selector: 'dictionary-list',
     templateUrl: 'modules/dictionary/html/dictionary-list.html'
 })
-@Inject('Category', 'Utils', '$log')
+@Inject('Category', 'Utils', '$log', '$mdDialog')
 class DictionaryListComponent {
 
     private data: Category[] = [];
 
     /* tslint:disable:no-unused-variable */
 
+    private filter: any = {
+        options: {
+            debounce: 500
+        }
+    };
+
     private selected: any[] = [];
 
     private query: any = {
+        filter: '',
         order: 'name',
         limit: 5,
         page: 1
@@ -40,17 +47,32 @@ class DictionaryListComponent {
         this.utils.toast('Page! ' + page);
     };
 
+    private onChange = () => {
+        let data = this.Category.find();
+
+        this.data = data;
+
+        return data.$promise;
+    };
+
     /* tslint:enable */
 
     constructor(
         private Category,
-        private utils: common.Utils,
-        private log: ng.ILogService) {
+        private utils: Utils,
+        private log: ng.ILogService,
+        private dialog: ng.material.IDialogService) {
 
         this.data = Category.find();
     }
 
     edit(item) {
-        this.utils.toast(`Edit item: ${item.name}`);
+        let options: ng.material.IDialogOptions = {
+            clickOutsideToClose: true,
+            focusOnOpen: false,
+            templateUrl: 'modules/dictionary/html/dictionary-dialog.html'
+        };
+
+        this.dialog.show(options).then(this.onChange);
     }
 }

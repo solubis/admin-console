@@ -56,7 +56,7 @@ class MenuDirectivesContainer {
     }
 
     @Directive({
-        selector: 'menuLink'
+        selector: 'menu-link'
     })
     menuLinkDirective(): ng.IDirective {
         return {
@@ -75,7 +75,7 @@ class MenuDirectivesContainer {
     }
 
     @Directive({
-        selector: 'menuToggle'
+        selector: 'menu-toggle'
     })
     @Inject('$timeout')
     menuToggleDirective($timeout): ng.IDirective {

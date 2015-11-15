@@ -4,7 +4,7 @@ import {RestServiceProvider, ConfigServiceProvider} from 'angular-components';
 @Component({
     selector: 'app',
     templateUrl: 'modules/app/html/app.html',
-    dependencies: ['ngResource', 'ngMaterial',  'md.data.table', 'serverAPI']
+    providers: ['ngResource', 'ngMaterial',  'md.data.table', 'serverAPI']
 })
 class Application {
 
@@ -22,7 +22,6 @@ class Application {
             .primaryPalette('blue')
             .accentPalette('blue-grey')
             .warnPalette('amber');
-
     }
 
     @Inject('$log')
