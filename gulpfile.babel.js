@@ -7,6 +7,7 @@ import jspmSass from './bin/jspm-sass';
 import Builder from 'systemjs-builder';
 
 import config from './gulpfile.config.js';
+import tsConfig from './tsconfig.json';
 
 var $ = require('gulp-load-plugins')({
     lazy: true
@@ -71,6 +72,7 @@ gulp.task('test-server', () => {
 
 gulp.task('watch', () => {
     gulp.watch('./server/*spec.js', ['test-server']);
+    gulp.watch('./**/*.scss', ['sass']);
 });
 
 /**
@@ -81,7 +83,8 @@ gulp.task('sass', () => {
 
     return gulp.src(config.src.styles)
         .pipe($.sass().on('error', $.sass.logError))
-        .pipe(gulp.dest(config.dist.styles));
+        .pipe(gulp.dest(config.dist.styles))
+        .pipe(gulp.dest(`${config.src.basePath}/styles`))
 });
 
 /**
@@ -167,10 +170,15 @@ gulp.task('tslint', () => {
 /**
  * The 'Typescript' task.
  */
+
+gulp.task('tsconfig', function () {
+    return gulp.src(tsConfig.filesGlob)
+        .pipe($.tsconfigUpdate());
+});
+
+
 gulp.task('typescript', ['tslint'], () => {
-    let project = $.typescript.createProject(
-        config.tsconfig
-    );
+    let project = $.typescript.createProject(config.tsconfig);
 
     let result = gulp.src(config.src.typescripts)
         .pipe($.typescript(project));
@@ -211,7 +219,7 @@ gulp.task('build', (done) => {
     runSequence(
         ['clean'], config.build,
         done
-    );
+        );
 });
 
 gulp.task('default', ['server']);

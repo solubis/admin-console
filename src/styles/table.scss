@@ -1,5 +1,18 @@
-// main: app.scss
+// main: index.scss
 
 md-data-table-toolbar {
     background-color: $gray-lightest;
+}
+
+md-data-table-toolbar > form {
+  margin-left: 16px;
+}
+md-data-table-toolbar > form > input {
+  width: 100%;
+  margin: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+md-data-table-toolbar > form > input:focus {
+  outline: none;
 }
