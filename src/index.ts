@@ -4,10 +4,10 @@ import 'angular-material';
 import 'angular-datatable';
 import 'angular-ui-router';
 
-import 'modules/api';
+import 'modules/data';
 import 'modules/app';
 import 'modules/menu';
-import 'modules/dictionary';
+import 'modules/category';
 import 'modules/common';
 import 'modules/notification';
 

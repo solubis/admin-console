@@ -6,10 +6,10 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+      "commit": "16134c168d021351acb1673ee9659644fc58c424"
     },
     "angularjs/angular.d.ts": {
-      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+      "commit": "16134c168d021351acb1673ee9659644fc58c424"
     },
     "moment/moment.d.ts": {
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
@@ -20,17 +20,20 @@
     "lodash/lodash.d.ts": {
       "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     },
-    "es6-promise/es6-promise.d.ts": {
-      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
-    },
     "node/node.d.ts": {
       "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "angular-material/angular-material.d.ts": {
-      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+      "commit": "16134c168d021351acb1673ee9659644fc58c424"
     },
     "mocha/mocha.d.ts": {
       "commit": "0dd29bf8253536ae24e61c109524e924ea510046"
+    },
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "16134c168d021351acb1673ee9659644fc58c424"
+    },
+    "flux/flux.d.ts": {
+      "commit": "ba424f7ee39717d51c17699a09ac8df312a7e9a1"
     }
   }
 }

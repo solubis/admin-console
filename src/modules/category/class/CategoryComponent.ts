@@ -7,11 +7,11 @@ export interface Category {
 }
 
 @Component({
-    selector: 'dictionary',
-    templateUrl: 'modules/dictionary/html/dictionary.html'
+    selector: 'category',
+    templateUrl: 'modules/category/html/category.html'
 })
 @Inject('$log')
-class DictionaryComponent {
+class CategoryComponent {
 
     constructor(
         private log: ng.ILogService) {

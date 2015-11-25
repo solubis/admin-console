@@ -5,6 +5,8 @@ import {Service, Inject} from 'angular-components';
 })
 @Inject('$mdToast')
 class Utils {
+    
+    static name: string = 'Utils';
 
     constructor(private $mdToast: ng.material.IToastService) {
     }

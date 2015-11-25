@@ -7,7 +7,7 @@
 }
 
 .md-button {
-    min-height: 32px;
+    min-height: 36px;
   
     &:not(.md-icon-button){
         padding: 0 12px;
@@ -15,10 +15,9 @@
 
     &.md-icon-button:not([disabled]) {
         @include hover-pop(rgba(255,255,255,0.1), 90%, 250ms, 0);
-    }
+    } 
 
-    md-icon {
-        width              : 1em;
+    md-icon { 
         transition-duration: 350ms;
         backface-visibility: hidden;
 
@@ -42,7 +41,7 @@ md-data-table-toolbar {
 
         md-icon,
         i {
-            color    : $gray-light;
+            color    : $gray;
             font-size: 20px;
 
             &:hover {

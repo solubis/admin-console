@@ -35,6 +35,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "*",
+    "gulp-sourcemaps": "^1.6.0",
     "gulp-tsconfig-files": "^0.1.2",
     "gulp-tsconfig-update": "^1.1.1",
     "gulp-tslint": "^3.3.1",
@@ -84,6 +85,8 @@
       "angular-resource": "github:angular/bower-angular-resource@^1.4.7",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
       "animate.css": "github:daneden/animate.css@^3.4.0",
+      "events": "github:jspm/nodelibs-events@^0.1.1",
+      "flux": "npm:flux@^2.1.1",
       "scss": "github:theefer/plugin-sass@master"
     },
     "devDependencies": {

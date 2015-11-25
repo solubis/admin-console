@@ -82,9 +82,11 @@ gulp.task('sass', () => {
     jspmSass();
 
     return gulp.src(config.src.styles)
+        .pipe($.sourcemaps.init())
         .pipe($.sass().on('error', $.sass.logError))
         .pipe(gulp.dest(config.dist.styles))
-        .pipe(gulp.dest(`${config.src.basePath}/styles`))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest(`${config.src.basePath}/styles`));
 });
 
 /**
@@ -159,7 +161,7 @@ gulp.task('html', ['htmlhint'], () => {
  * The 'TSLint' task.
  */
 gulp.task('tslint', () => {
-    return gulp.src(config.src.typescripts)
+    return gulp.src(tsConfig.files)
         .pipe($.plumber())
         .pipe($.tslint())
         .pipe($.tslint.report('prose', {
@@ -180,7 +182,7 @@ gulp.task('tsconfig', function () {
 gulp.task('typescript', ['tslint'], () => {
     let project = $.typescript.createProject(config.tsconfig);
 
-    let result = gulp.src(config.src.typescripts)
+    let result = gulp.src(tsConfig.files)
         .pipe($.typescript(project));
 
     return merge([

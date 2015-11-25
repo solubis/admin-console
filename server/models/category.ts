@@ -24,7 +24,6 @@ module.exports = function(Category) {
         Category.findById(id, function(err, instance) {
             let response = 'Description is ' + instance.description;
             cb(null, response);
-            console.log(response);
         });
     };
 

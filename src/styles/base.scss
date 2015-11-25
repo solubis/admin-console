@@ -17,3 +17,8 @@ md-content {
 :focus {
     outline: 0;
 }
+
+.no-data {
+    color: $gray-light;
+    padding: 20px;
+}
