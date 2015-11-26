@@ -2,7 +2,7 @@
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>{{ctrl.item.name}}</h2>
+        <h2>{{ctrl.item.name || ctrl.item.clientId}}</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="ctrl.close()">
           <md-icon class="material-icons">close</md-icon>

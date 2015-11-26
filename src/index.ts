@@ -4,7 +4,7 @@ import 'angular-material';
 import 'angular-datatable';
 import 'angular-ui-router';
 
-import 'modules/data';
+import 'modules/server';
 import 'modules/app';
 import 'modules/menu';
 import 'modules/category';

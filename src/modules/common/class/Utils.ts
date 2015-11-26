@@ -1,11 +1,12 @@
 import {Service, Inject} from 'angular-components';
+import ObjectId from 'objectid';
 
 @Service({
     name: 'Utils'
 })
 @Inject('$mdToast')
 class Utils {
-    
+
     static name: string = 'Utils';
 
     constructor(private $mdToast: ng.material.IToastService) {
@@ -26,11 +27,12 @@ class Utils {
         this.$mdToast.show(config);
     }
 
-    @Inject('$log', '$rootScope', 'Utils')
-    run($log, $rootScope, utils) {
-        $rootScope.$on('$rest:error:communication', (event, error) => utils.toast(error.message));
-        $rootScope.$on('$rest:error:request', (ebent, error) => utils.toast(error.message));
-        $rootScope.$on('$rest:error:authorization', (event, error) => utils.toast(error.message));
+    id() {
+        return ObjectId();
+    }
+
+    getClone(object) {
+        return Object.assign({ cid: this.id() }, object);
     }
 }
 

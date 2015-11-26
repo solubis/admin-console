@@ -1,5 +1,8 @@
 import {Component, Inject, bootstrap} from 'angular-components';
 import {RestServiceProvider, ConfigServiceProvider} from 'angular-components';
+import {HttpInterceptor} from '../../server/class/HttpInterceptor';
+import {ErrorStore} from '../../server/class/ErrorStore';
+import {Utils} from '../../common/class/Utils';
 
 @Component({
     selector: 'app',
@@ -8,14 +11,18 @@ import {RestServiceProvider, ConfigServiceProvider} from 'angular-components';
 })
 class Application {
 
-    @Inject('$mdThemingProvider', '$configProvider', '$restProvider')
-    config($mdThemingProvider: ng.material.IThemingProvider,
-           $configProvider: ConfigServiceProvider,
-           $restProvider: RestServiceProvider) {
+    @Inject('$httpProvider', '$mdThemingProvider', '$configProvider', '$restProvider')
+    config(
+        $httpProvider: ng.IHttpProvider,
+        $mdThemingProvider: ng.material.IThemingProvider,
+        $configProvider: ConfigServiceProvider,
+        $restProvider: RestServiceProvider) {
 
         let config = $configProvider.$get();
 
         $restProvider.configure(config);
+
+        $httpProvider.interceptors.push(HttpInterceptor.factory);
 
         $mdThemingProvider.theme('default')
             .primaryPalette('blue')
@@ -23,9 +30,13 @@ class Application {
             .warnPalette('amber');
     }
 
-    @Inject('$log')
-    run(log) {
+    @Inject('$log', ErrorStore.name, Utils.name)
+    run(log: ng.ILogService, errorStore: ErrorStore, Utils: Utils) {
         log.debug(`Angular ${angular.version.full}`);
+        
+        errorStore.addChangeListener((error) => {
+            Utils.toast(error.message);  
+        })
     };
 
 }

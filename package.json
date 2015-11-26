@@ -87,6 +87,7 @@
       "animate.css": "github:daneden/animate.css@^3.4.0",
       "events": "github:jspm/nodelibs-events@^0.1.1",
       "flux": "npm:flux@^2.1.1",
+      "objectid": "npm:objectid@^1.0",
       "scss": "github:theefer/plugin-sass@master"
     },
     "devDependencies": {

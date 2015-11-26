@@ -6,7 +6,7 @@ import {Dispatcher} from '../../common/class/Dispatcher';
 @Service({
 	name: 'CategoryStore'
 })
-@Inject('$log', 'Category', Dispatcher.name)
+@Inject('$log', Dispatcher.name)
 export class CategoryStore extends EventEmitter {
 
 	static name: string = 'CategoryStore';
@@ -15,46 +15,47 @@ export class CategoryStore extends EventEmitter {
 
 	constructor(
 		private log: ng.ILogService,
-		private Category,
 		private dispatcher) {
 
 		super();
-
-		this.init();
 	}
 
-	init() {
-
-		this.Category.find().$promise.then((result) => {
-			this.data = result;
-			this.emitChange();
-		});
+	init(data) {
+		this.data = data;
 	}
 
 	getAll() {
 		return this.data;
 	}
 
+	getOne(id) {
+		return this.data.find(item => item.id === id);
+	}
+	
+	count(){
+		return this.data.length;
+	}
+
 	truncate() {
-		this.Category.truncate().$promise.then((result) => {
-			this.data = [];
-			this.emitChange();
-		});
+		this.data = [];
 	}
 
-	save(data) {
-		let promise;
-
-		promise = this.Category.upsert(data).$promise.then((result) => {
-			if (!data.id) this.data.push(result);
-			this.emitChange();
-		});
-
-		return promise;
+	update(record = {}) {
+		let index = this.data.findIndex(item => item.id === record.id);
+		this.data[index] = record;
 	}
 
-	emitChange() {
-		this.emit('CHANGE');
+	create(record) {
+		this.data.push(record);
+	}
+
+	delete(id) {
+		let index = this.data.findIndex(item => item.id === id);
+		this.data.splice(index, 1);
+	}
+
+	emitChange(id?) {
+		this.emit('CHANGE', id);
 	}
 
 	addChangeListener(callback: Function): EventEmitter {
@@ -65,11 +66,25 @@ export class CategoryStore extends EventEmitter {
 		var action = payload.action;
 
 		switch (action.actionType) {
-			case CategoryActionTypes.UPDATE_CATEGORY:
-				this.save(action.data);
+			case CategoryActionTypes.Create:
+				this.create(action.data);
+				this.emitChange(action.data.id);
 				break;
-			case CategoryActionTypes.TRUNCATE_CATEGORY:
+			case CategoryActionTypes.Delete:
+				this.delete(action.id);
+				this.emitChange(action.id);
+				break;
+			case CategoryActionTypes.Init:
+				this.init(action.data);
+				this.emitChange();
+				break;
+			case CategoryActionTypes.Update:
+				this.update(action.data);
+				this.emitChange(action.data.id);
+				break;
+			case CategoryActionTypes.Truncate:
 				this.truncate();
+				this.emitChange();
 				break;
 		}
 

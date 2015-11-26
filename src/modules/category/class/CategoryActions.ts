@@ -1,41 +1,73 @@
 import {Inject, Service} from 'angular-components';
 import {Dispatcher} from '../../common/class/Dispatcher';
+import {ServerActionTypes} from '../../server/class/ServerActions';
 
-export let CategoryActionTypes = {
-	'UPDATE_CATEGORY': 'UPDATE_CATEGORY',
-	'DELETE_CATEGORY': 'DELETE_CATEGORY',
-	'TRUNCATE_CATEGORY': 'TRUNCATE_CATEGORY'
+export enum CategoryActionTypes {
+	Init = 0,
+	Create,
+	Update,
+	Delete,
+	Truncate
 }
 
 @Service({
 	name: 'CategoryActions'
 })
-@Inject(Dispatcher.name)
+@Inject(Dispatcher.name, 'Category')
 export class CategoryActions {
 
 	static name: string = 'CategoryActions';
 
-	constructor(private dispatcher: Dispatcher) {
+	constructor(
+		private dispatcher: Dispatcher,
+		private Category) {
 
+		this.init();
 	}
 
-	update(data): void {
-		this.dispatcher.handleViewAction({
-			actionType: CategoryActionTypes.UPDATE_CATEGORY,
-			data: data
+	init() {
+		this.Category.find().$promise.then((result) => {
+			this.dispatcher.handleServerAction({
+				actionType: CategoryActionTypes.Init,
+				data: result
+			});
 		});
 	}
 
+	update(data): void {
+		this.Category.upsert(data).$promise
+			.then(result => {
+				this.dispatcher.handleServerAction({
+					actionType: CategoryActionTypes.Update,
+					data: result
+				});
+			})
+	}
+
+	create(data): void {
+		this.Category.create(data).$promise
+			.then((result) => {
+				this.dispatcher.handleServerAction({
+					actionType: CategoryActionTypes.Create,
+					data: result
+				});
+			})
+	}
+
 	delete(id): void {
-		this.dispatcher.handleViewAction({
-			actionType: CategoryActionTypes.DELETE_CATEGORY,
-			id: id
+		this.Category.deleteById(id).$promise.then((result) => {
+			this.dispatcher.handleServerAction({
+				actionType: CategoryActionTypes.Delete,
+				id: id
+			});
 		});
 	}
 
 	truncate(): void {
-		this.dispatcher.handleViewAction({
-			actionType: CategoryActionTypes.TRUNCATE_CATEGORY
+		this.Category.truncate().$promise.then((result) => {
+			this.dispatcher.handleServerAction({
+				actionType: CategoryActionTypes.Truncate
+			});
 		});
 	}
 }

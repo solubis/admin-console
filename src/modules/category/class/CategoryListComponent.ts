@@ -62,14 +62,21 @@ class CategoryListComponent {
     edit(item) {
         let options: ng.material.IDialogOptions = {
             locals: {
-                item: item
+                item: this.utils.getClone(item)
             }
         };
 
         this.dialog.show(options);
     }
 
-    truncate() {
-        this.actions.truncate();
+    delete() {
+        if (this.store.count() === this.selected.length) {
+            this.actions.truncate();
+        } else {
+            this.selected.forEach(item => {
+                this.actions.delete(item.id);
+            })
+        }
     }
+
 }

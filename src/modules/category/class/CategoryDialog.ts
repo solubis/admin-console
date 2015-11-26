@@ -2,18 +2,19 @@ import {Service, Inject} from 'angular-components';
 import {Utils} from '../../common/index';
 import {CategoryActions} from './CategoryActions';
 import {CategoryStore} from './CategoryStore';
+import {ErrorStore} from '../../server/class/ErrorStore';
 
 @Service({
     name: 'CategoryDialog'
 })
-@Inject('$log', '$mdDialog', CategoryStore.name, CategoryActions.name, Utils.name)
+@Inject('$mdDialog')
 export class CategoryDialog {
 
     static name: string;
     private item: any;
 
     private options: ng.material.IDialogOptions = {
-        controller: CategoryDialog,
+        controller: CategoryDialogController,
         bindToController: true,
         controllerAs: 'ctrl',
         templateUrl: 'modules/category/html/category-dialog.html',
@@ -21,21 +22,42 @@ export class CategoryDialog {
     };
 
     constructor(
+        private dialog: ng.material.IDialogService) { }
+
+    show(options: ng.material.IDialogOptions) {
+        this.dialog.show(Object.assign({}, options, this.options));
+    }
+}
+
+@Inject('$log', '$mdDialog', CategoryStore.name, CategoryActions.name, ErrorStore.name, Utils.name)
+class CategoryDialogController {
+
+    constructor(
         private log: ng.ILogService,
         private dialog: ng.material.IDialogService,
         private store: CategoryStore,
         private actions: CategoryActions,
+        private errors: ErrorStore,
         private utils: Utils) {
 
-        store.addChangeListener(this.onChange)
+        store.addChangeListener(this.onChange);
+        errors.addChangeListener(this.onError);
     }
 
-    onChange = () => {
-        this.close();
+    onChange = (id) => {
+        let cid: string;
+        let record;
+
+        if (id) {
+            record = this.store.getOne(id);
+            if (record.cid === this.item.cid) {
+                this.close();
+            }
+        }
     };
 
-    show(options: ng.material.IDialogOptions) {
-        this.dialog.show(Object.assign({}, options, this.options));
+    onError = (error) => {
+        this.log.warn('Error From Dialog ========', error.message);
     }
 
     close() {
@@ -43,8 +65,11 @@ export class CategoryDialog {
     }
 
     save() {
-        if (this.item) {
-             this.actions.update(this.item);
+        if (this.item.id) {
+            this.actions.update(this.item);
+        } else {
+            this.actions.create(this.item);
         }
     }
+
 }

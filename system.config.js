@@ -19,9 +19,9 @@ System.config({
   },
 
   map: {
-    "angular": "github:angular/bower-angular@1.4.7",
-    "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-    "angular-aria": "github:angular/bower-angular-aria@1.4.7",
+    "angular": "github:angular/bower-angular@1.4.8",
+    "angular-animate": "github:angular/bower-angular-animate@1.4.8",
+    "angular-aria": "github:angular/bower-angular-aria@1.4.8",
     "angular-components": "github:solubis/angular-components@master",
     "angular-datatable": "github:solubis/angular-datatable@master",
     "angular-material": "github:angular/bower-material@1.0.0-rc4",
@@ -31,18 +31,19 @@ System.config({
     "clean-css": "npm:clean-css@3.4.8",
     "events": "github:jspm/nodelibs-events@0.1.1",
     "flux": "npm:flux@2.1.1",
+    "objectid": "npm:objectid@1.1.0",
     "scss": "github:theefer/plugin-sass@master",
     "typescript": "npm:typescript@1.6.2",
-    "github:angular/bower-angular-animate@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-animate@1.4.8": {
+      "angular": "github:angular/bower-angular@1.4.8"
     },
-    "github:angular/bower-angular-aria@1.4.7": {
-      "angular": "github:angular/bower-angular@1.4.7"
+    "github:angular/bower-angular-aria@1.4.8": {
+      "angular": "github:angular/bower-angular@1.4.8"
     },
     "github:angular/bower-material@1.0.0-rc4": {
-      "angular": "github:angular/bower-angular@1.4.7",
-      "angular-animate": "github:angular/bower-angular-animate@1.4.7",
-      "angular-aria": "github:angular/bower-angular-aria@1.4.7",
+      "angular": "github:angular/bower-angular@1.4.8",
+      "angular-animate": "github:angular/bower-angular-animate@1.4.8",
+      "angular-aria": "github:angular/bower-angular-aria@1.4.8",
       "css": "github:systemjs/plugin-css@0.1.19"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
@@ -325,6 +326,9 @@ System.config({
     },
     "npm:moment@2.10.6": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:objectid@1.1.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
