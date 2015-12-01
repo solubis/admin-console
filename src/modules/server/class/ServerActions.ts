@@ -2,7 +2,7 @@ import {Inject, Service} from 'angular-components';
 import {Dispatcher} from '../../common/class/Dispatcher';
 
 export enum ServerErrorCodes {
-	OtherError = 500,
+	CriticalError = 500,
 	ApplicationError,
 	AuthorizationError
 }
@@ -12,13 +12,8 @@ export enum ServerActionTypes {
 	Error
 }
 
-@Service({
-	name: 'ServerActions'
-})
-@Inject(Dispatcher.name)
+@Service()
 export class ServerActions {
-
-	static name: string = 'ServerActions';
 
 	constructor(
 		private dispatcher: Dispatcher) {

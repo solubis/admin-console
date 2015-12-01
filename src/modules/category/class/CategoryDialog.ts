@@ -4,14 +4,8 @@ import {CategoryActions} from './CategoryActions';
 import {CategoryStore} from './CategoryStore';
 import {ErrorStore} from '../../server/class/ErrorStore';
 
-@Service({
-    name: 'CategoryDialog'
-})
-@Inject('$mdDialog')
+@Service()
 export class CategoryDialog {
-
-    static name: string;
-    private item: any;
 
     private options: ng.material.IDialogOptions = {
         controller: CategoryDialogController,
@@ -22,19 +16,21 @@ export class CategoryDialog {
     };
 
     constructor(
-        private dialog: ng.material.IDialogService) { }
+        @Inject('$mdDialog') private dialog: ng.material.IDialogService) { }
 
     show(options: ng.material.IDialogOptions) {
         this.dialog.show(Object.assign({}, options, this.options));
     }
 }
 
-@Inject('$log', '$mdDialog', CategoryStore.name, CategoryActions.name, ErrorStore.name, Utils.name)
+@Inject()
 class CategoryDialogController {
 
+    private item: any;
+
     constructor(
-        private log: ng.ILogService,
-        private dialog: ng.material.IDialogService,
+        @Inject('$log') private log: ng.ILogService,
+        @Inject('$mdDialog') private dialog: ng.material.IDialogService,
         private store: CategoryStore,
         private actions: CategoryActions,
         private errors: ErrorStore,

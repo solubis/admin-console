@@ -10,11 +10,10 @@ export interface Category {
     selector: 'category',
     templateUrl: 'modules/category/html/category.html'
 })
-@Inject('$log')
 class CategoryComponent {
 
     constructor(
-        private log: ng.ILogService) {
+        @Inject('$log') private log: ng.ILogService) {
     }
 
 }

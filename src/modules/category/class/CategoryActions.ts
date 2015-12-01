@@ -10,17 +10,12 @@ export enum CategoryActionTypes {
 	Truncate
 }
 
-@Service({
-	name: 'CategoryActions'
-})
-@Inject(Dispatcher.name, 'Category')
+@Service()
 export class CategoryActions {
-
-	static name: string = 'CategoryActions';
 
 	constructor(
 		private dispatcher: Dispatcher,
-		private Category) {
+		@Inject('Category') private Category) {
 
 		this.init();
 	}

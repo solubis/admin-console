@@ -41,9 +41,7 @@ class MenuDirectiveController {
 
 class MenuDirectivesContainer {
 
-    @Directive({
-        selector: 'menu'
-    })
+    @Directive('menu')
     menuDirective(): ng.IDirective {
 
         return {
@@ -55,9 +53,7 @@ class MenuDirectivesContainer {
         };
     }
 
-    @Directive({
-        selector: 'menu-link'
-    })
+    @Directive('menuLink')
     menuLinkDirective(): ng.IDirective {
         return {
             require: '^menu',
@@ -74,11 +70,8 @@ class MenuDirectivesContainer {
         };
     }
 
-    @Directive({
-        selector: 'menu-toggle'
-    })
-    @Inject('$timeout')
-    menuToggleDirective($timeout): ng.IDirective {
+    @Directive('menuToggle')
+    menuToggleDirective( @Inject('$timeout') $timeout): ng.IDirective {
         return {
             require: '^menu',
             scope: {
@@ -96,7 +89,7 @@ class MenuDirectivesContainer {
                         let targetHeight = open ? getTargetHeight() : 0;
 
                         $timeout(() => {
-                            $ul.css({height: targetHeight + 'px'});
+                            $ul.css({ height: targetHeight + 'px' });
                         }, 0, false);
 
                         function getTargetHeight() {

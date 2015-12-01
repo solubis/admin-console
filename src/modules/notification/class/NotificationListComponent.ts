@@ -5,7 +5,6 @@ import {Utils} from '../../../modules/common/class/Utils';
     selector: 'notificationList',
     templateUrl: 'modules/notification/html/notification-list.html'
 })
-@Inject('Notification', 'Utils', '$log')
 class NotificationListComponent {
     private data: any;
 
@@ -13,9 +12,8 @@ class NotificationListComponent {
     /* tslint:enable */
 
     constructor(
-        private Notification,
-        private utils: Utils,
-        private log: ng.ILogService) {
+        @Inject('Notification') private Notification,
+        private utils: Utils) {
 
         this.data = Notification.find();
     }

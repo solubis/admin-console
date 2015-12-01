@@ -1,15 +1,13 @@
 import {Service, Inject} from 'angular-components';
 import ObjectId from 'objectid';
 
-@Service({
-    name: 'Utils'
-})
-@Inject('$mdToast')
+@Service()
 class Utils {
 
     static name: string = 'Utils';
 
-    constructor(private $mdToast: ng.material.IToastService) {
+    constructor(
+        @Inject('$mdToast') private $mdToast: ng.material.IToastService) {
     }
 
     toast(message: string, action?: string) {

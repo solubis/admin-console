@@ -3,10 +3,7 @@ import {EventEmitter} from 'events';
 import {CategoryActionTypes} from './CategoryActions';
 import {Dispatcher} from '../../common/class/Dispatcher';
 
-@Service({
-	name: 'CategoryStore'
-})
-@Inject('$log', Dispatcher.name)
+@Service()
 export class CategoryStore extends EventEmitter {
 
 	static name: string = 'CategoryStore';
@@ -14,8 +11,8 @@ export class CategoryStore extends EventEmitter {
 	private data: any = [];
 
 	constructor(
-		private log: ng.ILogService,
-		private dispatcher) {
+		@Inject('$log') private log: ng.ILogService,
+		private dispatcher: Dispatcher) {
 
 		super();
 	}
@@ -40,7 +37,7 @@ export class CategoryStore extends EventEmitter {
 		this.data = [];
 	}
 
-	update(record = {}) {
+	update(record:any = {}) {
 		let index = this.data.findIndex(item => item.id === record.id);
 		this.data[index] = record;
 	}

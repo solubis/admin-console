@@ -1,6 +1,12 @@
 System.config({
   defaultJSExtensions: true,
   transpiler: "typescript",
+  typescriptOptions: {
+    "sourceMap": true,
+    "module": "register",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
   paths: {
     "npm:*": "lib/npm/*",
     "github:*": "lib/github/*",
@@ -32,6 +38,7 @@ System.config({
     "events": "github:jspm/nodelibs-events@0.1.1",
     "flux": "npm:flux@2.1.1",
     "objectid": "npm:objectid@1.1.0",
+    "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "scss": "github:theefer/plugin-sass@master",
     "typescript": "npm:typescript@1.6.2",
     "github:angular/bower-angular-animate@1.4.8": {
@@ -50,7 +57,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.2"
+      "buffer": "npm:buffer@3.5.3"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -100,7 +107,7 @@ System.config({
       "vm-browserify": "npm:vm-browserify@0.0.4"
     },
     "github:solubis/angular-components@master": {
-      "jsrsasign": "npm:jsrsasign@5.0.2",
+      "jsrsasign": "npm:jsrsasign@5.0.5",
       "moment": "npm:moment@2.10.6"
     },
     "github:theefer/plugin-sass@master": {
@@ -179,10 +186,13 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:buffer@3.5.2": {
+    "npm:buffer@3.5.3": {
       "base64-js": "npm:base64-js@0.0.8",
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
       "ieee754": "npm:ieee754@1.1.6",
-      "is-array": "npm:is-array@1.0.1"
+      "is-array": "npm:is-array@1.0.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:cipher-base@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -315,7 +325,7 @@ System.config({
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:jsrsasign@5.0.2": {
+    "npm:jsrsasign@5.0.5": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -387,6 +397,10 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream-browserify": "npm:stream-browserify@1.0.0",
       "string_decoder": "npm:string_decoder@0.10.31"
+    },
+    "npm:reflect-metadata@0.1.2": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:ripemd160@1.0.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",

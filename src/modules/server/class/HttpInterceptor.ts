@@ -36,25 +36,29 @@ class HttpInterceptor {
             case 500:
             case 502:
             case 503:
-                this.actions.error(data.error, ServerErrorCodes.ServerError)
+                this.actions.error(data.error, ServerErrorCodes.CriticalError)
                 break;
             case 400:
             case 404:
             case 405:
             case 422:
-                this.actions.error(data.error, ServerErrorCodes.CommunicationError)
+                this.actions.error(data.error, ServerErrorCodes.ApplicationError)
                 break;
             case 401:
             case 403:
                 this.actions.error(data.error, ServerErrorCodes.AuthorizationError)
                 break;
         }
-        
+
         return this.$q.reject(rejection);
     };
 
-    @Inject(ServerActions.name, '$log', '$q')
-    public static factory(actions: ServerActions, $log: ng.ILogService, $q: ng.IQService) {
+    @Inject()
+    public static factory(
+        actions: ServerActions,
+        @Inject('$log') $log: ng.ILogService,
+        @Inject('$q') $q: ng.IQService) {
+
         return new HttpInterceptor(actions, $log, $q);
     }
 

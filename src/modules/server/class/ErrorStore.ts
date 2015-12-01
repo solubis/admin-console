@@ -4,23 +4,19 @@ import {Utils} from '../../common/class/Utils';
 import {EventEmitter} from 'events';
 import {ServerActions, ServerErrorCodes, ServerActionTypes} from './ServerActions';
 
-@Service({
-    name: 'ErrorStore'
-})
-@Inject('$log', Dispatcher.name, Utils.name)
-export class ErrorStore extends EventEmitter {
+@Service()
+class ErrorStore extends EventEmitter {
 
-	static  name: string = 'ErrorStore';
 	private data: any[] = [];
 
-    constructor(private $log, private dispatcher, private utils) {
+    constructor( @Inject('$log') private $log, private dispatcher: Dispatcher, private utils: Utils) {
         super();
     }
 
 	emitChange(error?) {
 		this.emit('CHANGE', error);
 	}
-	
+
 	addChangeListener(callback: Function): EventEmitter {
 		return this.addListener('CHANGE', callback);
 	}
@@ -38,3 +34,5 @@ export class ErrorStore extends EventEmitter {
 		return true;
 	})
 }
+
+export {ErrorStore}

@@ -9,7 +9,6 @@ import {CategoryActions} from './CategoryActions';
     selector: 'category-list',
     templateUrl: 'modules/category/html/category-list.html'
 })
-@Inject('$log', Utils.name, CategoryStore.name, CategoryDialog.name, CategoryActions.name)
 class CategoryListComponent {
 
     data: any = [];
@@ -50,7 +49,7 @@ class CategoryListComponent {
     };
 
     constructor(
-        private log: ng.ILogService,
+        @Inject('$log') private log: ng.ILogService,
         private utils: Utils,
         private store: CategoryStore,
         private dialog: CategoryDialog,

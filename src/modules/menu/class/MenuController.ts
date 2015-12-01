@@ -1,7 +1,6 @@
 import {Component, Inject} from 'angular-components';
 import {sections} from './Menu';
 
-@Inject('$element', '$attrs', '$scope', '$mdSidenav', '$http')
 class MenuController {
 
     /* tslint:disable */
@@ -13,13 +12,7 @@ class MenuController {
 
     private toggleDisabled;
 
-    constructor(
-        private $element: ng.IAugmentedJQuery,
-        private $attrs: ng.IAttributes,
-        private $scope: ng.IScope,
-        private $mdSidenav: ng.material.ISidenavService) {
-
-    }
+    constructor(private $mdSidenav: ng.material.ISidenavService) { }
 
     toggleLeftSidebar() {
         this.toggleDisabled = true;
@@ -31,8 +24,11 @@ class MenuController {
     selector: 'sidebar',
     templateUrl: 'modules/menu/html/sidebar.html'
 })
-@Inject('$element', '$attrs', '$scope', '$mdSidenav', '$http')
 class Sidebar extends MenuController {
+    constructor(
+        @Inject('$mdSidenav') sidenav) {
+        super(sidenav);
+    }
 }
 
 @Component({
@@ -40,6 +36,10 @@ class Sidebar extends MenuController {
     templateUrl: 'modules/menu/html/topbar.html'
 })
 class TopBar extends MenuController {
+    constructor(
+        @Inject('$mdSidenav') sidenav) {
+        super(sidenav);
+    }
 }
 
 export {MenuController, Sidebar, TopBar};
