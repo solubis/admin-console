@@ -29,7 +29,7 @@ var jspmSass = function () {
         let importParts = value.split('/');
         let importPackage = importParts.splice(0, 1);
         let importFile = importParts.join('/');
-        let jspmDependency = system.map[importPackage];
+        let jspmDependency = System.map[importPackage];
         let importPath = path.join(prefix, __JSPMDIR, jspmDependency.replace(':', '/'), importFile);
         let importStatement = '@import "' + importPath + '";\n';
 

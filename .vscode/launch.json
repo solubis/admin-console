@@ -1,25 +1,33 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Launch index.html",
-			"type": "chrome",
-			"request": "launch",
-			"file": "index.html"
-		},
-		{
-			"name": "Launch localhost with sourcemaps",
-			"type": "chrome",
-			"request": "launch",
-			"url": "http://localhost:3000/src/index.html",
-			"sourceMaps": true,
-			"outDir": "out"
-		},
-		{
-			"name": "Attach",
-			"type": "chrome",
-			"request": "attach",
-			"port": 9222
-		}
-	]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch index.html",
+            "type": "chrome",
+            "request": "launch",
+            "file": "index.html"
+        },
+        {
+            "name": "Launch jspm SASS",
+            "type": "node",
+            "stopOnEntry": true,
+            "cwd": ".",
+            "args": ["sass"],
+            "program": "/Users/yoorek/.node/bin/gulp"
+        },
+        {
+            "name": "Launch localhost with sourcemaps",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000/src/index.html",
+            "sourceMaps": true,
+            "outDir": "out"
+        },
+        {
+            "name": "Attach",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222
+        }
+    ]
 }

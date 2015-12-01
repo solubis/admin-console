@@ -25,6 +25,7 @@ const config = {
         basePath: `${root}/src/`,
         baseFiles: [`${root}/src/*.{ico,png,txt,md}`, `${root}/src/!(index).html`],
         watchFiles: `${root}/src/**/*.{css,ts,html,jpg,png}`,
+        typescripts: [`${root}/src/**/!(*.spec).ts`,`${root}/typings/tsd.d.ts`, `!${root}/src/modules/server/class/ServerAPI.ts`],
         images: `${root}/src/images/**/*`,
         fonts: `${root}/src/fonts/**/*`,
         data: `${root}/src/data/**/*`,

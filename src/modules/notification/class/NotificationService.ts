@@ -1,4 +1,4 @@
-import {Service, Inject, RestService} from 'angular-components';
+import {Service} from 'angular-components';
 
 @Service()
 class NotificationService {

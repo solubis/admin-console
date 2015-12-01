@@ -8,6 +8,6 @@
 /// <reference path="es6-shim/es6-shim.d.ts" />
 /// <reference path="flux/flux.d.ts" />
 
-declare module 'objectid'{
-	export default function ObjectId() : void;
+declare module 'objectid' {
+    export default function ObjectId(): void;
 }

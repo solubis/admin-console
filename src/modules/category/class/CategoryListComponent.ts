@@ -74,7 +74,7 @@ class CategoryListComponent {
         } else {
             this.selected.forEach(item => {
                 this.actions.delete(item.id);
-            })
+            });
         }
     }
 

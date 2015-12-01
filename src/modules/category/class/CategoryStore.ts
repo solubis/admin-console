@@ -6,85 +6,83 @@ import {Dispatcher} from '../../common/class/Dispatcher';
 @Service()
 export class CategoryStore extends EventEmitter {
 
-	static name: string = 'CategoryStore';
+    dispatcherToken = this.dispatcher.register((payload) => {
+        let action = payload.action;
 
-	private data: any = [];
+        switch (action.actionType) {
+            case CategoryActionTypes.Create:
+                this.create(action.data);
+                this.emitChange(action.data.id);
+                break;
+            case CategoryActionTypes.Delete:
+                this.delete(action.id);
+                this.emitChange(action.id);
+                break;
+            case CategoryActionTypes.Init:
+                this.init(action.data);
+                this.emitChange();
+                break;
+            case CategoryActionTypes.Update:
+                this.update(action.data);
+                this.emitChange(action.data.id);
+                break;
+            case CategoryActionTypes.Truncate:
+                this.truncate();
+                this.emitChange();
+                break;
+        }
 
-	constructor(
-		@Inject('$log') private log: ng.ILogService,
-		private dispatcher: Dispatcher) {
+        return true;
+    });
 
-		super();
-	}
+    private data: any = [];
 
-	init(data) {
-		this.data = data;
-	}
+    constructor(
+        @Inject('$log') private log: ng.ILogService,
+        private dispatcher: Dispatcher) {
 
-	getAll() {
-		return this.data;
-	}
+        super();
+    }
 
-	getOne(id) {
-		return this.data.find(item => item.id === id);
-	}
-	
-	count(){
-		return this.data.length;
-	}
+    init(data) {
+        this.data = data;
+    }
 
-	truncate() {
-		this.data = [];
-	}
+    getAll() {
+        return this.data;
+    }
 
-	update(record:any = {}) {
-		let index = this.data.findIndex(item => item.id === record.id);
-		this.data[index] = record;
-	}
+    getOne(id) {
+        return this.data.find(item => item.id === id);
+    }
 
-	create(record) {
-		this.data.push(record);
-	}
+    count() {
+        return this.data.length;
+    }
 
-	delete(id) {
-		let index = this.data.findIndex(item => item.id === id);
-		this.data.splice(index, 1);
-	}
+    truncate() {
+        this.data = [];
+    }
 
-	emitChange(id?) {
-		this.emit('CHANGE', id);
-	}
+    update(record: any = {}) {
+        let index = this.data.findIndex(item => item.id === record.id);
+        this.data[index] = record;
+    }
 
-	addChangeListener(callback: Function): EventEmitter {
-		return this.addListener('CHANGE', callback);
-	}
+    create(record) {
+        this.data.push(record);
+    }
 
-	dispatcherToken = this.dispatcher.register((payload) => {
-		var action = payload.action;
+    delete(id) {
+        let index = this.data.findIndex(item => item.id === id);
+        this.data.splice(index, 1);
+    }
 
-		switch (action.actionType) {
-			case CategoryActionTypes.Create:
-				this.create(action.data);
-				this.emitChange(action.data.id);
-				break;
-			case CategoryActionTypes.Delete:
-				this.delete(action.id);
-				this.emitChange(action.id);
-				break;
-			case CategoryActionTypes.Init:
-				this.init(action.data);
-				this.emitChange();
-				break;
-			case CategoryActionTypes.Update:
-				this.update(action.data);
-				this.emitChange(action.data.id);
-				break;
-			case CategoryActionTypes.Truncate:
-				this.truncate();
-				this.emitChange();
-				break;
-		}
+    emitChange(id?) {
+        this.emit('CHANGE', id);
+    }
 
-		return true;
-	})
+    addChangeListener(callback: Function): EventEmitter {
+        return this.addListener('CHANGE', callback);
+    }
 }

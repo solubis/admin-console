@@ -161,7 +161,7 @@ gulp.task('html', ['htmlhint'], () => {
  * The 'TSLint' task.
  */
 gulp.task('tslint', () => {
-    return gulp.src(tsConfig.files)
+    return gulp.src(config.src.typescripts)
         .pipe($.plumber())
         .pipe($.tslint())
         .pipe($.tslint.report('prose', {
@@ -182,7 +182,7 @@ gulp.task('tsconfig', function () {
 gulp.task('typescript', ['tslint'], () => {
     let project = $.typescript.createProject(config.tsconfig);
 
-    let result = gulp.src(tsConfig.files)
+    let result = gulp.src(config.src.typescripts)
         .pipe($.typescript(project));
 
     return merge([

@@ -28,20 +28,7 @@ class CategoryDialogController {
 
     private item: any;
 
-    constructor(
-        @Inject('$log') private log: ng.ILogService,
-        @Inject('$mdDialog') private dialog: ng.material.IDialogService,
-        private store: CategoryStore,
-        private actions: CategoryActions,
-        private errors: ErrorStore,
-        private utils: Utils) {
-
-        store.addChangeListener(this.onChange);
-        errors.addChangeListener(this.onError);
-    }
-
-    onChange = (id) => {
-        let cid: string;
+    private onChange = (id) => {
         let record;
 
         if (id) {
@@ -52,8 +39,20 @@ class CategoryDialogController {
         }
     };
 
-    onError = (error) => {
+    private onError = (error) => {
         this.log.warn('Error From Dialog ========', error.message);
+    };
+
+    constructor(
+        @Inject('$log') private log: ng.ILogService,
+        @Inject('$mdDialog') private dialog: ng.material.IDialogService,
+        private store: CategoryStore,
+        private actions: CategoryActions,
+        private errors: ErrorStore,
+        private utils: Utils) {
+
+        store.addChangeListener(this.onChange);
+        errors.addChangeListener(this.onError);
     }
 
     close() {
@@ -67,5 +66,7 @@ class CategoryDialogController {
             this.actions.create(this.item);
         }
     }
+
+
 
 }

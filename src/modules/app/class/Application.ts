@@ -1,4 +1,4 @@
-import {Component, Inject, RestServiceProvider, ConfigServiceProvider, bootstrap} from 'angular-components';
+import {Component, Inject, bootstrap} from 'angular-components';
 import {HttpInterceptor} from '../../server/class/HttpInterceptor';
 import {ErrorStore} from '../../server/class/ErrorStore';
 import {Utils} from '../../common/class/Utils';
@@ -10,7 +10,7 @@ import {Utils} from '../../common/class/Utils';
 })
 class Application {
 
-    @Inject() 
+    @Inject()
     config(
         @Inject('$httpProvider') $httpProvider: ng.IHttpProvider,
         @Inject('$mdThemingProvider') $mdThemingProvider: ng.material.IThemingProvider) {
@@ -33,7 +33,7 @@ class Application {
 
         errorStore.addChangeListener((error) => {
             utils.toast(error.message);
-        })
+        });
     };
 
 }

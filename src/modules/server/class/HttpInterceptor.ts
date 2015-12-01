@@ -36,17 +36,17 @@ class HttpInterceptor {
             case 500:
             case 502:
             case 503:
-                this.actions.error(data.error, ServerErrorCodes.CriticalError)
+                this.actions.error(data.error, ServerErrorCodes.CriticalError);
                 break;
             case 400:
             case 404:
             case 405:
             case 422:
-                this.actions.error(data.error, ServerErrorCodes.ApplicationError)
+                this.actions.error(data.error, ServerErrorCodes.ApplicationError);
                 break;
             case 401:
             case 403:
-                this.actions.error(data.error, ServerErrorCodes.AuthorizationError)
+                this.actions.error(data.error, ServerErrorCodes.AuthorizationError);
                 break;
         }
 
