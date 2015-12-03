@@ -1,21 +1,17 @@
-import {Service} from 'angular-components';
+import {Service, Inject} from 'angular-components';
 import {Dispatcher as FluxDispatcher} from 'flux';
 
 @Service()
 export class Dispatcher extends FluxDispatcher<any> {
+    constructor(
+        @Inject('$log') private $log: ng.ILogService) {
 
-    handleViewAction(action) {
-        this.dispatch({
-            source: 'VIEW',
-            action: action
-        });
+        super();
     }
 
-    handleServerAction(action) {
-        this.dispatch({
-            source: 'SERVER',
-            action: action
-        });
-    }
+    dispatch(action: any): void {
+        super.dispatch(action);
 
+        this.$log.debug(`${action.actionType}`);
+    }
 }

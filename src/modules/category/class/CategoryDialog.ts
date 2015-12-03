@@ -28,19 +28,17 @@ class CategoryDialogController {
 
     private item: any;
 
-    private onChange = (id) => {
+    private onChange = (state: Immutable.Map<string, any>) => {
         let record;
 
-        if (id) {
-            record = this.store.getOne(id);
-            if (record.cid === this.item.cid) {
-                this.close();
-            }
+        record = this.store.getMine(this.item.cid);
+        if (record) {
+            this.close();
         }
     };
 
-    private onError = (error) => {
-        this.log.warn('Error From Dialog ========', error.message);
+    private onError = (state: Immutable.Map<string, any>) => {
+        this.log.warn('Error From Dialog ========', state.get('errors').last().message);
     };
 
     constructor(
@@ -57,6 +55,9 @@ class CategoryDialogController {
 
     close() {
         this.dialog.cancel();
+
+        this.store.removeChangeListener(this.onChange);
+        this.errors.removeChangeListener(this.onError);
     }
 
     save() {
@@ -66,7 +67,4 @@ class CategoryDialogController {
             this.actions.create(this.item);
         }
     }
-
-
-
 }

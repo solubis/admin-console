@@ -1,37 +1,22 @@
-import {Service, Inject} from 'angular-components';
+import {Service, Inject, Action} from 'angular-components';
+import {Store} from '../../common/class/Store';
 import {Dispatcher} from '../../common/class/Dispatcher';
-import {Utils} from '../../common/class/Utils';
-import {EventEmitter} from 'events';
 import {ServerActionTypes} from './ServerActions';
+import * as Immutable from 'immutable';
 
 @Service()
-class ErrorStore extends EventEmitter {
+class ErrorStore extends Store {
 
-    dispatcherToken = this.dispatcher.register((payload) => {
-        let action = payload.action;
+    constructor( @Inject('$log') private $log, dispatcher: Dispatcher) {
+        super(dispatcher);
 
-        switch (action.actionType) {
-            case ServerActionTypes.Error:
-                this.data.push(action.error);
-                this.emitChange(action.error);
-                break;
-        }
-
-        return true;
-    });
-
-    private data: any[] = [];
-
-    constructor( @Inject('$log') private $log, private dispatcher: Dispatcher, private utils: Utils) {
-        super();
+        this.setState('errors', Immutable.List());
     }
 
-    emitChange(error?) {
-        this.emit('CHANGE', error);
-    }
-
-    addChangeListener(callback: Function): EventEmitter {
-        return this.addListener('CHANGE', callback);
+    @Action(ServerActionTypes.Error)
+    onError(action) {
+        this.$log.warn(`Server Error from ErrorStore: ${action.error.message}`);
+        this.setState('errors', this.getState().get('errors').push(action.error));
     }
 
 }

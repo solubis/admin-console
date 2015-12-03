@@ -1,88 +1,65 @@
-import {Service, Inject} from 'angular-components';
-import {EventEmitter} from 'events';
-import {CategoryActionTypes} from './CategoryActions';
+import {Service, Inject, Action} from 'angular-components';
+import {CategoryActionTypes as Category} from './CategoryActions';
 import {Dispatcher} from '../../common/class/Dispatcher';
+import {Store, Immutable, EventEmitter} from '../../common/class/Store';
 
 @Service()
-export class CategoryStore extends EventEmitter {
-
-    dispatcherToken = this.dispatcher.register((payload) => {
-        let action = payload.action;
-
-        switch (action.actionType) {
-            case CategoryActionTypes.Create:
-                this.create(action.data);
-                this.emitChange(action.data.id);
-                break;
-            case CategoryActionTypes.Delete:
-                this.delete(action.id);
-                this.emitChange(action.id);
-                break;
-            case CategoryActionTypes.Init:
-                this.init(action.data);
-                this.emitChange();
-                break;
-            case CategoryActionTypes.Update:
-                this.update(action.data);
-                this.emitChange(action.data.id);
-                break;
-            case CategoryActionTypes.Truncate:
-                this.truncate();
-                this.emitChange();
-                break;
-        }
-
-        return true;
-    });
-
-    private data: any = [];
+class CategoryStore extends Store {
 
     constructor(
         @Inject('$log') private log: ng.ILogService,
-        private dispatcher: Dispatcher) {
+        dispatcher: Dispatcher) {
 
-        super();
+        super(dispatcher);
+
+        this.setState('categories', Immutable.List());
     }
 
-    init(data) {
-        this.data = data;
+    @Action(Category.Init)
+    init(action) {
+        this.setState('categories', Immutable.List(action.data));
     }
 
     getAll() {
-        return this.data;
+        return this.getState().get('categories').toJS();
     }
 
     getOne(id) {
-        return this.data.find(item => item.id === id);
+        return this.getState().get('categories').find(item => item.id === id);
+    }
+
+    getMine(cid) {
+        return this.getState().get('categories').find(item => item.cid === cid);
+    }
+
+    getLast() {
+        return this.getState().get('categories').last();
     }
 
     count() {
-        return this.data.length;
+        return this.getState().get('categories').count();
     }
 
+    @Action(Category.Truncate)
     truncate() {
-        this.data = [];
+        this.setState('categories', Immutable.List());
     }
 
-    update(record: any = {}) {
-        let index = this.data.findIndex(item => item.id === record.id);
-        this.data[index] = record;
+    @Action(Category.Update)
+    update(action) {
+        let record = this.getState().get('categories').find(item => item.id === action.data.id);
+        Object.assign(record, action.data);
     }
 
-    create(record) {
-        this.data.push(record);
+    @Action(Category.Create)
+    create(action) {
+        this.setState('categories', this.getState().get('categories').push(action.data));
     }
 
-    delete(id) {
-        let index = this.data.findIndex(item => item.id === id);
-        this.data.splice(index, 1);
-    }
-
-    emitChange(id?) {
-        this.emit('CHANGE', id);
-    }
-
-    addChangeListener(callback: Function): EventEmitter {
-        return this.addListener('CHANGE', callback);
+    @Action(Category.Delete)
+    delete(action) {
     }
 }
+
+
+export {CategoryStore, EventEmitter, Immutable}

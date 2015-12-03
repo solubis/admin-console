@@ -2,7 +2,7 @@ import {Inject, Service} from 'angular-components';
 import {Dispatcher} from '../../common/class/Dispatcher';
 
 export enum CategoryActionTypes {
-    Init = 0,
+    Init = 1,
     Create,
     Update,
     Delete,
@@ -21,7 +21,7 @@ export class CategoryActions {
 
     init() {
         this.Category.find().$promise.then((result) => {
-            this.dispatcher.handleServerAction({
+            this.dispatcher.dispatch({
                 actionType: CategoryActionTypes.Init,
                 data: result
             });
@@ -31,7 +31,7 @@ export class CategoryActions {
     update(data): void {
         this.Category.upsert(data).$promise
             .then(result => {
-                this.dispatcher.handleServerAction({
+                this.dispatcher.dispatch({
                     actionType: CategoryActionTypes.Update,
                     data: result
                 });
@@ -41,7 +41,7 @@ export class CategoryActions {
     create(data): void {
         this.Category.create(data).$promise
             .then((result) => {
-                this.dispatcher.handleServerAction({
+                this.dispatcher.dispatch({
                     actionType: CategoryActionTypes.Create,
                     data: result
                 });
@@ -50,7 +50,7 @@ export class CategoryActions {
 
     delete(id): void {
         this.Category.deleteById(id).$promise.then((result) => {
-            this.dispatcher.handleServerAction({
+            this.dispatcher.dispatch({
                 actionType: CategoryActionTypes.Delete,
                 id: id
             });
@@ -59,7 +59,7 @@ export class CategoryActions {
 
     truncate(): void {
         this.Category.truncate().$promise.then((result) => {
-            this.dispatcher.handleServerAction({
+            this.dispatcher.dispatch({
                 actionType: CategoryActionTypes.Truncate
             });
         });

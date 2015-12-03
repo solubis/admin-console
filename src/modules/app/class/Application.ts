@@ -31,8 +31,8 @@ class Application {
 
         log.debug(`Angular ${angular.version.full}`);
 
-        errorStore.addChangeListener((error) => {
-            utils.toast(error.message);
+        errorStore.addChangeListener((state) => {
+            utils.toast(state.get('errors').last().message);
         });
     };
 

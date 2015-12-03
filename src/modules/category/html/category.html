@@ -1,8 +1,11 @@
 <md-content flex layout-column layout-fill md-scroll-y>
 
     <md-toolbar class="md-menu-toolbar" layout="row">
-        <md-button class="md-button md-raised">
-            Add Category
+        <md-button class="md-button md-raised" ng-click="ctrl.undo()">
+            Undo
+        </md-button>
+        <md-button class="md-button md-raised" ng-click="ctrl.redo()">
+            Redo
         </md-button>
     </md-toolbar>
 

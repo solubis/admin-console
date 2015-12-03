@@ -20,7 +20,7 @@ export class ServerActions {
     }
 
     error(error: any, code: ServerErrorCodes): void {
-        this.dispatcher.handleServerAction({
+        this.dispatcher.dispatch({
             actionType: ServerActionTypes.Error,
             code: code,
             error: error
