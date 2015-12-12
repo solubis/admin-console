@@ -9,7 +9,8 @@
 /// <reference path="flux/flux.d.ts" />
 /// <reference path="../node_modules/angular-components/dist/index.d.ts" />
 /// <reference path="../node_modules/immutable/dist/immutable.d.ts" />
+/// <reference path="mocha/mocha.d.ts" />
 
-declare module 'objectid' {
-    export default function ObjectId(): void;
+declare module 'bson' {
+    export function ObjectID();
 }

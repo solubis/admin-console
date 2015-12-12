@@ -1,5 +1,5 @@
 import {Service, Inject} from 'angular-components';
-import ObjectId from 'objectid';
+import * as bson from 'bson';
 
 @Service()
 class Utils {
@@ -26,11 +26,11 @@ class Utils {
     }
 
     id() {
-        return ObjectId();
+        return bson.ObjectID();
     }
 
     getClone(object) {
-        return Object.assign({ cid: this.id() }, object);
+        return Object.assign({}, object);
     }
 }
 

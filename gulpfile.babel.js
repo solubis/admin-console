@@ -93,8 +93,7 @@ gulp.task('sass', () => {
  * The 'clean' task delete 'dist' directory.
  */
 gulp.task('clean', (done) => {
-    const files = [].concat(config.dist.basePath);
-    return del(files, done);
+    return del(config.dist.basePath, done);
 });
 
 /**

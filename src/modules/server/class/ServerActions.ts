@@ -22,8 +22,10 @@ export class ServerActions {
     error(error: any, code: ServerErrorCodes): void {
         this.dispatcher.dispatch({
             actionType: ServerActionTypes.Error,
-            code: code,
-            error: error
+            data: {
+                code: code,
+                error: error
+            }
         });
     }
 }

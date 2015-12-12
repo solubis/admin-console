@@ -1,61 +1,71 @@
 import {Dispatcher} from '../../common/class/Dispatcher';
 import {EventEmitter} from 'events';
-import * as Immutable from 'immutable';
+import {Map} from 'immutable';
+
+const CHANGE_EVENT = 'CHANGE';
 
 class Store extends EventEmitter {
 
-    static state: Immutable.Map<string, any> = Immutable.Map({});
-    static history: Immutable.Map<string, any>[] = [Store.state];
+    static state: Map<string, any> = Map({});
+    static history: Map<string, any>[] = [Store.state];
     static historyIndex = 0;
-
-    dispatcherToken = this.dispatcher.register((action) => {
-
-        let handler = this.handlers[action.actionType];
-
-        if (handler) {
-            handler.bind(this)(action);
-
-            this.emitChange(Store.state);
-        }
-
-        return true;
-    });
 
     private handlers: any = {};
     private handlersMap: any;
+    private name: string;
 
     constructor(private dispatcher: Dispatcher) {
         super();
+
+        this.dispatcher.register((action) => {
+
+            let handler = this.handlers[action.actionType];
+
+            if (handler) {
+                let changedState = handler.bind(this)(action.data, this.getState());
+
+                if (changedState) {
+                    this.setState(changedState);
+                }
+
+                this.emitChange();
+            }
+
+            return true;
+        });
 
         for (let a in this.handlersMap) {
             this.registerHandler(Number(a), this.handlersMap[a].bind(this));
         }
     }
 
-    getState(): Immutable.Map<string, any> {
-        return Store.state;
+    getState(): any {
+        return Store.state.get(this.name);
     }
 
-    setState(name: string, object: any): Immutable.Map<string, any> {
-        Store.state = Store.state.set(name, object);
+    setState(object: any): any {
+        Store.state = Store.state.set(this.name, object);
 
         Store.history.push(Store.state);
 
         Store.historyIndex++;
 
-        console.log(Store.history);
-
-        return Store.state;
+        return Store.state.get(this.name);
     }
 
     undo() {
-        Store.historyIndex--;
-        this.restoreHistoryState();
+        if (Store.historyIndex > 0) {
+            Store.historyIndex--;
+            this.restoreHistoryState();
+        }
     }
 
     redo() {
-        Store.historyIndex++;
-        this.restoreHistoryState();
+        if (Store.historyIndex < Store.history.length - 1) {
+            Store.historyIndex++;
+            this.restoreHistoryState();
+        }
+
     }
 
     restoreHistoryState() {
@@ -63,8 +73,8 @@ class Store extends EventEmitter {
         this.emitChange();
     }
 
-    emitChange(data?) {
-        this.emit('CHANGE', data);
+    emitChange() {
+        this.emit(CHANGE_EVENT);
     }
 
     registerHandler(actionType: number, handler: Function) {
@@ -72,17 +82,17 @@ class Store extends EventEmitter {
     }
 
     addChangeListener(callback: Function): Function {
-        this.addListener('CHANGE', callback);
+        this.addListener(CHANGE_EVENT, callback);
 
         return () => {
-            this.removeListener('CHANGE', callback);
+            this.removeListener(CHANGE_EVENT, callback);
         };
     }
 
     removeChangeListener(callback: Function): void {
-        this.removeListener('CHANGE', callback);
+        this.removeListener(CHANGE_EVENT, callback);
     }
 
 }
 
-export {Store, EventEmitter, Immutable}
+export {Store, EventEmitter, Dispatcher}

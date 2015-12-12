@@ -1,10 +1,10 @@
-import {Inject, Service} from 'angular-components';
+import {Service} from 'angular-components';
 import {Dispatcher} from '../../common/class/Dispatcher';
+import {CategoryService} from './CategoryService';
 
 export enum CategoryActionTypes {
     Init = 1,
-    Create,
-    Update,
+    Save,
     Delete,
     Truncate
 }
@@ -14,54 +14,59 @@ export class CategoryActions {
 
     constructor(
         private dispatcher: Dispatcher,
-        @Inject('Category') private Category) {
+        private service: CategoryService) {
 
         this.init();
     }
 
-    init() {
-        this.Category.find().$promise.then((result) => {
-            this.dispatcher.dispatch({
-                actionType: CategoryActionTypes.Init,
-                data: result
-            });
-        });
-    }
-
-    update(data): void {
-        this.Category.upsert(data).$promise
-            .then(result => {
-                this.dispatcher.dispatch({
-                    actionType: CategoryActionTypes.Update,
-                    data: result
-                });
-            });
-    }
-
-    create(data): void {
-        this.Category.create(data).$promise
+    init(): Promise<void> {
+        return this.service.find()
             .then((result) => {
                 this.dispatcher.dispatch({
-                    actionType: CategoryActionTypes.Create,
+                    actionType: CategoryActionTypes.Init,
                     data: result
                 });
             });
     }
 
-    delete(id): void {
-        this.Category.deleteById(id).$promise.then((result) => {
-            this.dispatcher.dispatch({
-                actionType: CategoryActionTypes.Delete,
-                id: id
-            });
-        });
+    save(data): Promise<void> {
+        if (data.id) {
+            return this.service.upsert(data)
+                .then(result => {
+                    this.dispatcher.dispatch({
+                        actionType: CategoryActionTypes.Save,
+                        data: result
+                    });
+                });
+        } else {
+            return this.service.create(data)
+                .then((result) => {
+                    this.dispatcher.dispatch({
+                        actionType: CategoryActionTypes.Save,
+                        data: result
+                    });
+                });
+        }
     }
 
-    truncate(): void {
-        this.Category.truncate().$promise.then((result) => {
-            this.dispatcher.dispatch({
-                actionType: CategoryActionTypes.Truncate
+    delete(id): Promise<void> {
+        return this.service.remove(id)
+            .then((result) => {
+                this.dispatcher.dispatch({
+                    actionType: CategoryActionTypes.Delete,
+                    data: {
+                        id: id
+                    }
+                });
             });
-        });
+    }
+
+    truncate(): Promise<void> {
+        return this.service.truncate()
+            .then((result) => {
+                this.dispatcher.dispatch({
+                    actionType: CategoryActionTypes.Truncate
+                });
+            });
     }
 }

@@ -12,29 +12,10 @@ import {CategoryActions} from './CategoryActions';
 class CategoryListComponent {
 
     data: any = [];
-
-    columns: any[] = [
-        {
-            name: 'Name',
-            orderBy: 'name'
-        }, {
-            name: 'Description'
-        }];
-
-    filter: any = {
-        options: {
-            debounce: 500
-        }
-    };
-
+    columns: any[] = [{ name: 'Name', orderBy: 'name' }, { name: 'Description' }];
+    filter: any = { options: { debounce: 500 } };
     selected: Category[] = [];
-
-    query: any = {
-        filter: '',
-        order: 'name',
-        limit: 5,
-        page: 1
-    };
+    query: any = { filter: '', order: 'name', limit: 5, page: 1 };
 
     onOrderChange = (order) => {
         this.utils.toast('Yeaaah! ' + order);
@@ -49,7 +30,7 @@ class CategoryListComponent {
     };
 
     constructor(
-        @Inject('$log') private log: ng.ILogService,
+        @Inject('$scope') private $scope: ng.IScope,
         private utils: Utils,
         private store: CategoryStore,
         private dialog: CategoryDialog,

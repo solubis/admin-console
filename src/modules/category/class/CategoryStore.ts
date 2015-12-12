@@ -1,65 +1,66 @@
-import {Service, Inject, Action} from 'angular-components';
+import {Service, ActionHandler} from 'angular-components';
 import {CategoryActionTypes as Category} from './CategoryActions';
-import {Dispatcher} from '../../common/class/Dispatcher';
-import {Store, Immutable, EventEmitter} from '../../common/class/Store';
+import {Store, Dispatcher} from '../../common/class/Store';
+import {List} from 'immutable';
 
 @Service()
 class CategoryStore extends Store {
 
-    constructor(
-        @Inject('$log') private log: ng.ILogService,
-        dispatcher: Dispatcher) {
-
+    constructor(dispatcher: Dispatcher) {
         super(dispatcher);
 
-        this.setState('categories', Immutable.List());
+        this.setState(List());
     }
 
-    @Action(Category.Init)
-    init(action) {
-        this.setState('categories', Immutable.List(action.data));
-    }
+    /**
+     * Public getters
+     */
 
     getAll() {
-        return this.getState().get('categories').toJS();
+        return this.getState().toJS();
     }
 
-    getOne(id) {
-        return this.getState().get('categories').find(item => item.id === id);
-    }
-
-    getMine(cid) {
-        return this.getState().get('categories').find(item => item.cid === cid);
-    }
-
-    getLast() {
-        return this.getState().get('categories').last();
+    getOne(id: string) {
+        return this.getState().find(item => item.id === id);
     }
 
     count() {
-        return this.getState().get('categories').count();
+        return this.getState().count();
     }
 
-    @Action(Category.Truncate)
+    /**
+     * Action handlers
+     */
+
+    @ActionHandler(Category.Init)
+    init(data: any, state: List<any>) {
+        this.setState(List(data));
+    }
+
+    @ActionHandler(Category.Truncate)
     truncate() {
-        this.setState('categories', Immutable.List());
+        return List();
     }
 
-    @Action(Category.Update)
-    update(action) {
-        let record = this.getState().get('categories').find(item => item.id === action.data.id);
-        Object.assign(record, action.data);
+    @ActionHandler(Category.Save)
+    save(data: any, state: List<any>) {
+        let record = this.getOne(data.id);
+
+        if (record) {
+            Object.assign(record, data); // todo: non-immutable
+            return state;
+        } else {
+            return state.push(data);
+        }
     }
 
-    @Action(Category.Create)
-    create(action) {
-        this.setState('categories', this.getState().get('categories').push(action.data));
-    }
+    @ActionHandler(Category.Delete)
+    delete(data: any, state: List<any>) {
+        let index: number = state.findIndex(item => item.id === data.id);
 
-    @Action(Category.Delete)
-    delete(action) {
+        return state.delete(index);
     }
 }
 
 
-export {CategoryStore, EventEmitter, Immutable}
+export {CategoryStore}

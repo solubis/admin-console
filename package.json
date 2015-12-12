@@ -7,9 +7,26 @@
   },
   "license": "Unlicense",
   "main": "server/server.js",
+  "scripts": {
+    "test": "eslint ./dist/**/*.js",
+    "start": "tsc;node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 3000 --hot --inline",
+    "postinstall": ""
+  },
   "dependencies": {
-    "angular-components": "git+https://github.com/solubis/angular-components",
-    "immutable": "^3.7.5"
+    "angular": "*",
+    "angular-animate": "*",
+    "angular-aria": "*",
+    "angular-datatable": "git+https://github.com/solubis/angular-datatable",
+    "angular-material": "git+https://github.com/angular/bower-material",
+    "angular-resource": "*",
+    "angular-ui-router": "*",
+    "animate.css": "*",
+    "events": "*",
+    "flux": "*",
+    "immutable": "*",
+    "bson": "*",
+    "reflect-metadata": "*",
+    "angular-components": "git+https://github.com/solubis/angular-components"
   },
   "devDependencies": {
     "babel-core": "^5.8.25",
@@ -63,13 +80,10 @@
     "systemjs": "*",
     "systemjs-builder": "*",
     "tsd": "*",
-    "typescript": "^1.6.2"
-  },
-  "scripts": {
-    "test": "eslint ./dist/**/*.js",
-    "prestart": "npm update",
-    "start": "gulp server",
-    "postinstall": "jspm install; tsd install"
+    "typescript": "^1.6.2",
+    "ts-loader": "^0.7.2",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   },
   "jspm": {
     "directories": {
@@ -82,14 +96,14 @@
       "angular-aria": "github:angular/bower-angular-aria@^1.4.7",
       "angular-components": "github:solubis/angular-components@master",
       "angular-datatable": "github:solubis/angular-datatable@master",
-      "angular-material": "github:angular/bower-material@1.0.0-rc5",
+      "angular-material": "github:angular/bower-material@1.0.0-rc7",
       "angular-resource": "github:angular/bower-angular-resource@^1.4.7",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
       "animate.css": "github:daneden/animate.css@^3.4.0",
+      "bson": "npm:bson@^0.4.20",
       "events": "github:jspm/nodelibs-events@^0.1.1",
       "flux": "npm:flux@^2.1.1",
       "immutable": "npm:immutable@^3.7.5",
-      "objectid": "npm:objectid@^1.0",
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
       "scss": "github:theefer/plugin-sass@master"
     },
