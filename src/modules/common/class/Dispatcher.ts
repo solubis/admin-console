@@ -12,6 +12,6 @@ export class Dispatcher extends FluxDispatcher<any> {
     dispatch(action: any): void {
         super.dispatch(action);
 
-        this.$log.debug(`${action.actionType}`);
+        this.$log.debug(`Action ${action.actionType}`);
     }
 }

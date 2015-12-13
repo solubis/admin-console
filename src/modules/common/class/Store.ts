@@ -39,6 +39,24 @@ class Store extends EventEmitter {
         }
     }
 
+    /**
+    * Public getters
+    */
+
+    getAll() {
+        return this.getState().toJS();
+    }
+
+    getById(id: string) {
+        let record = this.getState().find(item => item.get('id') === id);
+
+        return record ? record.toJS() : undefined;
+    }
+
+    count() {
+        return this.getState().count();
+    }
+
     getState(): any {
         return Store.state.get(this.name);
     }
