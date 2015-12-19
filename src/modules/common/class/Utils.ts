@@ -28,10 +28,6 @@ class Utils {
     id() {
         return bson.ObjectID();
     }
-
-    getClone(object) {
-        return Object.assign({}, object);
-    }
 }
 
 export {Utils};

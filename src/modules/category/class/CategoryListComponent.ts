@@ -1,17 +1,19 @@
-import {Component, Inject} from 'angular-components';
-import {Utils} from '../../common/index';
+import {Component, Inject, StoreListener} from 'angular-components';
+import {Utils, View} from '../../common/index';
 import {Category} from './CategoryComponent';
 import {CategoryDialog} from './CategoryDialog';
 import {CategoryStore} from './CategoryStore';
+import {ErrorStore} from '../../server/class/ErrorStore';
 import {CategoryActions} from './CategoryActions';
 
 @Component({
     selector: 'category-list',
     templateUrl: 'modules/category/html/category-list.html'
 })
-class CategoryListComponent {
+class CategoryListComponent extends View {
 
     data: any = [];
+    count: number;
     columns: any[] = [{ name: 'Name', orderBy: 'name' }, { name: 'Description' }];
     filter: any = { options: { debounce: 500 } };
     selected: Category[] = [];
@@ -25,24 +27,34 @@ class CategoryListComponent {
         this.utils.toast('Page! ' + page);
     };
 
-    onChange = () => {
-        this.data = this.store.getAll();
-    };
-
     constructor(
-        @Inject('$scope') private $scope: ng.IScope,
+        @Inject('$element') element,
+
         private utils: Utils,
-        private store: CategoryStore,
         private dialog: CategoryDialog,
         private actions: CategoryActions) {
 
-        this.store.addChangeListener(this.onChange);
+        super(element);
+    }
+
+    @StoreListener()
+    onError(store: ErrorStore) {
+        console.log('Store Change', store.name);
+        console.warn(store.state.last().message);
+    };
+
+    @StoreListener()
+    onCategoryStoreChange(store: CategoryStore) {
+        console.log('Store Change', store.name);
+
+        this.data = store.getAll();
+        this.count = store.count();
     }
 
     edit(item) {
         let options: ng.material.IDialogOptions = {
             locals: {
-                item: this.utils.getClone(item)
+                item: item
             }
         };
 
@@ -50,7 +62,7 @@ class CategoryListComponent {
     }
 
     delete() {
-        if (this.store.count() === this.selected.length) {
+        if (this.count === this.selected.length) {
             this.actions.truncate();
         } else {
             this.selected.forEach(item => {

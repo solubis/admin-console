@@ -1,16 +1,16 @@
 import {Service} from 'angular-components';
 import {Dispatcher} from '../../common/class/Dispatcher';
 
-export enum ServerErrorCodes {
-    CriticalError = 500,
-    ApplicationError,
-    AuthorizationError
-}
+export var ServerErrorCodes = {
+    CriticalError: 'criticalError',
+    ApplicationError: 'criticalError',
+    AuthorizationError: 'authorizationError'
+};
 
-export enum ServerActionTypes {
-    Success = 100,
-    Error
-}
+export var ServerActionTypes = {
+    Success: 'ServerAction:success',
+    Error: 'ServerAction:error'
+};
 
 @Service()
 export class ServerActions {
@@ -19,12 +19,12 @@ export class ServerActions {
         private dispatcher: Dispatcher) {
     }
 
-    error(error: any, code: ServerErrorCodes): void {
+    error(error: any, code: any): void {
         this.dispatcher.dispatch({
             actionType: ServerActionTypes.Error,
             data: {
-                code: code,
-                error: error
+                code,
+                error
             }
         });
     }

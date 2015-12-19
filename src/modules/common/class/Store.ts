@@ -10,9 +10,10 @@ class Store extends EventEmitter {
     static history: Map<string, any>[] = [Store.state];
     static historyIndex = 0;
 
+    public name: string;
+
     private handlers: any = {};
     private handlersMap: any;
-    private name: string;
 
     constructor(private dispatcher: Dispatcher) {
         super();
@@ -22,10 +23,10 @@ class Store extends EventEmitter {
             let handler = this.handlers[action.actionType];
 
             if (handler) {
-                let changedState = handler.bind(this)(action.data, this.getState());
+                let changedState = handler.bind(this)(action.data, this.state);
 
                 if (changedState) {
-                    this.setState(changedState);
+                    this.state = changedState;
                 }
 
                 this.emitChange();
@@ -35,7 +36,7 @@ class Store extends EventEmitter {
         });
 
         for (let a in this.handlersMap) {
-            this.registerHandler(Number(a), this.handlersMap[a].bind(this));
+            this.registerHandler(a, this.handlersMap[a].bind(this));
         }
     }
 
@@ -44,31 +45,29 @@ class Store extends EventEmitter {
     */
 
     getAll() {
-        return this.getState().toJS();
+        return this.state.toJS();
     }
 
     getById(id: string) {
-        let record = this.getState().find(item => item.get('id') === id);
+        let record = this.state.find(item => item.get('id') === id);
 
         return record ? record.toJS() : undefined;
     }
 
     count() {
-        return this.getState().count();
+        return this.state.count();
     }
 
-    getState(): any {
+    get state(): any {
         return Store.state.get(this.name);
     }
 
-    setState(object: any): any {
+    set state(object: any) {
         Store.state = Store.state.set(this.name, object);
 
         Store.history.push(Store.state);
 
         Store.historyIndex++;
-
-        return Store.state.get(this.name);
     }
 
     undo() {
@@ -92,10 +91,10 @@ class Store extends EventEmitter {
     }
 
     emitChange() {
-        this.emit(CHANGE_EVENT);
+        this.emit(CHANGE_EVENT, this);
     }
 
-    registerHandler(actionType: number, handler: Function) {
+    registerHandler(actionType: string, handler: Function) {
         this.handlers[actionType] = handler;
     }
 

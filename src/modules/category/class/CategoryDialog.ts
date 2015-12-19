@@ -1,5 +1,5 @@
 import {Service, Inject} from 'angular-components';
-import {Utils} from '../../common/index';
+import {Utils} from '../../common/class/Utils';
 import {CategoryActions} from './CategoryActions';
 
 @Service()

@@ -11,13 +11,6 @@
         "experimentalDecorators": true,
         "outDir": "dist/scripts"
     },
-    "filesGlob": [
-        "src/**/*.ts",
-        "typings/tsd.d.ts",
-        "!src/modules/data/class/Server.ts",
-        "!dist/**",
-        "!node_modules/**"
-    ],
     "exclude": [
         "dist",
         "node_modules",

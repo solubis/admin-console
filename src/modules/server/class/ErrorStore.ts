@@ -1,7 +1,7 @@
 import {Service, ActionHandler} from 'angular-components';
 import {Store, Dispatcher} from '../../common/class/Store';
 import {ServerActionTypes} from './ServerActions';
-import {List} from 'immutable';
+import * as Immutable from 'immutable';
 
 @Service()
 class ErrorStore extends Store {
@@ -9,12 +9,12 @@ class ErrorStore extends Store {
     constructor(dispatcher: Dispatcher) {
         super(dispatcher);
 
-        this.setState(List());
+        this.state = Immutable.List();
     }
 
     @ActionHandler(ServerActionTypes.Error)
     onError(data) {
-        this.setState(this.getState().push(data.error));
+        return this.state.push(data.error);
     }
 
 }

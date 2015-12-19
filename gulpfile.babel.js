@@ -172,11 +172,6 @@ gulp.task('tslint', () => {
  * The 'Typescript' task.
  */
 
-gulp.task('tsconfig', function () {
-    return gulp.src(tsConfig.filesGlob)
-        .pipe($.tsconfigUpdate());
-});
-
 
 gulp.task('typescript', ['tslint'], () => {
     let project = $.typescript.createProject(config.tsconfig);

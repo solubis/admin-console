@@ -2,12 +2,13 @@ import {Component, Inject, Value, bootstrap} from 'angular-components';
 import {HttpInterceptor} from '../../server/class/HttpInterceptor';
 import {ErrorStore} from '../../server/class/ErrorStore';
 import {Utils} from '../../common/class/Utils';
+
 import config from '../../../config';
 
 @Component({
     selector: 'app',
     templateUrl: 'modules/app/html/app.html',
-    dependencies: ['ngResource', 'ngMaterial', 'md.data.table']
+    dependencies: ['ngMaterial', 'md.data.table']
 })
 class Application {
 
@@ -34,8 +35,8 @@ class Application {
 
         log.debug(`Angular ${angular.version.full}`);
 
-        errorStore.addChangeListener(() => {
-            utils.toast(errorStore.getState().last().message);
+        errorStore.addChangeListener((store) => {
+            utils.toast(store.state.last().message);
         });
     };
 

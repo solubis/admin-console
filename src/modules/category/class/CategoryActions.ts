@@ -1,72 +1,43 @@
-import {Service} from 'angular-components';
-import {Dispatcher} from '../../common/class/Dispatcher';
+import {Service, Inject} from 'angular-components';
+import {Actions} from '../../common/class/Actions';
 import {CategoryService} from './CategoryService';
 
-export enum CategoryActionTypes {
-    Init = 1,
-    Save,
-    Delete,
-    Truncate
-}
+export var CategoryActionCodes = {
+    init: 'CategoryActions:init',
+    save: 'CategoryActions:save',
+    delete: 'CategoryActions:delete',
+    truncate: 'CategoryActions:truncate'
+};
 
 @Service()
-export class CategoryActions {
+export class CategoryActions extends Actions {
 
     constructor(
-        private dispatcher: Dispatcher,
+        @Inject('$injector') injector,
         private service: CategoryService) {
+
+        super(injector);
 
         this.init();
     }
 
-    init(): Promise<void> {
-        return this.service.find()
-            .then((result) => {
-                this.dispatcher.dispatch({
-                    actionType: CategoryActionTypes.Init,
-                    data: result
-                });
-            });
+    init(): Promise<any> {
+        return this.service.find();
     }
 
-    save(data): Promise<void> {
-        if (data.id) {
-            return this.service.upsert(data)
-                .then(result => {
-                    this.dispatcher.dispatch({
-                        actionType: CategoryActionTypes.Save,
-                        data: result
-                    });
-                });
+    save(data): Promise<any> {
+        if (data && data.id) {
+            return this.service.upsert(data);
         } else {
-            return this.service.create(data)
-                .then((result) => {
-                    this.dispatcher.dispatch({
-                        actionType: CategoryActionTypes.Save,
-                        data: result
-                    });
-                });
+            return this.service.create(data);
         }
     }
 
-    delete(id): Promise<void> {
-        return this.service.remove(id)
-            .then((result) => {
-                this.dispatcher.dispatch({
-                    actionType: CategoryActionTypes.Delete,
-                    data: {
-                        id: id
-                    }
-                });
-            });
+    delete(id): Promise<any> {
+        return this.service.remove(id);
     }
 
-    truncate(): Promise<void> {
-        return this.service.truncate()
-            .then((result) => {
-                this.dispatcher.dispatch({
-                    actionType: CategoryActionTypes.Truncate
-                });
-            });
+    truncate(): Promise<any> {
+        return this.service.truncate();
     }
-}
+};

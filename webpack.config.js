@@ -1,6 +1,4 @@
-
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
     entry: [
@@ -20,11 +18,12 @@ module.exports = {
         extensions: ['', '.ts', '.js']
     },
     module: {
-        loaders: [
-            { test: /\.tsx?$/, loader: 'ts-loader' }
-        ]
+        loaders: [{
+            test: /\.tsx?$/,
+            loader: 'ts-loader'
+        }]
     },
     devServer: {
-        contentBase: "./src"
+        contentBase: './src'
     }
 };

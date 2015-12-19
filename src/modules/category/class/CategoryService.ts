@@ -2,7 +2,7 @@ import {Service, Inject} from 'angular-components';
 import {Record} from '../../server/class/Record';
 
 @Service()
-export class CategoryService {
+class CategoryService {
     private baseURL: string;
 
     constructor(
@@ -43,3 +43,4 @@ export class CategoryService {
     }
 }
 
+export {Record, CategoryService}
