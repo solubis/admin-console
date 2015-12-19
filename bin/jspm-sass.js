@@ -10,7 +10,7 @@ var system = require('systemjs'); // eslint-disable-line no-unused-vars
 
 const __JSPMDIR = pkg.jspm && pkg.jspm.directories && pkg.jspm.directories.packages || 'jspm_packages';
 
-var jspmSass = function () {
+module.exports = function generateSassDependencies() {
     let config = pkg['jspm-sass'];
     let output = config.output;
     let prefix = '';
@@ -38,5 +38,3 @@ var jspmSass = function () {
         console.log('adding: '.cyan + importPath.yellow);
     });
 };
-
-module.exports = jspmSass;

@@ -3,7 +3,7 @@ import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
 import del from 'del';
 import merge from 'merge2';
-import jspmSass from './bin/jspm-sass';
+import jspmSass from './bin/jspm-sass.js';
 import Builder from 'systemjs-builder';
 
 import config from './gulpfile.config.js';

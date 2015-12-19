@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-require('./jspm-sass')();
+var sass = require('./jspm-sass');
+sass();

@@ -12,8 +12,8 @@
             "type": "node",
             "stopOnEntry": true,
             "cwd": ".",
-            "args": ["sass"],
-            "program": "/Users/yoorek/.node/bin/gulp"
+            "args": [],
+            "program": "./bin/jspm-sass.sh"
         },
         {
             "name": "Launch localhost with sourcemaps",
