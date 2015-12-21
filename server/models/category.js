@@ -17,7 +17,6 @@ module.exports = function (Category) {
         Category.findById(id, function (err, instance) {
             var response = 'Description is ' + instance.description;
             cb(null, response);
-            console.log(response);
         });
     };
     Category.remoteMethod('getDescription', {

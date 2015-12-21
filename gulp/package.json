@@ -1,0 +1,123 @@
+{
+  "name": "angular-console",
+  "version": "0.0.1",
+  "description": "Admin Console",
+  "repository": {
+    "url": "https://github.com/solubis/angular-console"
+  },
+  "license": "Unlicense",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "eslint ./dist/**/*.js",
+    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "postinstall": ""
+  },
+  "dependencies": {
+    "angular": "^1.4.8",
+    "angular-animate": "^1.4.8",
+    "angular-aria": "^1.4.8",
+    "angular-material": "^1.0.1",
+    "angular-resource": "^1.4.8",
+    "angular-ui-router": "^0.2.15",
+    "animate.css": "^3.4.0",
+    "events": "^1.1.0",
+    "flux": "^2.1.1",
+    "immutable": "^3.7.6",
+    "bson": "^0.4.20",
+    "reflect-metadata": "^0.1.2",
+    "angular-datatable": "git+https://github.com/solubis/angular-datatable",
+    "angular-components": "git+https://github.com/solubis/angular-components"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "browser-sync": "*",
+    "chai": "^3.4.0",
+    "colors": "^1.1.2",
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "del": "^2.0.2",
+    "eslint": "*",
+    "gulp": "*",
+    "gulp-changed": "^1.3.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-htmlhint": "^0.3.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-minify-html": "^1.0.4",
+    "gulp-mocha": "^2.1.3",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-ng-html2js": "^0.2.0",
+    "gulp-nodemon": "^2.0.4",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "*",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-tsconfig-files": "^0.1.2",
+    "gulp-tsconfig-update": "^1.1.1",
+    "gulp-tslint": "^3.3.1",
+    "gulp-typescript": "*",
+    "gulp-uglify": "^1.4.1",
+    "gulp-usemin": "^0.3.14",
+    "gulp-util": "^3.0.6",
+    "jspm": "^0.16.13",
+    "loopback": "^2.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^2.1.0",
+    "loopback-connector-mongodb": "^1.13.0",
+    "loopback-datasource-juggler": "^2.39.0",
+    "loopback-sdk-angular": "^1.5.0",
+    "merge2": "^0.3.6",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.4",
+    "serve-favicon": "^2.0.1",
+    "socket.io": "^1.3.7",
+    "socketio-auth": "0.0.4",
+    "supertest": "^1.1.0",
+    "supertest-as-promised": "^2.0.2",
+    "system-npm": "^0.3.6",
+    "systemjs": "*",
+    "systemjs-builder": "*",
+    "tsd": "*",
+    "typescript": "^1.6.2",
+    "ts-loader": "^0.7.2",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  },
+  "jspm": {
+    "directories": {
+      "packages": "lib"
+    },
+    "configFile": "system.config.js",
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.8",
+      "angular-animate": "github:angular/bower-angular-animate@^1.4.8",
+      "angular-aria": "github:angular/bower-angular-aria@^1.4.8",
+      "angular-components": "github:solubis/angular-components@master",
+      "angular-datatable": "github:solubis/angular-datatable@master",
+      "angular-material": "github:angular/bower-material@^1.0.1",
+      "angular-resource": "github:angular/bower-angular-resource@^1.4.8",
+      "angular-ui-router": "npm:angular-ui-router@^0.2.15",
+      "animate.css": "github:daneden/animate.css@^3.4.0",
+      "bson": "npm:bson@^0.4.20",
+      "events": "github:jspm/nodelibs-events@^0.1.1",
+      "flux": "npm:flux@^2.1.1",
+      "immutable": "npm:immutable@^3.7.5",
+      "reflect-metadata": "npm:reflect-metadata@^0.1.2",
+      "scss": "github:theefer/plugin-sass@master",
+      "split.js": "npm:split.js@^1.0.6"
+    },
+    "devDependencies": {
+      "clean-css": "npm:clean-css@^3.4.6",
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  },
+  "jspm-sass": {
+    "output": "src/styles/imports.scss",
+    "dependencies": [
+      "angular-material/angular-material.scss",
+      "angular-datatable/app/md-data-table/styles/md-data-table"
+    ]
+  }
+}

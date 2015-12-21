@@ -52,13 +52,6 @@ class CategoryListComponent extends View {
     }
 
     edit(item) {
-        let options: ng.material.IDialogOptions = {
-            locals: {
-                item: item
-            }
-        };
-
-        this.dialog.show(options);
     }
 
     delete() {

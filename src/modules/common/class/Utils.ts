@@ -6,23 +6,11 @@ class Utils {
 
     static name: string = 'Utils';
 
-    constructor(
-        @Inject('$mdToast') private $mdToast: ng.material.IToastService) {
+    constructor() {
     }
 
     toast(message: string, action?: string) {
-        let config: ng.material.ISimpleToastPreset = this.$mdToast.simple();
-
-        config
-            .hideDelay(1000)
-            .content(message)
-            .capsule(false);
-
-        if (action) {
-            config.action(action);
-        }
-
-        this.$mdToast.show(config);
+        console.log('Toast!!! ' + message);
     }
 
     id() {

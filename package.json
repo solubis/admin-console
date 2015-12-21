@@ -9,7 +9,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "eslint ./dist/**/*.js",
-    "start": "tsc;node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 3000 --hot --inline",
+    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 3000 --hot --inline",
     "postinstall": ""
   },
   "dependencies": {

@@ -12,11 +12,10 @@ class MenuController {
 
     private toggleDisabled;
 
-    constructor(private $mdSidenav: ng.material.ISidenavService) { }
+    constructor() { }
 
     toggleLeftSidebar() {
         this.toggleDisabled = true;
-        this.$mdSidenav('sidebar').toggle().then((result) => this.toggleDisabled = false);
     }
 }
 
@@ -25,9 +24,8 @@ class MenuController {
     templateUrl: 'modules/menu/html/sidebar.html'
 })
 class Sidebar extends MenuController {
-    constructor(
-        @Inject('$mdSidenav') sidenav) {
-        super(sidenav);
+    constructor() {
+        super();
     }
 }
 
@@ -36,10 +34,19 @@ class Sidebar extends MenuController {
     templateUrl: 'modules/menu/html/topbar.html'
 })
 class TopBar extends MenuController {
-    constructor(
-        @Inject('$mdSidenav') sidenav) {
-        super(sidenav);
+    constructor() {
+        super();
     }
+
+    openSearch() {
+        angular.element('#header').addClass('search-toggled');
+        angular.element('#top-search-wrap').find('input').focus();
+    }
+
+    closeSearch() {
+        angular.element('#header').removeClass('search-toggled');
+    }
+
 }
 
 export {MenuController, Sidebar, TopBar};

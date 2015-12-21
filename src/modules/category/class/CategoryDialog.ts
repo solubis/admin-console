@@ -5,6 +5,8 @@ import {CategoryActions} from './CategoryActions';
 @Service()
 export class CategoryDialog {
 
+    private dialog: any;
+
     private options: ng.material.IDialogOptions = {
         controller: CategoryDialogController,
         bindToController: true,
@@ -13,11 +15,10 @@ export class CategoryDialog {
         focusOnOpen: false
     };
 
-    constructor(
-        @Inject('$mdDialog') private dialog: ng.material.IDialogService) { }
+    constructor() {}
 
-    show(options: ng.material.IDialogOptions) {
-        this.dialog.show(Object.assign({}, options, this.options));
+    show() {
+        this.dialog.show(Object.assign({}, this.options));
     }
 }
 
@@ -25,10 +26,9 @@ export class CategoryDialog {
 class CategoryDialogController {
 
     private item: any;
+    private dialog: any;
 
     constructor(
-        @Inject('$log') private log: ng.ILogService,
-        @Inject('$mdDialog') private dialog: ng.material.IDialogService,
         private actions: CategoryActions,
         private utils: Utils) {
     }

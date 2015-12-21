@@ -33,11 +33,12 @@
 
 {
     "version": "0.1.0",
-    "command": "gulp",
+    "command": "npm",
+    "args": ["run"],
     "isShellCommand": true,
     "tasks": [
         {
-            "taskName": "watch",
+            "taskName": "start",
             "isBuildCommand": true,
             "showOutput": "always",
             "isWatching": true

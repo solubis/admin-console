@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry: [
@@ -6,7 +7,8 @@ module.exports = {
         'webpack-dev-server/client?http://localhost:3000'
     ],
     output: {
-        publicPath: '/',
+        path: path.resolve(__dirname, 'build'),
+        publicPath: '/build/',
         filename: 'bundle.js'
     },
     debug: true,
@@ -23,7 +25,9 @@ module.exports = {
             loader: 'ts-loader'
         }]
     },
+    plugins: [new webpack.HotModuleReplacementPlugin()],
     devServer: {
-        contentBase: './src'
+        contentBase: './',
+        hot: true
     }
 };

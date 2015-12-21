@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-        <!-- build:css(dist) styles/app.min.css -->
-        <link rel="stylesheet" href="styles/index.css">
-        <!-- endbuild -->
+        <link rel="stylesheet" href="/ui/dist/css/ui.css">
+        <script src="/ui/dist/js/vendor.js"></script>
+        <script src="/ui/dist/js/ui.js"></script> 
 
         <title>Admin Console Demo</title>
     </head>
-
-    <body>
-
-        <app ng-cloak></app>
-
-        <!-- build:js(.) scripts/app.min.js-->
-        <!-- inject:js -->
-        <!-- endinject -->
-        <!-- endbuild -->
-        <!-- build:remove -->
-        <script src="../lib/system.js"></script>
-        <script>
-            System.baseURL = '/';
-        </script>
-        <script src="../system.config.js"></script>
-        <script>
-            System.import('./index').catch(console.error.bind(console));
-        </script>
-        <!-- endbuild -->
-    </body>
-
+</head>
+<body>
+    <app></app> 
+    <script src="/build/bundle.js"></script>
+</body>
 </html>
