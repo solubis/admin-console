@@ -6,6 +6,10 @@
     z-index: 1;
 }
 
+.md-fab-action-item .md-button.md-fab md-icon {
+    color: black;
+}
+
 .md-button {
     min-height: 36px;
   
@@ -32,7 +36,7 @@ md-data-table-toolbar {
     .md-button.md-icon-button {
         width      : 36px;
         height     : 36px;
-        line-height: 36px;
+        line-height: 24px;
         margin     : 0;
 
         &:not([disabled]) {

@@ -30,7 +30,7 @@ System.config({
     "angular-aria": "github:angular/bower-angular-aria@1.4.8",
     "angular-components": "github:solubis/angular-components@master",
     "angular-datatable": "github:solubis/angular-datatable@master",
-    "angular-material": "github:angular/bower-material@1.0.0",
+    "angular-material": "github:angular/bower-material@1.0.1",
     "angular-resource": "github:angular/bower-angular-resource@1.4.8",
     "angular-ui-router": "npm:angular-ui-router@0.2.15",
     "animate.css": "github:daneden/animate.css@3.5.0",
@@ -41,6 +41,7 @@ System.config({
     "immutable": "npm:immutable@3.7.6",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "scss": "github:theefer/plugin-sass@master",
+    "split.js": "npm:split.js@1.0.6",
     "typescript": "npm:typescript@1.7.5",
     "github:angular/bower-angular-animate@1.4.8": {
       "angular": "github:angular/bower-angular@1.4.8"
@@ -51,7 +52,7 @@ System.config({
     "github:angular/bower-angular-resource@1.4.8": {
       "angular": "github:angular/bower-angular@1.4.8"
     },
-    "github:angular/bower-material@1.0.0": {
+    "github:angular/bower-material@1.0.1": {
       "angular": "github:angular/bower-angular@1.4.8",
       "angular-animate": "github:angular/bower-angular-animate@1.4.8",
       "angular-aria": "github:angular/bower-angular-aria@1.4.8",

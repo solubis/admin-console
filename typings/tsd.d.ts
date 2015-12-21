@@ -16,3 +16,7 @@
 declare module 'bson' {
     export function ObjectID();
 }
+
+declare module 'split.js' {
+    export function Split(selectors: any[], options: any);
+}
