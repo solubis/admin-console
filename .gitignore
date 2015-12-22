@@ -9,6 +9,7 @@ target
 *.tgz
 *.css
 dist
+ui
 
 # Ignore docs files
 _gh_pages

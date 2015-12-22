@@ -11,9 +11,9 @@
             "name": "Launch jspm SASS",
             "type": "node",
             "stopOnEntry": true,
-            "cwd": ".",
+            "cwd": "./",
             "args": [],
-            "program": "./bin/jspm-sass.sh"
+            "program": "./bin/style-deps.sh"
         },
         {
             "name": "Launch localhost with sourcemaps",

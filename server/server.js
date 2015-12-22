@@ -1,22 +1,4 @@
 /**
- * Webpack Development Server
- */
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('../webpack.config.js');
-var compiler = webpack(config);
-var server = new WebpackDevServer(compiler, {
-    contentBase: './',
-    publicPath: '/build/',
-    filename: 'bundle.js',
-    stats: {
-        colors: true
-    }
-});
-server.listen(3000, '0.0.0.0', function () {
-    console.log('WebPack is building...');
-});
-/**
  * Loopback REST Server
  */
 var loopback = require('loopback');

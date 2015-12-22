@@ -6,14 +6,7 @@ import {CategoryActions} from './CategoryActions';
 export class CategoryDialog {
 
     private dialog: any;
-
-    private options: ng.material.IDialogOptions = {
-        controller: CategoryDialogController,
-        bindToController: true,
-        controllerAs: 'ctrl',
-        templateUrl: 'modules/category/html/category-dialog.html',
-        focusOnOpen: false
-    };
+    private options: any;
 
     constructor() {}
 

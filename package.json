@@ -8,26 +8,10 @@
   "license": "Unlicense",
   "main": "server/server.js",
   "scripts": {
-    "test": "eslint ./dist/**/*.js",
-    "start": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --port 3000 --hot --inline",
-    "postinstall": ""
+    "postinstall": "jspm install; ./bin/jspm-deps.sh",
+    "deps": "./bin/jspm-deps.sh"
   },
-  "dependencies": {
-    "angular": "^1.4.8",
-    "angular-animate": "^1.4.8",
-    "angular-aria": "^1.4.8",
-    "angular-material": "^1.0.1",
-    "angular-resource": "^1.4.8",
-    "angular-ui-router": "^0.2.15",
-    "animate.css": "^3.4.0",
-    "events": "^1.1.0",
-    "flux": "^2.1.1",
-    "immutable": "^3.7.6",
-    "bson": "^0.4.20",
-    "reflect-metadata": "^0.1.2",
-    "angular-datatable": "git+https://github.com/solubis/angular-datatable",
-    "angular-components": "git+https://github.com/solubis/angular-components"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^5.8.25",
     "browser-sync": "*",
@@ -43,6 +27,7 @@
     "gulp-connect": "^2.2.0",
     "gulp-htmlhint": "^0.3.0",
     "gulp-inject": "^3.0.0",
+    "gulp-less": "^3.0.5",
     "gulp-load-plugins": "^0.10.0",
     "gulp-minify-css": "^1.2.1",
     "gulp-minify-html": "^1.0.4",
@@ -81,7 +66,6 @@
     "systemjs-builder": "*",
     "tsd": "*",
     "typescript": "^1.6.2",
-    "ts-loader": "^0.7.2",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
@@ -96,28 +80,37 @@
       "angular-aria": "github:angular/bower-angular-aria@^1.4.8",
       "angular-components": "github:solubis/angular-components@master",
       "angular-datatable": "github:solubis/angular-datatable@master",
-      "angular-material": "github:angular/bower-material@^1.0.1",
       "angular-resource": "github:angular/bower-angular-resource@^1.4.8",
+      "angular-ui": "github:solubis/angular-ui@master",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
       "animate.css": "github:daneden/animate.css@^3.4.0",
       "bson": "npm:bson@^0.4.20",
+      "css": "github:systemjs/plugin-css@^0.1.20",
       "events": "github:jspm/nodelibs-events@^0.1.1",
       "flux": "npm:flux@^2.1.1",
       "immutable": "npm:immutable@^3.7.5",
+      "less": "github:aaike/jspm-less-plugin@^0.0.5",
       "reflect-metadata": "npm:reflect-metadata@^0.1.2",
-      "scss": "github:theefer/plugin-sass@master",
-      "split.js": "npm:split.js@^1.0.6"
+      "sass": "github:mobilexag/plugin-sass@^0.1.0",
+      "scss": "github:theefer/plugin-sass@master"
     },
     "devDependencies": {
       "clean-css": "npm:clean-css@^3.4.6",
-      "typescript": "npm:typescript@^1.6.2"
+      "typescript": "npm:typescript@^1.7.5"
     }
   },
-  "jspm-sass": {
-    "output": "src/styles/imports.scss",
+  "styleDependencies": {
+    "output": "src/styles/imports.less",
     "dependencies": [
-      "angular-material/angular-material.scss",
       "angular-datatable/app/md-data-table/styles/md-data-table"
+    ]
+  },
+  "typescriptDependencies": {
+    "output": "typings/vendors.d.ts",
+    "dependencies": [
+      "angular-components/dist/index.d.ts",
+      "immutable/dist/immutable.d.ts",
+      "reflect-metadata/reflect-metadata.d.ts"
     ]
   }
 }

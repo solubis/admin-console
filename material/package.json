@@ -1,0 +1,26 @@
+{
+    "name": "solubis-ui",
+    "version": "0.0.1",
+    "description": "Solubis UI framework",
+    "repository": {
+        "url": "git@gitlab.com:solubis/ui.git"
+    },
+    "license": "Unlicense",
+    "devDependencies": {
+        "chai": "^3.4.0",
+        "mocha": "^2.3.3",
+        "typescript": "^1.6.2",
+        "css-loader": "^0.23.0",
+        "file-loader": "^0.8.5",
+        "url-loader": "^0.5.7",
+        "node-sass": "^3.4.2",
+        "sass-loader": "^3.1.2",
+        "style-loader": "^0.13.0",
+        "ts-loader": "^0.7.2",
+        "webpack": "^1.12.9",
+        "webpack-dev-server": "^1.14.0"
+    },
+    "dependencies": {
+
+    }
+}

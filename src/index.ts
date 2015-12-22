@@ -1,11 +1,8 @@
-//import 'angular';
-//import 'angular-resource';
-//import 'angular-material'; 
-//import 'angular-datatable';
-//import 'angular-ui-router';
+import './styles/index.css!';
 
-import 'modules/server'; 
-import 'modules/menu';
+import 'angular-ui';
+
+import 'modules/server';
 import 'modules/category';
 import 'modules/common';
 import 'modules/notification';
