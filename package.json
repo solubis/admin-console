@@ -80,8 +80,6 @@
       "angular-aria": "github:angular/bower-angular-aria@^1.4.8",
       "angular-components": "github:solubis/angular-components@master",
       "angular-datatable": "github:solubis/angular-datatable@master",
-      "angular-resource": "github:angular/bower-angular-resource@^1.4.8",
-      "angular-ui": "github:solubis/angular-ui@master",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15",
       "animate.css": "github:daneden/animate.css@^3.4.0",
       "bson": "npm:bson@^0.4.20",
