@@ -1,0 +1,11 @@
+<header id="header" data-current-skin="{{ctrl.currentSkin}}" data-ng-include src="'app/html/header.html'" ></header>
+
+<section id="main">
+    <aside id="sidebar" data-ng-include src="'app/html/sidebar-left.html'" data-ng-class="{ 'toggled': ctrl.sidebarToggle.left === true }"></aside>
+
+    <aside id="chat" data-ng-include src="'app/html/chat.html'" data-ng-class="{ 'toggled': ctrl.sidebarToggle.right === true }"></aside>
+
+    <section id="content" class="page-view" data-ui-view></section>
+</section>
+
+<footer id="footer" data-ng-include src="'app/html/footer.html'"></footer>

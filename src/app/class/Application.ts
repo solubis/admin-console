@@ -1,14 +1,15 @@
 import {Component, Inject, Value, bootstrap} from 'angular-components';
-import {HttpInterceptor} from '../../server/class/HttpInterceptor';
-import {ErrorStore} from '../../server/class/ErrorStore';
-import {Utils} from '../../common/class/Utils';
-import './demo.controllers';
+import {HttpInterceptor} from '../../modules/server/class/HttpInterceptor';
+import {ErrorStore} from '../../modules/server/class/ErrorStore';
+import {Utils} from '../../modules/common/class/Utils';
 
-import config from '../../../config';
+import config from '../../config';
+
+import './demo.controllers';
 
 @Component({
     selector: 'app',
-    templateUrl: 'modules/app/html/app.html',
+    templateUrl: 'app/html/app.html',
     dependencies: ['angular-ui', 'demoControllers']
 })
 class Application {
@@ -33,20 +34,20 @@ class Application {
         $stateProvider
             .state('user-interface', {
                 url: '/user-interface',
-                templateUrl: 'modules/app/html/app.html'
+                templateUrl: 'app/html/app.html'
             })
 
             .state('user-interface.ui-bootstrap', {
                 url: '/ui-bootstrap',
-                templateUrl: 'modules/app/html/ui-bootstrap.html'
+                templateUrl: 'app/html/ui-bootstrap.html'
             })
             .state('form', {
                 url: '/form',
-                templateUrl: 'modules/app/html/app.html'
+                templateUrl: 'app/html/app.html'
             })
             .state('form.form-components', {
                 url: '/form-components',
-                templateUrl: 'modules/app/html/form-components.html'
+                templateUrl: 'app/html/form-components.html'
             });
     }
 

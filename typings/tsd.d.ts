@@ -16,3 +16,5 @@ declare module 'bson' {
 declare module 'split.js' {
     export function Split(selectors: any[], options: any);
 }
+
+declare var System: any;
