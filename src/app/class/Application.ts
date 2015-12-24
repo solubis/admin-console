@@ -6,6 +6,7 @@ import {Utils} from '../../modules/common/class/Utils';
 import config from '../../config';
 
 import './demo.controllers';
+import './demo.data';
 
 @Component({
     selector: 'app',
@@ -29,26 +30,69 @@ class Application {
         @Inject('$urlRouterProvider') $urlRouterProvider,
         @Inject('$stateProvider') $stateProvider) {
 
+        let pages = [
+            'alerts',
+            'animations',
+            'app',
+            'box-shadow',
+            'breadcrumb-demo',
+            'buttons',
+            'calendar',
+            'chat',
+            'colors',
+            'common-2',
+            'common',
+            'contacts',
+            'data-table',
+            'flot-charts',
+            'footer',
+            'form-components',
+            'form-elements',
+            'form-examples',
+            'form-validations',
+            'generic-classes',
+            'header',
+            'home',
+            'icons',
+            'image-logo',
+            'invoice',
+            'list-view',
+            'mainmenu-on-top',
+            'media',
+            'messages',
+            'notification-dialog',
+            'other-charts',
+            'other-components',
+            'pages.txt',
+            'photo-timeline',
+            'photos',
+            'preloaders',
+            'pricing-table',
+            'profile-about',
+            'profile-connections',
+            'profile-photos',
+            'profile-timeline',
+            'profile',
+            'sidebar-left',
+            'tables',
+            'textual-menu',
+            'typography',
+            'ui-bootstrap',
+            'wall',
+            'widget-templates',
+            'widgets'
+        ];
+
         $httpProvider.interceptors.push(HttpInterceptor.factory);
         $urlRouterProvider.otherwise('/');
-        $stateProvider
-            .state('user-interface', {
-                url: '/user-interface',
-                templateUrl: 'app/html/app.html'
-            })
 
-            .state('user-interface.ui-bootstrap', {
-                url: '/ui-bootstrap',
-                templateUrl: 'app/html/ui-bootstrap.html'
-            })
-            .state('form', {
-                url: '/form',
-                templateUrl: 'app/html/app.html'
-            })
-            .state('form.form-components', {
-                url: '/form-components',
-                templateUrl: 'app/html/form-components.html'
-            });
+        pages.forEach((page) => {
+            $stateProvider
+                .state(page, {
+                    url: `/${page}`,
+                    templateUrl: `app/html/${page}.html`
+                });
+        });
     }
 
     @Inject()

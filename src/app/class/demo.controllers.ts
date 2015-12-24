@@ -87,11 +87,11 @@ angular.module('demoControllers', [])
         }
         
         // Get messages and notification for header
-        this.img = messageService.img;
-        this.user = messageService.user;
-        this.user = messageService.text;
+        this.img = messageService.data[1].img;
+        this.user = messageService.data[1].user;
+        this.user = messageService.data[1].text;
 
-        this.messageResult = messageService.getMessage(this.img, this.user, this.text);
+        this.messageResult = messageService.data[1];
 
 
         //Clear Notification

@@ -106,47 +106,6 @@
         </div>
     </div>
 
-    <!-- CAROUSEL -->
-    <div class="card">
-        <div class="card-header">
-            <h2>Carousel <small><a target="_blank" class="c-gray" href="http://angular-ui.github.io/bootstrap/#/carousel ">ui.bootstrap.carousel </a></small></h2>
-        </div>
-
-        <div class="card-body card-padding p-t-0" data-ng-controller="CarouselDemoCtrl">
-            <p>Carousel creates a carousel similar to bootstrap's image carousel. The carousel also offers support for touchscreen devices in the form of swiping. To enable swiping, load the ngTouch module as a dependency.</p>
-
-            <p>Use a <code>&lt;carousel&gt;</code>code> element with <code>&lt;slide&gt;</code> elements inside it. It will automatically cycle through the slides at a given rate, and a current-index variable will be kept in sync with the currently visible slide.</p>
-
-            <br/>
-
-            <uib-carousel interval="myInterval">
-                <uib-slide ng-repeat="w in slides" active="slide.active">
-                    <img ng-src="media/carousel/{{w.img}}">
-                    <div class="carousel-caption" data-ng-if="w.title.length > 0">
-                        <h3>{{w.title}}</h3>
-                        <p>{{w.text}}</p>
-                    </div>
-                </uib-slide>
-            </uib-carousel>
-
-            <br/>
-            <br/>
- 
-            <div class="row">
-                <div class="col-sm-6">
-
-                    <strong>Interval, in milliseconds </strong>
-                    <div class="fg-line m-b-5">
-                        <input type="number" class="form-control" ng-model="myInterval">
-                    </div>
-
-                    <small class="c-gray">Enter a postive number to start the interval.</small>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
 
     <!-- COLLAPSE -->
     <div class="card">
@@ -579,8 +538,8 @@
             </script>
 
             <div class="btn-demo">
-                <button popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popover-title="Popover Title" class="btn btn-primary">Default Popover</button>
-                <button popover-template="dynamicPopover.templateUrl" popover-title="Popover Title" class="btn btn-primary">Popover With Template</button>
+                <button uib-popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popover-title="Popover Title" class="btn btn-primary">Default Popover</button>
+                <button uib-popover-template="dynamicPopover.templateUrl" popover-title="Popover Title" class="btn btn-primary">Popover With Template</button>
             </div>
 
             <br/>
@@ -588,20 +547,20 @@
             <p class="f-500 c-black">Position</p>
 
             <div class="btn-demo">
-                <button popover-placement="top" popover="On the Top!" class="btn btn-primary">Top</button>
-                <button popover-placement="left" popover="On the Left!" class="btn btn-primary">Left</button>
-                <button popover-placement="right" popover="On the Right!" class="btn btn-primary">Right</button>
-                <button popover-placement="bottom" popover="On the Bottom!" class="btn btn-primary">Bottom</button>
+                <button popover-placement="top" uib-popover="On the Top!" class="btn btn-primary">Top</button>
+                <button popover-placement="left" uib-popover="On the Left!" class="btn btn-primary">Left</button>
+                <button popover-placement="right" uib-popover="On the Right!" class="btn btn-primary">Right</button>
+                <button popover-placement="bottom" uib-popover="On the Bottom!" class="btn btn-primary">Bottom</button>
             </div>
 
             <br/>
 
             <p class="f-500 c-black">Popover on Mouse Hover</p>
             <div class="btn-demo">
-                <button popover-placement="top" popover-trigger="mouseenter" popover="On the Top!" class="btn btn-primary">Top</button>
-                <button popover-placement="left" popover-trigger="mouseenter" popover="On the Left!" class="btn btn-primary">Left</button>
-                <button popover-placement="right" popover-trigger="mouseenter" popover="On the Right!" class="btn btn-primary">Right</button>
-                <button popover-placement="bottom" popover-trigger="mouseenter" popover="On the Bottom!" class="btn btn-primary">Bottom</button>
+                <button popover-placement="top" popover-trigger="mouseenter" uib-popover="On the Top!" class="btn btn-primary">Top</button>
+                <button popover-placement="left" popover-trigger="mouseenter" uib-popover="On the Left!" class="btn btn-primary">Left</button>
+                <button popover-placement="right" popover-trigger="mouseenter" uib-popover="On the Right!" class="btn btn-primary">Right</button>
+                <button popover-placement="bottom" popover-trigger="mouseenter" uib-popover="On the Bottom!" class="btn btn-primary">Bottom</button>
             </div>
         </div>
     </div>
@@ -685,28 +644,28 @@
 
             <p>Add quick, dynamic tab functionality to transition through panes of local content, even via dropdown menus. <a target="_blank" href="http://angular-ui.github.io/bootstrap/#/tabs">Read more...</a></p>
 
-            <tabset>
-                <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+            <uib-tabset>
+                <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
                   {{tab.content}}
-                </tab>
-            </tabset>
+                </uib-tab>
+            </uib-tabset>
 
             <br/>
 
-            <tabset justified="true">
-                <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+            <uib-tabset justified="true">
+                <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
                   {{tab.content}}
-                </tab>
-            </tabset>
+                </uib-tab>
+            </uib-tabset>
 
             <br/>
             <br/>
 
-            <tabset vertical="true">
-                <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+            <uib-tabset vertical="true">
+                <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
                   {{tab.content}}
-                </tab>
-            </tabset>
+                </uib-tab>
+            </uib-tabset>
 
 
         </div>
