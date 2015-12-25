@@ -74,7 +74,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.5.5"
+      "buffer": "npm:buffer@3.6.0"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -149,6 +149,7 @@ System.config({
       "angular-ui-bootstrap": "npm:angular-ui-bootstrap@0.14.3",
       "angular-ui-router": "github:angular-ui/ui-router@0.2.15",
       "animate.css": "npm:animate.css@3.4.0",
+      "autosize": "github:jackmoore/autosize@3.0.14",
       "bootstrap": "github:twbs/bootstrap@3.3.6",
       "bootstrap-growl": "npm:bootstrap-growl@3.1.3",
       "bootstrap-sweetalert": "npm:bootstrap-sweetalert@0.4.2",
@@ -252,7 +253,7 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:buffer@3.5.5": {
+    "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -370,7 +371,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "promise": "npm:promise@7.0.4",
+      "promise": "npm:promise@7.1.1",
       "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
     },
     "npm:flux@2.1.1": {
@@ -446,7 +447,7 @@ System.config({
     "npm:process@0.11.2": {
       "assert": "github:jspm/nodelibs-assert@0.1.0"
     },
-    "npm:promise@7.0.4": {
+    "npm:promise@7.1.1": {
       "asap": "npm:asap@2.0.3",
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
