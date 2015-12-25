@@ -8,6 +8,16 @@
             "file": "index.html"
         },
         {
+            "name": "Launch gulpfile",
+            "type": "node",
+            "stopOnEntry": true,
+            "cwd": "./",
+            "args": [
+                "sass"
+            ],
+            "program": "/Users/yoorek/.node/bin/gulp"
+        },
+        {
             "name": "Launch jspm SASS",
             "type": "node",
             "stopOnEntry": true,

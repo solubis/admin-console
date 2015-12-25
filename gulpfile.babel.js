@@ -14,6 +14,18 @@ var $ = require('gulp-load-plugins')({
 });
 
 /**
+ * Error notification settings
+ */
+function errorAlert(err) {
+    $.notify.onError({
+        message: '<%= error.message %>',
+        sound: 'Sosumi'
+    })(err);
+    console.log(err.toString());
+}
+
+
+/**
  * The 'browserSync' task start BrowserSync and open the browser.
  *
  */
@@ -37,7 +49,7 @@ gulp.task('server', () => {
         files: files,
         browser: browser
     };
-    
+
     try {
         $.nodemon({
             script: 'server/server.js',
@@ -56,10 +68,10 @@ gulp.task('server', () => {
             baseDir: './'
         };
     }
-    
+
     bs.init(options);
 
-    gulp.watch(['.src/**/*.less', './ui/**/*.less'], ['less']);
+    gulp.watch(['.src/**/*.scss', './ui/**/*.scss'], ['sass']);
 });
 
 /**
@@ -77,7 +89,6 @@ gulp.task('test-server', () => {
 gulp.task('watch', () => {
     gulp.watch('./server/*spec.js', ['test-server']);
     gulp.watch('./**/*.scss', ['sass']);
-    gulp.watch('./**/*.less', ['less']);
     gulp.watch('./**/*.ts', ['typescript']);
 });
 
@@ -86,12 +97,15 @@ gulp.task('watch', () => {
  */
 gulp.task('sass', () => {
     return gulp.src(config.src.styles)
+        .pipe($.plumber({ errorHandler: errorAlert }))
         .pipe($.sourcemaps.init())
         .pipe($.sass().on('error', $.sass.logError))
         .pipe(gulp.dest(config.dist.styles))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(`${config.src.basePath}/styles`))
-        .pipe(bs.stream());
+        .pipe(bs.reload({ stream: true, notify: true }))
+        .on('error', errorAlert)
+        .pipe($.notify({message: 'Styles compiled', onLast: true}));
 });
 
 gulp.task('less', () => {

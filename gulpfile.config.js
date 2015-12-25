@@ -29,7 +29,7 @@ const config = {
         images: `${root}/src/images/**/*`,
         fonts: `${root}/src/fonts/**/*`,
         data: `${root}/src/data/**/*`,
-        styles: [`${root}/src/styles/index.less`],
+        styles: [`${root}/src/styles/index.scss`],
         templates: [`${root}/src/modules/**/*.html`]
     },
 

@@ -40,6 +40,7 @@ System.config({
     "flux": "npm:flux@2.1.1",
     "immutable": "npm:immutable@3.7.6",
     "less": "github:aaike/jspm-less-plugin@0.0.5",
+    "node-bourbon": "npm:node-bourbon@4.2.3",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
     "sass": "github:mobilexag/plugin-sass@0.1.0",
     "scss": "github:theefer/plugin-sass@master",
@@ -408,6 +409,10 @@ System.config({
     "npm:ng-scrollbars@0.0.5": {
       "angular": "npm:angular@1.4.8",
       "malihu-custom-scrollbar-plugin": "npm:malihu-custom-scrollbar-plugin@3.1.3"
+    },
+    "npm:node-bourbon@4.2.3": {
+      "bourbon": "npm:bourbon@4.2.3",
+      "path": "github:jspm/nodelibs-path@0.1.0"
     },
     "npm:node-waves@0.7.4": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
